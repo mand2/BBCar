@@ -28,13 +28,13 @@ public class MyPageService {
 		Driver driver = dao.selectByIdx(idx);
 		List<Route> myrouteList = dao.selectRoute(idx);
 
-		System.out.println("------ mypage service-----------");
+//		System.out.println("------ mypage service-----------");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("myinfo", driver);
 		map.put("myroute", myrouteList);
 		
-		System.out.println("route 들어가는가?"+map.get("myroute"));
+//		System.out.println("route 들어가는가?"+map.get("myroute"));
 		
 		return map;
 	}
@@ -57,24 +57,6 @@ public class MyPageService {
 		return result;
 	}
 	
-	/*-----------------------------------*/
-//			  아래는 안 쓸 수도...	
-	/*-----------------------------------*/
-	
-	//mypage에 내 정보 불러오기
-	public Driver showMyInfo(int idx) {
-		dao = template.getMapper(DriverDao.class);
-		Driver driver = dao.selectByIdx(idx);
-		return driver;
-	}
-	
-	
-	//mypage에 내 즐겨찾는경로 불러오기
-	public List<Route> showMyRoute(int idx) {
-		dao = template.getMapper(DriverDao.class);
-//		Route route = dao.selectRoute(idx);
-		return dao.selectRoute(idx);
-	}
 	
 
 }

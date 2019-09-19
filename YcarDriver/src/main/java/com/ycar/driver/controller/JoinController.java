@@ -29,18 +29,22 @@ public class JoinController {
 	
 	@PostMapping
 	@CrossOrigin
-	public ResponseEntity<String> join(@RequestBody DriverInfo driverInfo){
+	public int join(@RequestBody DriverInfo driverInfo){
 		int result = joinService.joinDriver(driverInfo);
 		System.out.println("잘 들어갔니 3 ======" + result);
-		return new ResponseEntity<String>(result>0?"success":"fail", HttpStatus.OK);
+		return result;
 	}
 	
 	
-	//	@PostMapping
+	/* 변경전 */
+//	@PostMapping
 //	@CrossOrigin
-//	public Map<String, Object> join(@RequestBody Map<String, Object>param){
-//		String id = (String) param.get("type");
+//	public ResponseEntity<String> join(@RequestBody DriverInfo driverInfo){
+//		int result = joinService.joinDriver(driverInfo);
+//		System.out.println("잘 들어갔니 3 ======" + result);
+//		return new ResponseEntity<String>(result>0?"success":"fail", HttpStatus.OK);
 //	}
+	
 	
 	@CrossOrigin
 	@GetMapping("/mailAuth")

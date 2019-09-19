@@ -41,12 +41,12 @@
 	</select>
 
 	<insert id="insertDriverSE" parameterType="com.ycar.driver.model.DriverSE" useGeneratedKeys="true" keyProperty="d_idx">
-		insert into DRIVER(id, pw, name, nickname, gender, type
+		insert into DRIVER(id, pw, name, nickname, gender, type, email
 			,ctype, company, cemail
 			,lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype
 			,d_option					
 		)
-		values(#{id},#{pw},#{name},#{nickname},#{gender},#{type}
+		values(#{id},#{pw},#{name},#{nickname},#{gender},#{type}, #{email}
 			,#{ctype},#{company},#{cemail}
 			,#{lscnum},#{idnum1},#{idnum2},#{lsctype},#{sdate},#{police},#{carnum},#{cartype}
 			,#{d_option}
@@ -56,12 +56,12 @@
 	
 	
 	<insert id="insertDriverSP" parameterType="com.ycar.driver.model.DriverSP" useGeneratedKeys="true" keyProperty="d_idx">
-		insert into DRIVER(id, pw, name, nickname, gender, type
+		insert into DRIVER(id, pw, name, nickname, gender, type, email
 			,ctype, company, cnum
 			,lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype
 			,d_option				
 		)
-		values(#{id},#{pw},#{name},#{nickname},#{gender},#{type}
+		values(#{id},#{pw},#{name},#{nickname},#{gender},#{type}, #{email}
 			,#{ctype},#{company},#{cnum}
 			,#{lscnum},#{idnum1},#{idnum2},#{lsctype},#{sdate},#{police},#{carnum},#{cartype}
 			,#{d_option}

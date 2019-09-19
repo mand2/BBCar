@@ -33,8 +33,8 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-//		return "/join/form";
-		return "/mypage/form";
+		return "/join/form";
+//		return "/mypage/form";
 	}
 	
 }

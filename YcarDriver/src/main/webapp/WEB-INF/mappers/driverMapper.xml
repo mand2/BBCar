@@ -39,6 +39,9 @@
 	<select id="selectByIdx" resultType="com.ycar.driver.model.Driver">
 		select * from DRIVER where d_idx = #{d_idx}
 	</select>
+	<select id="selectByName" resultType="com.ycar.driver.model.Driver">
+		select * from DRIVER where name = #{name}
+	</select>
 
 	<insert id="insertDriverSE" parameterType="com.ycar.driver.model.DriverSE" useGeneratedKeys="true" keyProperty="d_idx">
 		insert into DRIVER(id, pw, name, nickname, gender, type, email
@@ -100,6 +103,13 @@
 		set type = #{type},
 			place = #{place}
 		where d_idx = #{d_idx}
+	</update>
+	
+	<update id="updateFindPW">
+		update DRIVER
+		set verify = 'N',
+			pw = #{param1}
+		where d_idx = #{param2}
 	</update>
 	
 </mapper>

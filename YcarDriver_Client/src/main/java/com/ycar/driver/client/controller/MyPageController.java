@@ -24,21 +24,23 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.ycar.driver.client.domain.EditDriverMyInfo;
-
+/*-------------------
+ * 파일이름: MyPageController.java
+ * 파일설명: CLIENT side - 마이페이지 controller 
+ * 작성자: 김나연
+ * 버전: 1.0.1
+ * 생성일자: 2019-09-20 오전 10시 09분
+ * 최종수정일자: 2019-09-20 오전 10시 09분
+ * 최종수정자: 김나연
+ * 최종수정내용: 최초 작성
+ * 
+ * @getMyPage: 로그인한 회원(==세션에 저장된 회원)의 정보를 검색, 가져오기
+ * @editMyInfo: 개인 이메일 혹은 차량관련 정보 및 선호운전환경 변경 시
+ * -------------------*/
 @RestController
 @RequestMapping("/mypage")
 public class MyPageController {
 
-//		@GetMapping(value = "/{idx}")
-//		public ResponseEntity<Map<String, Object>> getMyPage(@PathVariable("idx")int idx){
-//			RestTemplate template = new RestTemplate();
-//			Map<String, Object> map = template.getForObject("http://localhost:8080/driver/mypage/{idx}", Map.class);
-////			Map<String, Object> map = template.postForObject("http://localhost:8080/driver/mypage", idx, Map.class);
-//			return new ResponseEntity<Map<String,Object>>(map, HttpStatus.OK);
-//
-////			template.exe
-////			return template.exchange("http://localhost:8080/driver/mypage/{idx}", HttpMethod.GET, new HttpEntity<>(idx), Map<String,Object>.class, idx);
-//		}
 		@GetMapping(value = "/{idx}")
 		@ResponseBody
 		public ResponseEntity<String> getMyPage(@PathVariable("idx")int idx){

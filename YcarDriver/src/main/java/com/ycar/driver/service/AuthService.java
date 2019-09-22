@@ -56,4 +56,24 @@ public class AuthService {
 		return bf.toString();
 	}
 	
+	
+	//임시 패스워드 보내기
+	public void sendPW(String email, String code) {
+		MimeMessage msg = sender.createMimeMessage();
+		try {
+			msg.setSubject("[연차] 비밀번호 찾기:: 요청하신 임시 비밀번호 입니다", "utf-8");
+			
+			String body = "";
+			body += "안녕하세요. 연차 서비스입니다.<br> \n";
+			body += "요청하신 임시 비밀번호는 " + code + " 입니다. <br> \n";
+			
+			msg.setText(body, "utf-8", "html");
+			msg.addRecipient(RecipientType.TO, new InternetAddress(email));
+			
+			sender.send(msg);
+			
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+	}
 }

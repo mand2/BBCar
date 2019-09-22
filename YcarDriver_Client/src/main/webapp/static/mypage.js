@@ -11,6 +11,7 @@ var idx = 13; // 원래는 session에서 가져와야 함.
 // mypage에 개인정보 불러오기
 function showMyInfo() {
 	console.log('idx체크:::' + idx);
+	
 	displayForm(); // 폼 사라지게
 	$('#myInfoForm1').css("display", "block");
 	$('#myInfoForm2').css("display", "block");
@@ -19,7 +20,6 @@ function showMyInfo() {
 	$.ajax({
 		url : 'http://localhost:8080/dClient/mypage/' + idx,
 		type : 'GET',
-		/* contentType : 'application/json;charset=utf-8', */
 		success : function(data) {
 
 			console.log("data체크체크 \n" + JSON.stringify(data));
@@ -35,13 +35,8 @@ function showMyInfo() {
 				}
 			}
 
-			// data의 각 값들이 제대로 나오는지 체크함
-			// console.log("---data----" + data);
-			// console.log("---info----" + myinfo);
-			// console.log("---route---" + myroute);
 			getMyinfo(myinfo);
 
-			// my driving route와 option도 처리해야 함.
 		},
 		error : function(err) {
 			console.log('err:::' + err);
@@ -108,17 +103,9 @@ function getDoption(option) {
 		output += '<span class="btn btn-black form-control">' + msg + '</span>';
 		output += '</div>';
 
-		console.log('msg 확인요~' + (i) + '\n' + msg);
 	}
 
 	document.getElementById('option_wrap').innerHTML = output;
-
-	// console.log('운전옵션 \n'+list);
-	// console.log('운전옵션길이나오냐? \n');
-	// console.log(list.length);
-	// console.log('운전옵션0 \n'+list[0]);
-	// console.log('운전옵션1 \n'+list[1]);
-	// console.log('운전옵션2 \n'+list[2]);
 }
 
 // 선호옵션 값 char -> String 변경해주기
@@ -233,9 +220,9 @@ function edit_myinfo() {
 	var carnum = $('#edit_carnum').val();
 	var cartype = $('#edit_cartype option:selected').val();
 
-	console.log('email' + email);
-	console.log('carnum' + carnum);
-	console.log('cartype' + cartype);
+//	console.log('email' + email);
+//	console.log('carnum' + carnum);
+//	console.log('cartype' + cartype);
 	$.ajax({
 		url : 'http://localhost:8080/dClient/mypage/' + idx,
 		type : 'PUT',

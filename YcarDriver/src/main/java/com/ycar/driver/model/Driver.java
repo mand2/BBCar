@@ -84,6 +84,13 @@ public class Driver {
 	public boolean matchPW(String pw) {
 		return pw != null && !pw.isEmpty() && this.pw.equals(pw);
 	}
+	
+	public boolean findID(String name, String email) {
+		return name != null && email != null && !name.isEmpty() && !email.isEmpty() && this.name.equals(name) && this.email.equals(email);
+	}
+	public boolean findPW(String id, String email) {
+		return id != null && email != null && !id.isEmpty() && !email.isEmpty() && this.id.equals(id) && this.email.equals(email);
+	}
 
 	public void randomCode() {
 		StringBuffer temp = new StringBuffer();

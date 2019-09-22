@@ -1,4 +1,7 @@
-     #hiddenform {
+@charset "UTF-8";     
+	
+	
+	#hiddenform {
          padding: 0 !important;
      }
      @media(max-width: 767.98px){
@@ -18,7 +21,8 @@
         
     /*  background image  */    
     #bgimage {
-        height: 830px;
+        margin-bottom: 0;
+        height: 100vh;
     }
         
         
@@ -33,10 +37,18 @@
      #LoginForm4 .form-control {
          height: 30px !important;
          line-height: 30px;
-         font-size: 13px;
+         font-size: 13.5px;
          margin-bottom: 8px;
          color: #000 !important;
      }
+     
+     #LoginForm .inputbox,
+     #LoginForm2 .inputbox,
+     #LoginForm3 .inputbox,
+     #LoginForm4 .inputbox {
+         border: 1px solid #413A6D !important;
+     }
+     
      
      /* 로그인 폼의 제목 */ 
      #LoginForm .day-wrap,
@@ -52,7 +64,8 @@
      #LoginForm3 label,
      #LoginForm4 label {
          font-size: 15px;
-         margin-bottom: 0.25rem
+         margin-bottom: 0.25rem;
+         font-family: 'Noto Sans KR', sans-serif !important;
      }
      
      /* 로그인 폼의 margin-top */
@@ -61,19 +74,61 @@
      #LoginForm3,
      #LoginForm4 {
          margin-top: 5rem !important;
+         font-family: 'Noto Sans KR', sans-serif !important;
      }
         
         
         
-     /* 버튼 */
+
+    /*로그인폼 텍스트:: 로그인 + 아이디찾기 + 비밀번호찾기*/    
      #prev1, #next1 {
          padding: 4px 20px !important; 
-         clear: both;
          font-size: 13px;
      }
+    #prev1{
+        float: left;
+    }
      #next1 {
-         float: right;
+         float: right; 
      }
+        
+    #prev1, #next1, #join {
+         font-size: 13px;
+         color: #514988 !important;
+         text-align: center;
+         display: block;
+         cursor: pointer;
+    }
+        
+    #textboxwrap{
+        clear: both;
+    }    
+        
+    #join {
+         /*margin: 20px 0 10px !important;*/
+         clear: both;
+    } 
+     /*fid_msg*/
+ /* 버튼 */    
+    /*버튼:: 로그인 + 아이디찾기 + 비밀번호찾기*/    
+    #LoginForm #jtype1, 
+    #LoginForm2 #findID,
+    #LoginForm3 #findPW {
+        margin-top: 13px !important;
+        background-color: #6258A4 !important;
+        color: #fff !important;
+        /*font-weight:bold;*/ 
+    }
+    
+    #LoginForm #jtype1:hover, 
+    #LoginForm2 #findID:hover,
+    #LoginForm3 #findPW:hover {
+        margin-top: 13px !important;
+        background-color: #413A6D !important;
+        color: #fff !important;
+        /*font-weight:bold;*/ 
+    }
+    
         
      /*#LoginForm,*/
      #LoginForm2,
@@ -83,7 +138,7 @@
      }
      /*------------- common css end -------------*/
      
-     /*로그인선택창 */
+     /*로그인 타입 선택창 */
      #jtype1,
      #jtype2,
      #jtype3,
@@ -91,8 +146,7 @@
          margin-top: 13px !important;
      }
      
-     #jtype1 {
-         background-color: #B24CEC !important;
+     #LoginForm #jtype1 {
          margin-bottom: 20px !important;
      }
      
@@ -107,22 +161,23 @@
      #jtype4 {
          background-color: #216AE9 !important;
      }
-     #join {
-         margin: 20px 0 10px !important;
-     }
-     
-    /*아이디 찾기 비밀번호 찾기*/    
-    #findID,
-    #findPW {
-        margin-top: 13px !important;
-        background-color: #B24CEC !important;
-    }
+    
     .warn_red{
-    color: #F03E87;
-    margin: 0;
-    font-size: 12px;
-    margin: 20px 0 8px;
-    }  
+        color: #F03E87;
+        margin: 0;
+        font-size: 12px;
+        margin: 10px 0 15px;
+    }
+        
+    .warn_blue {
+        font-size: 13px;
+        color: #514988 !important;
+        margin: 0;
+        margin: 20px 0 8px;
+        text-align: center;        
+        font-family: 'Noto Sans KR', sans-serif !important;
+    }    
+        
         
     #idchkbox,
     #pwchkbox,
@@ -137,3 +192,7 @@
         display: none;
     }    
         
+    
+    
+    
+    

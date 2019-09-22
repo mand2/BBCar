@@ -14,6 +14,21 @@ import com.ycar.driver.model.DriverInfo;
 import com.ycar.driver.model.EditDriverMyInfo;
 import com.ycar.driver.model.Route;
 
+
+/*-------------------
+ * 파일이름: MyPageService.java
+ * 파일설명: SERVER side - 마이페이지 service 
+ * 작성자: 김나연
+ * 버전: 1.0.1
+ * 최종수정일자: 2019-09-20 오전 10시 09분
+ * 최종수정자: 김나연
+ * 최종수정내용: 최초 작성
+ * 
+ * @showMyPage: 로그인한 회원(==세션에 저장된 회원)의 정보를 검색, 가져오기
+ * @editMyInfo: 개인 이메일 혹은 차량관련 정보 및 선호운전환경 변경 시
+ * -------------------*/
+
+
 @Service(value = "mypageService")
 public class MyPageService {
 	

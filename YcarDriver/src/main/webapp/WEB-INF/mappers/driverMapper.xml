@@ -42,6 +42,7 @@
 	<select id="selectByName" resultType="com.ycar.driver.model.Driver">
 		select * from DRIVER where name = #{name}
 	</select>
+	
 
 	<insert id="insertDriverSE" parameterType="com.ycar.driver.model.DriverSE" useGeneratedKeys="true" keyProperty="d_idx">
 		insert into DRIVER(id, pw, name, nickname, gender, type, email
@@ -112,4 +113,10 @@
 		where d_idx = #{param2}
 	</update>
 	
+	<update id="updatePW">
+		update DRIVER
+		set verify = 'Y',
+			pw = #{param1}
+		where d_idx = #{param2}
+	</update>
 </mapper>

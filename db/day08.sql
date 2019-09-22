@@ -5,7 +5,7 @@ select * from D_ROUTE;
 
 -- inner나 left나 행중복,, 그러나 널값일 땐 드라이버 값만 나옴...이게 낫긴 함.
 select * from DRIVER
-left join D_ROUTE0
+left join D_ROUTE
 using (d_idx)
 where d_idx = 13
 ;

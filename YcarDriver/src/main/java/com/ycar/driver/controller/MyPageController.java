@@ -62,6 +62,25 @@ public class MyPageController {
 		return mypageService.editMyInfo(idx, driver);
 	}
 	
+	//---------- 비밀번호 변경 관련 ---------- 
+	//현재 패스워드 맞는지 확인~
 	
+	@CrossOrigin
+	@PostMapping("/chkpw")
+	public int checkMyCurPW(@RequestBody Driver driver) {
+		
+		int idx = driver.getD_idx();
+		String pw = driver.getPw();
+		
+		return mypageService.checkMyCurPW(idx, pw);
+	}
 	
+	@CrossOrigin
+	@PutMapping("/chkpw")
+	public int updateMyPW(@RequestBody Driver driver) {
+		
+		int idx = driver.getD_idx();
+		String pw = driver.getPw();
+		return mypageService.updateMyPW(idx, pw);
+	}
 }

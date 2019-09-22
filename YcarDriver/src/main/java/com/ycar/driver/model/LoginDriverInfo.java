@@ -6,8 +6,11 @@ public class LoginDriverInfo {
 	private String name;
 	private String nickname;
 	
+	
 	public LoginDriverInfo() {
 	}
+	
+//기본정보만	
 	public LoginDriverInfo(int d_idx, String id, String name, String nickname) {
 		this.d_idx = d_idx;
 		this.id = id;
@@ -39,10 +42,12 @@ public class LoginDriverInfo {
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
+
 	@Override
 	public String toString() {
 		return "LoginDriverInfo [d_idx=" + d_idx + ", id=" + id + ", name=" + name + ", nickname=" + nickname + "]";
 	}
+	
 	
 	
 }

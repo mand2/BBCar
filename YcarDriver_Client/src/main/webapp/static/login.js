@@ -68,29 +68,6 @@ $('#pw').focusout(function() {
 	}
 });
 
-// 비밀번호변경 유효성검사:::: pw2
-$('#pw2').focusout(function() {
-	var pw = $('#pw').val();
-	var pwChk = $('#pw2').val();
-	var chk = pw == pwChk ? true : false;
-
-	$('#pw2chkmsg').css('display', 'none');
-	$('#pw2chkbox').prop('checked', false);
-
-	if (pwChk == '') {
-		warnMsg('pw2chkmsg', 'PW를 입력해 주세요');
-	} else if (pwChk.length < 6 || pwChk.length > 12) {
-		warnMsg('pw2chkmsg', '영문 대소문자, 숫자 및 특수문자 포함 6에서 12사이로 입력해주세요');
-	} else if (pwChk.indexOf(" ") >= 0) {
-		warnMsg('pw2chkmsg', '공백은 사용할 수 없습니다');
-	} else if (!chk) {
-		warnMsg('pw2chkmsg', '비밀번호가 다릅니다');
-	} else if (chk) {
-		$('#pw2chkbox').prop('checked', true);
-		$('#pw2chkmsg').removeClass('warn_red');
-		$('#pw2chkmsg').css('display', 'none');
-	}
-});
 
 // 로그인
 function login() {
@@ -108,6 +85,14 @@ function login() {
 			contentType : 'application/json;charset=utf-8',
 			success : function(data) {
 				console.log('성공 ㅎㅎ' + data);
+				if(data == '4'){
+					location.href="http://localhost:8080/dClient/mypage";
+				} else if (data == '3'){
+					location.href="mypage/changePW";
+				} else if( data == '2' || data == '1'){
+					warnMsg('login_msg', '탈퇴한 회원이거나 아이디 혹은 비밀번호가 일치하지 않습니다');
+				}
+				
 			},
 			error : function(err) {
 				console.log('님 실패여 ㅎㅎ' + JSON.stringify(err));

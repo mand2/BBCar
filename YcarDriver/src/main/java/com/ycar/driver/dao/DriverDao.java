@@ -14,6 +14,7 @@ public interface DriverDao {
 	public Driver selectByIdx(int idx);
 	public Driver selectByName(String name);
 	
+	
 	public int insertDriverSE(DriverSE se);
 	public int insertDriverSP(DriverSP sp);
 	
@@ -27,5 +28,6 @@ public interface DriverDao {
 //	public int updateCompanyInfo(Map<String, Object> params); //직장변경시 인증 다시 받기
 	
 	public int updateFindPW(String pw, int d_idx);
+	public int updatePW(String pw, int d_idx);
 	
 }

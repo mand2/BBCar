@@ -1,16 +1,19 @@
 /**
  * 
  */
-$(document).ready(function() {
-	showMyInfo();
-});
 
 // idx 정의
-var idx = 13; // 원래는 session에서 가져와야 함.
+var idx = $('#hiddenIDX').val();
+
+$(document).ready(function() {
+	showMyInfo();
+	console.log('idx?  \n ' + idx);
+});
+
+
 
 // mypage에 개인정보 불러오기
 function showMyInfo() {
-	console.log('idx체크:::' + idx);
 	
 	displayForm(); // 폼 사라지게
 	$('#myInfoForm1').css("display", "block");
@@ -22,7 +25,7 @@ function showMyInfo() {
 		type : 'GET',
 		success : function(data) {
 
-			console.log("data체크체크 \n" + JSON.stringify(data));
+//			console.log("data체크체크 \n" + JSON.stringify(data));
 
 			// map으로 받아옴.
 			var myinfo = data.myinfo;
@@ -41,7 +44,6 @@ function showMyInfo() {
 		error : function(err) {
 			console.log('err:::' + err);
 			console.log('err:::' + JSON.stringify(err));
-
 		}
 	});
 }
@@ -92,6 +94,7 @@ function evalMyroute(route) {
 // drive option (운전시 선호옵션) array로 변경해주기
 function getDoption(option) {
 	var list = option.split(' ');
+//	console.log('list :: ' + list);
 
 	var msg = ''; // 옵션 값(동성 빠르게 천천히 등,,)
 	var output = ''; // html에 넣어줄 값
@@ -161,8 +164,7 @@ function setMyInfo() {
 	$('#edit_carnum').val($('#carnum').html());
     
 	var cartype = $('#cartype').html();
-    console.log('cartype 체크 \n'+cartype);
-    
+//    console.log('cartype 체크 \n'+cartype);
     
     if(cartype == '대형'){
         $('#edit_cartype_L').prop('selected', true);
@@ -197,9 +199,10 @@ function getd_option() {
 function edit_doption() {
 	var option = getd_option();
 	$.ajax({
-		url : 'http://localhost:8080/dClient/mypage/' + idx,
+		url : 'http://localhost:8080/dClient/mypage/' ,
 		type : 'PUT',
 		data : JSON.stringify({
+			d_idx : idx,
 			d_option : option
 		}),
 		contentType : 'application/json; charset=utf-8',
@@ -224,9 +227,10 @@ function edit_myinfo() {
 //	console.log('carnum' + carnum);
 //	console.log('cartype' + cartype);
 	$.ajax({
-		url : 'http://localhost:8080/dClient/mypage/' + idx,
+		url : 'http://localhost:8080/dClient/mypage/' ,
 		type : 'PUT',
 		data : JSON.stringify({
+			d_idx : idx,
 			email : email,
 			carnum : carnum,
 			cartype : cartype
@@ -243,4 +247,9 @@ function edit_myinfo() {
 			setMyInfo();
 		}
 	});
+}
+
+//비밀번호 변경 관련
+function changeMyPW() {
+	location.href="mypage/changePW";
 }

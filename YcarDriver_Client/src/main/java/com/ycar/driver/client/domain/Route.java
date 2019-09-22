@@ -1,4 +1,4 @@
-package com.ycar.driver.model;
+package com.ycar.driver.client.domain;
 
 public class Route {
 	private int d_idx;
@@ -39,7 +39,6 @@ public class Route {
 	public void setPlace(String place) {
 		this.place = place;
 	}
-
 	@Override
 	public String toString() {
 		return "Route [d_idx=" + d_idx + ", r_type=" + r_type + ", place=" + place + "]";

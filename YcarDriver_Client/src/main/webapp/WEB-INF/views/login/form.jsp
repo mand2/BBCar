@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>연차::회원가입</title>
+    <title>연차::로그인</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -58,6 +58,7 @@
                         <form class="p-3 bg-light search-property-1" id="LoginForm">
                             <div class="day-wrap">
                                 <h3 class="pl-5">ycar 로그인</h3>
+                                <p id="login_msg"></p>
                             </div>
                             <div class="form-group">
                                 <label for="id">ID *</label>

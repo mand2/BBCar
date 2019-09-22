@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.ycar.driver.dao.DriverDao;
 import com.ycar.driver.model.Driver;
-import com.ycar.driver.model.DriverInfo;
 import com.ycar.driver.model.EditDriverMyInfo;
 import com.ycar.driver.model.Route;
 
@@ -72,6 +71,26 @@ public class MyPageService {
 		return result;
 	}
 	
+	//비밀번호 변경 전 비밀번호 맞는지 확인
+	public int checkMyCurPW(int idx, String pw) {
+		int result = 0;
+		
+		dao = template.getMapper(DriverDao.class);
+		
+		Driver driver = dao.selectByIdx(idx);
+		if(driver.matchPW(pw)) {
+			result = 1;
+		}
+		
+		return result;
+	}
 	
+	//비밀번호 변경
+	public int updateMyPW(int idx, String pw) {
+		int result = 0;
+		dao = template.getMapper(DriverDao.class);
+		result = dao.updatePW(pw, idx);
+		return result;
+	}
 
 }

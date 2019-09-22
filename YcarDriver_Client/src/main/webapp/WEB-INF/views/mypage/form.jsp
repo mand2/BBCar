@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,7 +54,7 @@
 					<li class="nav-item"><a href="" class="nav-link"><span>LIST</span></a></li>
 					<li class="nav-item"><a href="" class="nav-link"><span>PAY</span></a></li>
 					<li class="nav-item"><a href="" class="nav-link"><span>REVIEW</span></a></li>
-					<li class="nav-item"><a href="" class="nav-link"><span>MyPage</span></a></li>
+					<li class="nav-item"><a href="mypage" class="nav-link"><span>MyPage</span></a></li>
 					<li class="nav-item"><a href="" class="nav-link"><span>Logout</span></a></li>
 				</ul>
 			</div>
@@ -75,39 +76,40 @@
 					<form class="p-3 bg-light search-property-1">
 						<div class="day-wrap">
 							<h3 class="pl-5">MY INFO</h3>
+							<input type="hidden" value="${loginInfo.d_idx}" id="hiddenIDX">
 						</div>
 						<div class="form-group">
 							<label for="id">ID</label> <span id="id" class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="name">NAME</label> <span id="name"
-								class="form-control"></span>
+							<label for="name">NAME</label> 
+							<span id="name" class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="nickname">NICK NAME</label> <span id="nickname"
-								class="form-control"></span>
+							<label for="nickname">NICK NAME</label> 
+							<span id="nickname" class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="email">개인 이메일주소</label> <span id="email"
-								class="form-control"></span>
+							<label for="email">개인 이메일주소</label> 
+							<span id="email" class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="company">회사명</label> <span id="company"
-								class="form-control"></span>
+							<label for="company">회사명</label> 
+							<span id="company" class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="carnum">자동차번호</label> <span id="carnum"
-								class="form-control"></span>
+							<label for="carnum">자동차번호</label> 
+							<span id="carnum" class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="cartype">차종</label> <span id="cartype"
-								class="form-control"></span>
+							<label for="cartype">차종</label> 
+							<span id="cartype" class="form-control"></span>
 						</div>
 
 						<div class="form-group pt-3">
 							<span class="btn py-3 px-4 btn-black" id="changeinfo1_1"
 								onclick="setMyInfo()">내정보 변경</span> <span
-								class="btn py-3 px-4 btn-primary" id="changeinfo1_2">비밀번호
+								class="btn py-3 px-4 btn-primary" id="changeinfo1_2" onclick="changeMyPW()">비밀번호
 								변경</span>
 						</div>
 
@@ -126,16 +128,16 @@
 							<p id="routeNotice">운전할 때 즐겨찾는 장소를 등록 &amp; 관리해 보세요</p>
 						</div>
 						<div class="form-group">
-							<label for="myHome">집</label> <span id="myHome"
-								class="form-control">없어욧-! 등록해주세욧-!</span>
+							<label for="myHome">집</label> 
+							<span id="myHome" class="form-control">없어욧-! 등록해주세욧-!</span>
 						</div>
 						<div class="form-group">
-							<label for="myCompany">회사</label> <span id="myCompany"
-								class="form-control">없어욧-! 등록해주세욧-!</span>
+							<label for="myCompany">회사</label> 
+							<span id="myCompany" class="form-control">없어욧-! 등록해주세욧-!</span>
 						</div>
 						<div class="form-group">
-							<label for="MyEtc">기타</label> <span id="MyEtc"
-								class="form-control">없어욧-! 등록해주세욧-!</span>
+							<label for="MyEtc">기타</label> 
+							<span id="MyEtc" class="form-control">없어욧-! 등록해주세욧-!</span>
 						</div>
 						<div class="form-group pt-3">
 							<span class="btn py-3 px-4 btn-black" id="changeinfo2">등록
@@ -154,7 +156,7 @@
 						<div class="form-group">
 							<p id="optNotice">운전할 때 선호하는 옵션을 등록 &amp; 관리해 보세요</p>
 
-							<div id="option_wrap"></div>
+							<div id="option_wrap">${loginInfoBasic.d_option}</div>
 						</div>
 
 						<div class="form-group pt-3">

@@ -1,8 +1,10 @@
 package com.ycar.driver.client.controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.ycar.driver.client.domain.DriverInfo;
 import com.ycar.driver.client.domain.LoginDriverInfo;
 import com.ycar.driver.client.domain.LoginDriverSearch;
+import com.ycar.driver.client.domain.Route;
 
 /*-------------------
  * 파일이름: LoginController.java
@@ -58,16 +62,16 @@ public class LoginController {
 			HttpSession session = request.getSession(false); 
 			LinkedHashMap<String, Object> loginMap = (LinkedHashMap<String, Object>) maps.get("loginInfo");
 
-			LoginDriverInfo driver = new LoginDriverInfo(
+			LoginDriverInfo loginInfo = new LoginDriverInfo(
 										(int)loginMap.get("d_idx"),
 										(String) loginMap.get("id"),
 										(String) loginMap.get("name"),
 										(String) loginMap.get("nickname")
 									);
 			
-			session.setAttribute("loginInfo", driver);
+			session.setAttribute("loginInfo", loginInfo);
+			System.out.println("세션처리완료?  - 기본정보 -  " + loginInfo);
 			
-			System.out.println("세션처리완료?  " + driver);
 		}
 		
 		return msg;

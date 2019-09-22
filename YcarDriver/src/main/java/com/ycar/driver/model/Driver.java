@@ -15,7 +15,7 @@ public class Driver {
 	private String nickname;
 	private char gender;
 
-	private char verify;
+	private String verify;
 	private String code;
 	private String email;
 	private char signout;
@@ -32,10 +32,10 @@ public class Driver {
 	private String sdate;
 	private String police;
 	private String carnum;
-	private char cartype;
+	private String cartype;
 
 	private String d_option;
-
+	
 	@Override
 	public String toString() {
 		return "Driver [d_idx=" + d_idx + ", type=" + type + ", id=" + id + ", pw=" + pw + ", name=" + name
@@ -43,7 +43,7 @@ public class Driver {
 				+ email + ", signout=" + signout + ", ctype=" + ctype + ", company=" + company + ", cemail=" + cemail
 				+ ", cnum=" + cnum + ", lscnum=" + lscnum + ", idnum1=" + idnum1 + ", idnum2=" + idnum2 + ", lsctype="
 				+ lsctype + ", sdate=" + sdate + ", police=" + police + ", carnum=" + carnum + ", cartype=" + cartype
-				+ ", d_option=" + d_option + "]";
+				+ ", d_option=" + d_option  + "]";
 	}
 
 	public Driver() {
@@ -51,10 +51,10 @@ public class Driver {
 	
 	
 
-	public Driver(int d_idx, String type, String id, String pw, String name, String nickname, char gender, char verify,
+	public Driver(int d_idx, String type, String id, String pw, String name, String nickname, char gender, String verify,
 			String code, String email, char signout, String ctype, String company, String cemail, String cnum,
 			String lscnum, String idnum1, String idnum2, char lsctype, String sdate, String police, String carnum,
-			char cartype, String d_option) {
+			String cartype, String d_option) {
 		this.d_idx = d_idx;
 		this.type = type;
 		this.id = id;
@@ -171,11 +171,11 @@ public class Driver {
 		this.gender = gender;
 	}
 
-	public char getVerify() {
+	public String getVerify() {
 		return verify;
 	}
 
-	public void setVerify(char verify) {
+	public void setVerify(String verify) {
 		this.verify = verify;
 	}
 
@@ -291,11 +291,11 @@ public class Driver {
 		this.carnum = carnum;
 	}
 
-	public char getCartype() {
+	public String getCartype() {
 		return cartype;
 	}
 
-	public void setCartype(char cartype) {
+	public void setCartype(String cartype) {
 		this.cartype = cartype;
 	}
 
@@ -306,5 +306,6 @@ public class Driver {
 	public void setD_option(String d_option) {
 		this.d_option = d_option;
 	}
+
 
 }

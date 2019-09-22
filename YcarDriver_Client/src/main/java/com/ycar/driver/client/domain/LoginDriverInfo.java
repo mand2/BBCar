@@ -4,10 +4,11 @@ public class LoginDriverInfo {
 	private int d_idx;
 	private String id ;
 	private String name;
-	private String nickname;
-	
+	private String nickname;	
 	public LoginDriverInfo() {
 	}
+	
+//기본정보만	
 	public LoginDriverInfo(int d_idx, String id, String name, String nickname) {
 		this.d_idx = d_idx;
 		this.id = id;
@@ -18,6 +19,7 @@ public class LoginDriverInfo {
 	public int getD_idx() {
 		return d_idx;
 	}
+
 	public void setD_idx(int d_idx) {
 		this.d_idx = d_idx;
 	}

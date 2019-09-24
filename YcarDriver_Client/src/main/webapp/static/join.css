@@ -4,8 +4,9 @@
      @media(max-width: 767.98px){
          #hiddenform { margin-top: 0; }
      }
-       
-     /*------------- login css -------------*/          
+
+
+     /*------------- common css -------------*/            
      /* nav bar */    
     #navbar span{
         font-size: 13px;
@@ -18,19 +19,19 @@
         
     /*  background image  */    
     #bgimage {
-        height: 830px;
+        margin-bottom: 0;
+        height: 100vh;
     }
         
         
-        
-        
-        
-        
-    /* 로그인 폼의 input */
-     #LoginForm .form-control,
-     #LoginForm2 .form-control,
-     #LoginForm3 .form-control,
-     #LoginForm4 .form-control {
+
+     /* 회원가입 폼의 제목 */ 
+     #signUpSelect .form-control,
+     #signUpForm .form-control,
+     #signUpForm2 .form-control,
+     #signUpForm3 .form-control,
+     #signUpForm4 .form-control,
+     #signUpForm5 .form-control {
          height: 30px !important;
          line-height: 30px;
          font-size: 13px;
@@ -38,62 +39,74 @@
          color: #000 !important;
      }
      
-     /* 로그인 폼의 제목 */ 
-     #LoginForm .day-wrap,
-     #LoginForm2 .day-wrap, 
-     #LoginForm3 .day-wrap,
-     #LoginForm4 .day-wrap {
+     /* 회원가입 폼의 제목 */ 
+     #signUpForm .day-wrap,
+     #signUpForm2 .day-wrap, 
+     #signUpForm3 .day-wrap,
+     #signUpForm4 .day-wrap,
+     #signUpForm5 .day-wrap {
          margin-bottom: 10px;
      }
      
-     /* 로그인 폼의 label */
-     #LoginForm label,
-     #LoginForm2 label,
-     #LoginForm3 label,
-     #LoginForm4 label {
+     /* 회원가입 폼의 label */
+     #signUpForm label,
+     #signUpForm2 label,
+     #signUpForm3 label,
+     #signUpForm4 label,
+     #signUpForm5 label {
          font-size: 15px;
          margin-bottom: 0.25rem
      }
      
-     /* 로그인 폼의 margin-top */
-     #LoginForm,
-     #LoginForm2,
-     #LoginForm3,
-     #LoginForm4 {
-         margin-top: 5rem !important;
-     }
-        
-        
         
      /* 버튼 */
-     #prev1, #next1 {
+     #prev1, #next1,
+     #prev2, #next2,
+     #prev3, #next3, 
+     #prev4, #next4,
+     #prev5, #next5  {
          padding: 4px 20px !important; 
          clear: both;
          font-size: 13px;
      }
-     #next1 {
+     
+     #next1,
+     #next2,
+     #next3,
+     #next4,
+     #next5 {
          float: right;
      }
         
-     /*#LoginForm,*/
-     #LoginForm2,
-     #LoginForm3,
-     #LoginForm4 {
+     /* form 디스플레이 관련 */
+     /*#signUpSelect,*/    
+     #signUpForm,
+     #signUpForm2,
+     #signUpForm3,
+     #signUpForm4,
+     #signUpForm5 {
          display: none;
      }
      /*------------- common css end -------------*/
      
-     /*로그인선택창 */
+     /*가입 선택창 + 운전옵션 선택창*/
+     #signUpSelect .form-group,
+     #signUpSelect label,
+     #signUpForm5 .form-group,
+     #signUpForm5 label
+     {
+         width: 100%;
+     }
+     /*가입선택창 */
      #jtype1,
      #jtype2,
      #jtype3,
      #jtype4 {
-         margin-top: 13px !important;
+         margin-bottom: 20px !important;
      }
      
      #jtype1 {
          background-color: #B24CEC !important;
-         margin-bottom: 20px !important;
      }
      
      #jtype2 {
@@ -107,16 +120,6 @@
      #jtype4 {
          background-color: #216AE9 !important;
      }
-     #join {
-         margin: 20px 0 10px !important;
-     }
-     
-    /*아이디 찾기 비밀번호 찾기*/    
-    #findID,
-    #findPW {
-        margin-top: 13px !important;
-        background-color: #B24CEC !important;
-    }
     .warn_red{
     color: #F03E87;
     margin: 0;
@@ -127,13 +130,64 @@
     #idchkbox,
     #pwchkbox,
     #pw2chkbox,
-    #emailchkbox,
-    #fid_name_chkbox,
-    #fid_email_chkbox, 
-    #fid_chkbox, 
-    #fpw_id_chkbox,
-    #fpw_email_chkbox, 
-    #fpw_chkbox {
+    #emailchkbox {
         display: none;
     }    
-        
+ 
+     /*인증 버튼,,,*/
+     #valEmail, #valPaper{
+         padding: 8px 20px !important;
+         font-size: 13px;
+     }
+     #valPaper {
+       float: right;
+     }
+     #echkbox, #pchkbox {
+         display: none;
+     }
+         
+     #joinCode{
+         display: block;
+     }          
+     #cemail, #code {
+         display: inline-block;
+     }
+     
+     #sendCode, #chkCode {
+         float: right;
+         width: inherit;
+         font-size: 13px;
+     }
+
+     #form_paper {
+         display: none;
+     }
+     /*----- 회사 인증 관련----*/
+      #cnameNotice,
+      #verifyNotice {
+          color: #F03E87;
+          margin: 0;
+          font-size: 12px;
+          margin: 20px 0 8px;
+      }
+      #codechkmsg {
+          color: #F03E87;
+          margin: 0;    
+      }
+      #verifyNotice {
+          text-align: center;
+          margin: 0 0 15px;
+      }
+            
+     /*----- 운전옵션선택 페이지 -----*/
+     #signUpForm5 div {
+         width: inherit;
+     }
+     #signUpForm5 .drivechk {
+         display: none;
+     }
+     #signUpForm5 .drivechk:checked ~span {
+         width: inherit;
+         background-color: #B24CEC !important;
+     }  
+              

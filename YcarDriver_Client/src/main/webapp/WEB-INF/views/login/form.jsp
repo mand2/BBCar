@@ -35,13 +35,6 @@
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
-
-            <div class="collapse navbar-collapse" id="ftco-nav">
-               <ul class="navbar-nav nav ml-auto" id="navbar">
-                    <li class="nav-item"><a href="" class="nav-link"><span>Home</span></a></li>
-                    <li class="nav-item"><a href="" class="nav-link"><span>Login</span></a></li>
-                </ul>
-            </div>
         </div>
     </nav>
 
@@ -82,7 +75,7 @@
                             <div class="form-group pt-3">
                                 <span class="py-3 px-4 textbox" id="prev1" onclick="show_findID()">아이디 찾기</span>
                                 <span class="py-3 px-4 textbox" id="next1" onclick="show_findPW()">패스워드 찾기</span>
-                                <div class="pt-3" id="textboxwrap"><p class="textbox" id="join" onclick="">아직 회원이 아니신가요?</p></div>
+                                <div class="pt-3" id="textboxwrap"><a href="join"><p class="textbox" id="join">아직 회원이 아니신가요?</p></a></div>
                             </div>
                         </form>
                         

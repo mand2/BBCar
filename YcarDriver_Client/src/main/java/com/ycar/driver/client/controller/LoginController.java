@@ -1,10 +1,8 @@
 package com.ycar.driver.client.controller;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,17 +13,17 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.ycar.driver.client.domain.DriverInfo;
 import com.ycar.driver.client.domain.LoginDriverInfo;
 import com.ycar.driver.client.domain.LoginDriverSearch;
-import com.ycar.driver.client.domain.Route;
 
 /*-------------------
  * 파일이름: LoginController.java
@@ -40,13 +38,19 @@ import com.ycar.driver.client.domain.Route;
  * @login : 로그인(간편가입자 로그인 처리)
  * -------------------*/
 
-@RestController
+@Controller
 @RequestMapping("/login")
 public class LoginController {
 	
+	@RequestMapping(method = RequestMethod.GET)
+	public String page() {
+		return "login/form";
+	}
+	
+	
 	//로그인
-	@PostMapping
 	@ResponseBody
+	@RequestMapping(method = RequestMethod.POST)
 	public int login(@RequestBody LoginDriverSearch search, HttpServletRequest request){
 		RestTemplate template = new RestTemplate();
 		
@@ -77,7 +81,7 @@ public class LoginController {
 		return msg;
 	}
 	
-	@PostMapping("/findID")
+	@RequestMapping(value = "/findID", method = RequestMethod.POST)
 	public ResponseEntity<String> findID(@RequestBody LoginDriverSearch search){
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -99,8 +103,8 @@ public class LoginController {
 		
 		return result;
 	}
-	
-	@PostMapping("/findPW")
+
+	@RequestMapping(value = "/findPW", method = RequestMethod.POST)
 	public ResponseEntity<String> findPW(@RequestBody LoginDriverSearch search){
 		
 		HttpHeaders headers = new HttpHeaders();

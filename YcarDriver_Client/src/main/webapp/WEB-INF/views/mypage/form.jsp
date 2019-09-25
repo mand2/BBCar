@@ -55,6 +55,7 @@
 					<li class="nav-item"><a href="" class="nav-link"><span>PAY</span></a></li>
 					<li class="nav-item"><a href="" class="nav-link"><span>REVIEW</span></a></li>
 					<li class="nav-item"><a href="mypage" class="nav-link"><span>MyPage</span></a></li>
+					<li class="nav-item"><a href="faq" class="nav-link"><span>BOARD</span></a></li>
 					<li class="nav-item"><a href="" class="nav-link"><span>Logout</span></a></li>
 				</ul>
 			</div>

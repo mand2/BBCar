@@ -26,6 +26,7 @@ public class JoinService {
 			//간단가입시
 			if(driverInfo.getType().equals("S")) {
 				DriverSE se = driverInfo.toDriverSE();
+				System.out.println(se);
 				result = dao.insertDriverSE(se);
 				System.out.println("잘 들어갔니 ==========" + result);
 			} 

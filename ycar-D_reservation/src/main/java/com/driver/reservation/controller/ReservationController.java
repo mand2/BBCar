@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.driver.reservation.domain.Carpool;
 import com.driver.reservation.domain.DriverReservation;
+import com.driver.reservation.domain.lonlat;
 import com.driver.reservation.service.InsertReservationService;
+import com.driver.reservation.service.SelectLonLat;
 import com.driver.reservation.service.ShowListService;
 import com.driver.reservation.service.deleteService;
 import com.driver.reservation.service.updateService;
@@ -36,6 +37,8 @@ public class ReservationController {
 	private deleteService deleteRV;
 	@Autowired
 	private updateService updateRV;
+	@Autowired
+	private SelectLonLat lonlatService;
 	
 	@PostMapping
 	@RequestMapping("/{d_idx}")
@@ -128,6 +131,19 @@ public class ReservationController {
 		
 		return dr;
 	}
+	
+	@GetMapping("/lonlat/{r_idx}")
+	public lonlat selectLonlat(
+			@PathVariable("r_idx") int r_idx
+			) {
+		System.out.println("r_idx 값은 :  " + r_idx);
+		lonlat DR = lonlatService.selectlonlat(r_idx);
+		
+		System.out.println("lonlat을 가져온 결과를 출력해보쟛  : " + DR);
+		return DR;
+	}
+	
+	
 	
 	
 }

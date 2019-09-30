@@ -36,13 +36,14 @@ public class MyCarpoolListService {
 		return list;
 	}
 	
-//	public List<MyCarpool> getRefusedList(int p_idx){
-//		
-//		dao = template.getMapper(ReservationDao.class);
-//		
-//		List<MyCarpool> list = dao.refusedListByP_idx(p_idx);
-//		
-//		return list;
-//	}
+	public List<MyCarpool> getPastList(int p_idx){
+		
+		dao = template.getMapper(ReservationDao.class);
+		
+		List<MyCarpool> list = dao.pastListByP_idx(p_idx);
+		
+		return list;
+	}
+
 
 }

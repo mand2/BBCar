@@ -17,6 +17,7 @@ public class MyCarpool {
 	private String d_endpoint;
 	private int d_fee;
 	private String r_confirm;
+	private int dr_idx;
 	
 	
 	public int getR_idx() {
@@ -79,13 +80,19 @@ public class MyCarpool {
 	public void setR_confirm(String r_confirm) {
 		this.r_confirm = r_confirm;
 	}
+	public int getDr_idx() {
+		return dr_idx;
+	}
+	public void setDr_idx(int dr_idx) {
+		this.dr_idx = dr_idx;
+	}
 	
 	
 	@Override
 	public String toString() {
 		return "MyCarpool [r_idx=" + r_idx + ", r_date=" + r_date + ", nickname=" + nickname + ", d_date=" + d_date
 				+ ", d_starttime=" + d_starttime + ", d_endtime=" + d_endtime + ", d_startpoint=" + d_startpoint
-				+ ", d_endpoint=" + d_endpoint + ", d_fee=" + d_fee + ", r_confirm=" + r_confirm + "]";
+				+ ", d_endpoint=" + d_endpoint + ", d_fee=" + d_fee + ", r_confirm=" + r_confirm + ", dr_idx=" + dr_idx + "]";
 	}
 
 	

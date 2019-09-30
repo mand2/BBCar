@@ -1,8 +1,6 @@
 package com.ycar.reservation.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -11,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.ycar.reservation.dao.ReservationDao;
 import com.ycar.reservation.domain.Carpool;
-import com.ycar.reservation.domain.SearchCarpool;
 
 @Service("carpoolService")
 public class CarpoolService {
@@ -32,6 +29,16 @@ public class CarpoolService {
 	}
 	
 //	//검색
+	public List<Carpool> getSearchList(String date, String time, String startPoint, String endPoint) {
+		
+		dao =template.getMapper(ReservationDao.class);
+		
+		List<Carpool> list = dao.searchCarpoolList(date, time, startPoint, endPoint);
+		
+		System.out.println("서비스"+ date + time + startPoint + endPoint);
+		
+		return list;
+	}
 
 	
 	//rsv할 카풀 선택! 

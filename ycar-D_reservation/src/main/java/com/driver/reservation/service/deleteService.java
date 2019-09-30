@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.driver.reservation.dao.DriverReservationDao;
 
-@Service
+@Service("deleteService")
 public class deleteService {
 
 	@Autowired

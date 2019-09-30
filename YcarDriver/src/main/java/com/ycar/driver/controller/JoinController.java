@@ -35,17 +35,6 @@ public class JoinController {
 		return result;
 	}
 	
-	
-	/* 변경전 */
-//	@PostMapping
-//	@CrossOrigin
-//	public ResponseEntity<String> join(@RequestBody DriverInfo driverInfo){
-//		int result = joinService.joinDriver(driverInfo);
-//		System.out.println("잘 들어갔니 3 ======" + result);
-//		return new ResponseEntity<String>(result>0?"success":"fail", HttpStatus.OK);
-//	}
-	
-	
 	@CrossOrigin
 	@GetMapping("/mailAuth")
 	public ResponseEntity<String> mailAuth(@RequestParam("cemail") String cemail){

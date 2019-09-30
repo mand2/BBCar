@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="static/css/flaticon.css">
     <link rel="stylesheet" href="static/css/icomoon.css">
     <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/join.css">
+    <link rel="stylesheet" href="static/ny/join.css">
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -300,6 +300,7 @@
     <script src="static/js/scrollax.min.js"></script>
 
     <script src="static/js/main.js"></script>
-    <script src="static/join.js"></script>
+    <script src="static/ny/join.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 </body></html>

@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.ycar.driver.model.Driver;
+import com.ycar.driver.model.DriverOE;
+import com.ycar.driver.model.DriverOP;
 import com.ycar.driver.model.DriverSE;
 import com.ycar.driver.model.DriverSP;
 import com.ycar.driver.model.Route;
@@ -17,6 +19,9 @@ public interface DriverDao {
 	
 	public int insertDriverSE(DriverSE se);
 	public int insertDriverSP(DriverSP sp);
+	
+	public int insertDriverOE(DriverOE oe);
+	public int insertDriverOP(DriverOP op);
 	
 	public List<Route> selectRoute(int idx);
 	

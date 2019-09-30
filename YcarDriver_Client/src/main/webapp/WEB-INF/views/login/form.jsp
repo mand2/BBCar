@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,21 +12,24 @@
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	
-    <link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="static/css/animate.css">
+    <link rel="stylesheet" href="static/css/open-iconic-bootstrap.min.css"  type="text/css">
+    <link rel="stylesheet" href="static/css/animate.css" type="text/css">
 
-    <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="static/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="static/css/magnific-popup.css">
+    <link rel="stylesheet" href="static/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/owl.theme.default.min.css" type="text/css">
+    <link rel="stylesheet" href="static/css/magnific-popup.css" type="text/css">
 
-    <link rel="stylesheet" href="static/css/aos.css">
+    <link rel="stylesheet" href="static/css/aos.css" type="text/css">
 
-    <link rel="stylesheet" href="static/css/ionicons.min.css">
+    <link rel="stylesheet" href="static/css/ionicons.min.css" type="text/css">
 
-    <link rel="stylesheet" href="static/css/flaticon.css">
-    <link rel="stylesheet" href="static/css/icomoon.css">
-    <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/login.css">
+    <link rel="stylesheet" href="static/css/flaticon.css" type="text/css">
+    <link rel="stylesheet" href="static/css/icomoon.css" type="text/css">
+    <link rel="stylesheet" href="static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="static/ny/login.css" type="text/css">
+    <%-- <link rel="stylesheet" href='<c:url value="/static/ny/login.css" />'> --%>
+    
+    
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -68,7 +72,7 @@
                             </div>
 
                             <div class="form-group pt-3">
-                                <div><span class="btn btn-black form-control" id="jtype2" onclick="">카카오톡 아이디로 로그인</span></div>
+                                <div><span class="btn btn-black form-control" id="jtype2" onclick="loginWithKakao()">카카오톡 아이디로 로그인</span></div>
                                 <div><span class="btn btn-black form-control" id="jtype3" onclick="">네이버 아이디로 로그인</span></div>
                                 <div><span class="btn btn-black form-control" id="jtype4" onclick="">구글 아이디로 로그인</span></div>
                             </div>
@@ -100,6 +104,7 @@
                             
                             <div class="form-group pt-3">
                                 <span class="btn btn-black form-control" id="findID" onclick="searchID()">아이디 찾기</span>
+                                <span class="btn btn-black form-control btn_goto_login" onclick="loginForm()">로그인 하기</span>
                                 <input type="checkbox" id="fid_chkbox">
                             </div>
                         </form>
@@ -125,6 +130,7 @@
                             
                             <div class="form-group pt-3">
                                 <span class="btn btn-black form-control" id="findPW" onclick="searchPW()">패스워드 찾기</span>
+                                <span class="btn btn-black form-control btn_goto_login" onclick="loginForm()">로그인 하기</span>
                                 <input type="checkbox" id="fpw_chkbox">
                             </div>
                         </form>
@@ -158,6 +164,10 @@
     <script src="static/js/scrollax.min.js"></script>
 
     <script src="static/js/main.js"></script>
-    <script src="static/login.js"></script>
+    <script src="static/ny/login.js"></script>
+    
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
 
 </body></html>

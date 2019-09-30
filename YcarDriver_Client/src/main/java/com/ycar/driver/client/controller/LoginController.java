@@ -15,6 +15,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,10 +40,8 @@ import com.ycar.driver.client.domain.LoginDriverSearch;
  * -------------------*/
 
 @Controller
-@RequestMapping("/login")
 public class LoginController {
-	
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String page() {
 		return "login/form";
 	}
@@ -50,38 +49,67 @@ public class LoginController {
 	
 	//로그인
 	@ResponseBody
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public int login(@RequestBody LoginDriverSearch search, HttpServletRequest request){
 		RestTemplate template = new RestTemplate();
 		
 		Map<String, Object> maps = new HashMap<String, Object>();
-		maps = template.postForObject("http://localhost:8080/driver/login", search, Map.class);
+		maps = template.postForObject("http://13.209.40.5:8080/driver/login", search, Map.class);
+//		maps = template.postForObject("http://localhost:8080/driver/login", search, Map.class);
 		
 		int msg = (int) maps.get("msg");
 		
 		//pw 맞은 애들 세션처리
 		if(msg == 4 || msg ==3) {
 			System.out.println("세션처리시작");
-			
 			HttpSession session = request.getSession(false); 
-			LinkedHashMap<String, Object> loginMap = (LinkedHashMap<String, Object>) maps.get("loginInfo");
+			LoginDriverInfo loginInfo = setSessionLoginInfo(maps);
 
-			LoginDriverInfo loginInfo = new LoginDriverInfo(
-										(int)loginMap.get("d_idx"),
-										(String) loginMap.get("id"),
-										(String) loginMap.get("name"),
-										(String) loginMap.get("nickname")
-									);
-			
 			session.setAttribute("loginInfo", loginInfo);
 			System.out.println("세션처리완료?  - 기본정보 -  " + loginInfo);
-			
 		}
-		
 		return msg;
 	}
 	
-	@RequestMapping(value = "/findID", method = RequestMethod.POST)
+	//카카오 로그인
+	@ResponseBody
+	@RequestMapping(value = "/login/kakao/{id}", method = RequestMethod.POST)
+	public int login(@PathVariable("id") String id, HttpServletRequest request ) {
+		int msg = 0;
+		RestTemplate template = new RestTemplate();
+		
+		Map<String, Object> maps = new HashMap<String, Object>();
+//		maps = template.getForObject("http://13.209.40.5:8080/driver/login/kakao"+id, Map.class, id);
+		maps = template.getForObject("http://localhost:8080/driver/login/kakao/"+id, Map.class, id);
+		msg = (int) maps.get("msg");
+		
+		if(msg == 2) {
+			System.out.println("세션처리시작");
+			HttpSession session = request.getSession(false); 
+			LoginDriverInfo loginInfo = setSessionLoginInfo(maps);
+			
+			session.setAttribute("loginInfo", loginInfo);
+			System.out.println("세션처리완료?  - 기본정보 -  " + loginInfo);
+		}
+		return msg ;
+	}
+	
+	
+	//session을 위한 loginInfo 설정하기
+	public LoginDriverInfo setSessionLoginInfo(Map<String, Object> maps) {
+		LinkedHashMap<String, Object> loginMap = (LinkedHashMap<String, Object>) maps.get("loginInfo");
+		
+		LoginDriverInfo loginInfo = new LoginDriverInfo(
+				(int)loginMap.get("d_idx"),
+				(String) loginMap.get("id"),
+				(String) loginMap.get("name"),
+				(String) loginMap.get("nickname")
+				);
+		return loginInfo;
+	}
+	
+	//아이디찾기
+	@RequestMapping(value = "/login/findID", method = RequestMethod.POST)
 	public ResponseEntity<String> findID(@RequestBody LoginDriverSearch search){
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -92,19 +120,14 @@ public class LoginController {
 		
 		RestTemplate template = new RestTemplate();
 		ResponseEntity<String> result= 
-				template.exchange("http://localhost:8080/driver/login/findID", HttpMethod.POST, entity, String.class);
-		
-		
-//		테스트용
-//		System.out.println("client ::: result? " + result);
-//		System.out.println("client ::: result body ? " + result.getBody());
-//		System.out.println("client ::: result status? " + result.getStatusCode());
-		
+				template.exchange("http://13.209.40.5:8080/driver/login/findID", HttpMethod.POST, entity, String.class);
+//		template.exchange("http://localhost:8080/driver/login/findID", HttpMethod.POST, entity, String.class);
 		
 		return result;
 	}
-
-	@RequestMapping(value = "/findPW", method = RequestMethod.POST)
+	
+	//비밀번호찾기
+	@RequestMapping(value = "/login/findPW", method = RequestMethod.POST)
 	public ResponseEntity<String> findPW(@RequestBody LoginDriverSearch search){
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -113,7 +136,8 @@ public class LoginController {
 		
 		RestTemplate template = new RestTemplate();
 		
-		return template.exchange("http://localhost:8080/driver/login/findPW", HttpMethod.POST, entity, String.class);
+		return template.exchange("http://13.209.40.5:8080/driver/login/findPW", HttpMethod.POST, entity, String.class);
+//		return template.exchange("http://localhost:8080/driver/login/findPW", HttpMethod.POST, entity, String.class);
 	}
 	
 }

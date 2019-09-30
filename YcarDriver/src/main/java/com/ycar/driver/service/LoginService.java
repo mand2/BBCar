@@ -77,6 +77,26 @@ public class LoginService {
 
 		return map;
 	}
+	
+	//카카오로그인
+	public Map<String, Object> loginDriverKakao(String id) {
+		dao = template.getMapper(DriverDao.class);
+		Driver driver = dao.selectById(id);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		if(driver == null || driver.getSignout() == 'Y' ) {
+			map.put("msg", 1);
+		
+		} else {
+			LoginDriverInfo loginInfo = new LoginDriverInfo(driver.getD_idx(), driver.getId(), driver.getName(),driver.getNickname());
+			map.put("msg", 2);
+			map.put("loginInfo", loginInfo);
+		}
+		
+		return map;
+		
+	}
 
 	// 아이디찾기
 	public String findID(String name, String email) {
@@ -88,22 +108,28 @@ public class LoginService {
 
 		// 간단회원가입자 + 이름 이메일 일치시
 		if (driver.getType().equals("S") && driver.findID(name, email)) {
-
-			// id 문자열 부분 치환 맨앞자리 3개 + *** + 맨 뒷자리 1개
-			StringBuffer personalizedID = new StringBuffer();
-			personalizedID.append(driver.getId().substring(0, 3));
-
-			for (int i = 0; i < driver.getId().length() - 4; i++) {
-				personalizedID.append("*");
-			}
-
-			personalizedID.append(driver.getId().substring(driver.getId().length() - 1));
-
-			result = personalizedID.toString();
-
+			String id = driver.getId();
+			result = getPersonalizeId(id);
 		}
+		
 		System.out.println("server 서비스:::: 아이디 암호화 됨?" + result);
 		return result;
+	}
+	
+	//ID 암호화하기
+	public String getPersonalizeId(String id) {
+		// id 문자열 부분 치환 맨앞자리 3개 + *** + 맨 뒷자리 1개
+
+		StringBuffer personalizedID = new StringBuffer();
+		personalizedID.append(id.substring(0, 3));
+		
+		for(int i = 0; i < id.length() - 4 ; i++ ) {
+			personalizedID.append("*");
+		}
+		
+		personalizedID.append(id.substring(id.length() -1));
+		
+		return personalizedID.toString();
 	}
 
 	// 패스워드 찾기

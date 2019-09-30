@@ -402,7 +402,8 @@ function topFunction() {
         url += '?page=' + page;
         
         $.ajax({
-            url:'http://localhost:8080/driver/faq/list'+url,
+            url:'http://13.209.40.5:8080/driver/faq/list'+url,
+            /* url:'http://localhost:8080/driver/faq/list'+url, */
             type:'GET',
             contentType : 'application/json;charset=utf-8',
             success:function(data){
@@ -503,7 +504,8 @@ function paginationBtn(pagination) {
 //자세한 글 보기
 function showDetailPost(no) {
     $.ajax({
-        url:'http://localhost:8080/driver/faq/'+no,
+        url:'http://13.209.40.5:8080/driver/faq/'+no,
+/*         url:'http://localhost:8080/driver/faq/'+no, */
         type:'GET',
         contentType : 'application/json;charset=utf-8',
         success:function(data){

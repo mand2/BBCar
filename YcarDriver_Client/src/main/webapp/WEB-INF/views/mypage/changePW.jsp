@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="../static/css/flaticon.css">
     <link rel="stylesheet" href="../static/css/icomoon.css">
     <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" href="../static/ny/login.css">
     <style>
     	#hiddenform {
     		display: block;
@@ -134,6 +134,6 @@
     <script src="../static/js/scrollax.min.js"></script>
 
     <script src="../static/js/main.js"></script>
-    <script src="../static/changePW.js"></script>
+    <script src="../static/ny/changePW.js"></script>
 
 </body></html>

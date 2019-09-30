@@ -4,9 +4,10 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ycar.driver.model.LoginDriverSearch;
@@ -26,29 +27,36 @@ import com.ycar.driver.service.LoginService;
  * -------------------*/
 
 @RestController
-@RequestMapping("/login")
 public class LoginController {
 	
 	@Autowired
 	private LoginService loginService;
 	
-	//로그인
-	@PostMapping
+	//로그인-간편가입
+	@PostMapping(value ="/login")
 	@CrossOrigin
 	public Map<String, Object> login(@RequestBody LoginDriverSearch search){
 		String id = search.getId();
 		String pw = search.getPw();
 		
 		Map<String, Object> maps = loginService.loginDriverSimple(id, pw);
-		
 		System.out.println("SERVER 확인::: ID " + id + " PW " + pw + " MAPS " + maps);
+		return maps;
+	}
+	
+	//로그인-카카오
+	@GetMapping(value = "/login/kakao/{id}")
+	@CrossOrigin
+	public Map<String, Object> login(@PathVariable("id") String id){
+		Map<String, Object> maps = loginService.loginDriverKakao(id);
+		System.out.println("SERVER 확인::: ID " + id + " MAPS " + maps);
 		
 		return maps;
 	}
 	
 	//아이디찾기
 	@CrossOrigin
-	@PostMapping("/findID")
+	@PostMapping("/login/findID")
 	public String findID(@RequestBody LoginDriverSearch search) {
 		
 		String name = search.getName();
@@ -60,7 +68,7 @@ public class LoginController {
 	
 	//패스워드 찾기
 	@CrossOrigin
-	@PostMapping("/findPW")
+	@PostMapping("/login/findPW")
 	public String findPW(@RequestBody LoginDriverSearch search) {
 		
 		String id = search.getId();

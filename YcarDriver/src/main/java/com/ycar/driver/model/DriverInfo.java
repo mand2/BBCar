@@ -52,15 +52,24 @@ public class DriverInfo {
 
 	//E인증 + 간단가입
 	public DriverSE toDriverSE() {
-		DriverSE d = new DriverSE(d_idx, type, gender, name, ctype, company, lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype, d_option, cemail, id, pw, email);
-		return d;
+		DriverSE simpleEmailVerify = new DriverSE(d_idx, type, gender, name, ctype, company, lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype, d_option, cemail, id, pw, email);
+		return simpleEmailVerify;
 	}
-	
+	//E인증 + 간단가입 etc
+	public DriverOE toDriverOE() {
+		DriverOE othersEmailVerify = new DriverOE(d_idx, type, gender, name, ctype, company, lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype, d_option, cemail, id, email);
+		return othersEmailVerify;
+	}
 	
 	//P인증 + 간단가입
 	public DriverSP toDriverSP() {
-		DriverSP s = new DriverSP(d_idx, type, gender, name, ctype, company, lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype, d_option, cnum, id, pw, cemail);
-		return s;
+		DriverSP simplePaperVerify = new DriverSP(d_idx, type, gender, name, ctype, company, lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype, d_option, cnum, id, pw, email);
+		return simplePaperVerify;
+	}
+	//P인증 + 간단가입 etc
+	public DriverOP toDriverOP() {
+		DriverOP othersPaperVerify = new DriverOP(d_idx, type, gender, name, ctype, company, lscnum, idnum1, idnum2, lsctype, sdate, police, carnum, cartype, d_option, cnum, id, email);
+		return othersPaperVerify;
 	}
 	
 	

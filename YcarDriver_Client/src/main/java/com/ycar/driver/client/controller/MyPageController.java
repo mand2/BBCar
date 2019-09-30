@@ -72,7 +72,8 @@ public class MyPageController {
 			RestTemplate template = new RestTemplate();
 			
 			return
-			template.exchange("http://localhost:8080/driver/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
+			template.exchange("http://13.209.40.5:8080/driver/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
+//			template.exchange("http://localhost:8080/driver/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
 		}
 		
 		//마이페이지 수정
@@ -87,7 +88,8 @@ public class MyPageController {
 			
 			RestTemplate template = new RestTemplate();
 			
-			return template.exchange("http://localhost:8080/driver/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
+			return template.exchange("http://13.209.40.5:8080/driver/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
+//			return template.exchange("http://localhost:8080/driver/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
 		}
 		
 		
@@ -101,7 +103,8 @@ public class MyPageController {
 			
 			RestTemplate template = new RestTemplate();
 			
-			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.POST, entity, String.class);
+			return template.exchange("http://13.209.40.5:8080/driver/mypage/chkpw", HttpMethod.POST, entity, String.class);
+//			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.POST, entity, String.class);
 		}
 		//비밀번호 변경
 		@RequestMapping(value = "/chkpw" , method = RequestMethod.PUT)
@@ -112,6 +115,7 @@ public class MyPageController {
 			
 			RestTemplate template = new RestTemplate();
 			
-			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.PUT, entity, String.class);
+			return template.exchange("http://13.209.40.5:8080/driver/mypage/chkpw", HttpMethod.PUT, entity, String.class);
+//			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.PUT, entity, String.class);
 		}
 }

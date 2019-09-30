@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.ycar.driver.dao.DriverDao;
 import com.ycar.driver.model.DriverInfo;
+import com.ycar.driver.model.DriverOE;
+import com.ycar.driver.model.DriverOP;
 import com.ycar.driver.model.DriverSE;
 import com.ycar.driver.model.DriverSP;
 
@@ -28,8 +30,12 @@ public class JoinService {
 				DriverSE se = driverInfo.toDriverSE();
 				System.out.println(se);
 				result = dao.insertDriverSE(se);
-				System.out.println("잘 들어갔니 ==========" + result);
-			} 
+				
+			} else {
+				DriverOE oe = driverInfo.toDriverOE();
+				System.out.println(oe);
+				result = dao.insertDriverOE(oe);
+			}
 			
 		//회사인증 P
 		}else if(driverInfo.getCtype().equals("P")) {
@@ -38,8 +44,12 @@ public class JoinService {
 			if(driverInfo.getType().equals("S")) {
 				DriverSP sp = driverInfo.toDriverSP();
 				result = dao.insertDriverSP(sp);
-				System.out.println("잘 들어갔니 ==========" + result);
-			} 
+			
+			} else {
+				DriverOP op = driverInfo.toDriverOP();
+				System.out.println(op);
+				result = dao.insertDriverOP(op);
+			}
 			
 		}
 		System.out.println("잘들어갔니2 ======" + result);

@@ -31,7 +31,7 @@
 <link rel="stylesheet" href="static/css/flaticon.css">
 <link rel="stylesheet" href="static/css/icomoon.css">
 <link rel="stylesheet" href="static/css/style.css">
-<link rel="stylesheet" href="static/mypage.css">
+<link rel="stylesheet" href="static/ny/mypage.css">
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -289,7 +289,7 @@
     <script src="static/js/scrollax.min.js"></script>
 
     <script src="static/js/main.js"></script>
-    <script src="static/mypage.js"></script>
+    <script src="static/ny/mypage.js"></script>
 
 </body>
 </html>

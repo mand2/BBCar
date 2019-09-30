@@ -173,4 +173,17 @@ public class DriverInfo {
 		this.d_option = d_option;
 	}
 
+	public int getD_idx() {
+		return d_idx;
+	}
+	public void setD_idx(int d_idx) {
+		this.d_idx = d_idx;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 }

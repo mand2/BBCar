@@ -5,25 +5,29 @@ import java.util.Arrays;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 
 import com.ycar.driver.client.domain.DriverInfo;
 
-@RestController
+@Controller
 @RequestMapping("/join")
 public class JoinController {
 
+	@RequestMapping(method = RequestMethod.GET)
+	public String page() {
+		return "join/form";
+	}
 	
-	@PostMapping
+	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<String> join(@RequestBody DriverInfo driverInfo){
-		
+		System.out.println("=====client =====" + driverInfo);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<DriverInfo> entity = new HttpEntity<DriverInfo>(driverInfo, headers);

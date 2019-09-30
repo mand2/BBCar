@@ -41,6 +41,8 @@ import com.ycar.driver.client.domain.LoginDriverSearch;
 
 @Controller
 public class LoginController {
+	
+	//로그인폼으로 페이지이동
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String page() {
 		return "login/form";

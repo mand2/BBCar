@@ -10,6 +10,15 @@ function step1(type) {
 }
 
 function jumpToStep2(type) {
+	
+	//카카오회원가입버튼 눌렀을 때
+	if(type == 'K'){
+		fn_kakaoJoin();
+	}
+}
+
+//카카오회원가입창으로
+function fn_kakaoJoin() {
 	Kakao.init('9b82f38c74561646e8588bfe66a66744');
 	
 	var id ='';
@@ -26,7 +35,7 @@ function jumpToStep2(type) {
 						id: id
 						, email: email
 					}
-					sessionStorage.setItem("jointype", type);
+					sessionStorage.setItem("jointype", "K");
 					sessionStorage.setItem("step1", JSON.stringify(step1));
 					
 					$('#signUpSelect').css("display", "none");
@@ -41,11 +50,7 @@ function jumpToStep2(type) {
 			console.log('회원가입 자체 실패\n ' + JSON.stringify(err));
 		}
 	});
-	
 }
-
-//카카오회원가입창으로
-
 
 function step2() {
 	//필수입력란 다 썼는지 검사

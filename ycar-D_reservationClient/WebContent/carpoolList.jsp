@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 
 <head>
     <title>리스트 출력</title>
+
+  <!--  <script src="http://localhost:3000/socket.io/socket.io.js"></script>  -->
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -211,6 +212,12 @@
         margin-left: 35px;
         margin-top: 10px;
     }
+    #driving{
+   		width: 300px;
+        height: 40px;
+        margin-left: 35px;
+        margin-top: 10px;
+    }
 
     .ftco-navbar-light.scrolled {
         background-color: #FFFEF4 !important;
@@ -271,6 +278,10 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=61f9f7ec-2010-4d26-97e1-806dc10dce63"></script>
 <script>
+
+   //소켓 연결 
+   /* var socket = io('http://localhost:3000'); */
+
     var count = 0;
 
     var d = new Date();
@@ -295,10 +306,26 @@
 
 
     $(document).ready(function() {
+
+      //소켓 연결 
+     /*  var r_idx = $('#hiddenRidx').val();
+      console.log('소켓 연결을 위한 r_idx '+r_idx);
+
+      socket.emit('join start room', r_idx); 
+      socket.on('startroom join result', function(msg){
+         console.log(msg);
+      });
+
+      //운행중 page 로 redirect 
+      socket.on('go driving page', function(r_idx){
+         console.log('운전자님, 운행 중 페이지로 이동하실게요 '+r_idx);
+         setTimeout(function(){
+            window.location.href="http://localhost:8080/drivingPage.jsp?r_idx="+r_idx;
+         }, 3000);
+      }); */
         
         //예약 된 카풀에 날짜 추가
     $('#thisyear').append(thisyear);
-    $('#past').append(past);
     $('#today').append(today);
     $('#future').append(future);
         
@@ -379,9 +406,6 @@
         $('#pastAllList').css('display', 'none');
 
 
-
-
-
     });
 
     function list() {
@@ -389,7 +413,7 @@
 
 
         $.ajax({
-            url: 'http://localhost:8080/reservation/carpool/Y/' + 2,
+            url: 'http://localhost:8080/reservation/carpool/Y/' + ${sessionScope.d_idx} ,
             type: 'GET',
             success: function(data) {
 
@@ -416,25 +440,8 @@
                     var feeSplit = split[0] + ',' + feeCut;
 
 
-
-
-
-                    if (data[i].d_date < thisday) {
-
-                        pasthtml += '<div class="pastDiv">';
-                        pasthtml += '<span class="CommuteSPAN">' + data[i].d_commute + '</span><br>\n';
-                        pasthtml += '<span>예약자 닉네임 : ' + data[i].nickname + '</span><br>\n';
-                        pasthtml += '<span class="DateSPAN">날짜 : ' + '</span>' + data[i].d_date + '<br>\n';
-                        pasthtml += '<span class="STimeSPAN">출발시간 : ' + '</span>' + data[i].d_startTime + ' <br>\n';
-                        pasthtml += '<span class="ETimeSPAN">도착시간 : </span>' + data[i].d_endTime + '<br>\n';
-                        pasthtml += '<span class="SpointSPAN">출발장소 : </span>' + data[i].d_startPoint + '<br>\n';
-                        pasthtml += '<span class="EpointSPAN">도착장소 : </span>' + data[i].d_endPoint + '<br>\n';
-                        pasthtml += '<button class="btn btn-primary" id="pastmapBTN" onclick="map(' + data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')">지도보기</button>' + '<br>\n';
-                        pasthtml += '<span class="FeeSPAN">요금 : </span>' + feeSplit + '원<br>\n';
-                        pasthtml += '</div>';
-
                         //오늘
-                    } else if (data[i].d_date == thisday) {
+                       if (data[i].d_date == thisday) {
 
                         todayhtml += '<div class="pastDiv">';
                         todayhtml += '<span class="CommuteSPAN">' + data[i].d_commute + '</span><br>\n';
@@ -446,6 +453,8 @@
                         todayhtml += '<span class="EpointSPAN">도착장소 : </span>' + data[i].d_endPoint + '<br>\n';
                         todayhtml += '<button class="btn btn-primary" id="pastmapBTN" onclick="map(' + data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')">지도보기</button>' + '<br>\n';
                         todayhtml += '<span class="FeeSPAN">요금 : </span>' + feeSplit + '원<br>\n';
+                  todayhtml += '<button class="btn btn-primary" id="driving" onclick="drivingStart('+data[i].r_idx+')" >운행시작</button><br><br>\n';
+                  todayhtml += '<input type="hidden" id="hiddenRidx" value="'+data[i].r_idx+'">';
 
                         /*todayhtml += '<button class="btn btn-primary" id="pastdelBTN"  onclick="deleteData(' + data[i].dr_idx + ')">삭제하기</button>' + '<br><br>\n';*/
                         todayhtml += '</div>';
@@ -486,7 +495,7 @@
 
 
         $.ajax({
-            url: 'http://localhost:8080/reservation/carpool/' + 2,
+            url: 'http://localhost:8080/reservation/carpool/' + ${sessionScope.d_idx},
             type: 'GET',
             success: function(data) {
                 
@@ -794,6 +803,15 @@
 
     };
     
+    //운행 시작
+    function drivingStart(r_idx) {
+      if(confirm('운행을 시작하시겠습니까?')) {
+         socket.emit('start journey', r_idx);
+      }; 
+      
+      
+   }
+    
 </script>
 
 <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -831,7 +849,7 @@
 
 
                 <div id="year">
-                    <button id="past" class="btn btn-primary"></button>
+                   
                     <button id="today" class="btn btn-primary"></button>
                     <button id="future" class="btn btn-primary"></button>
                 </div>

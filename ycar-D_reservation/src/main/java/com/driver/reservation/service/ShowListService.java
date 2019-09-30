@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.driver.reservation.dao.DriverReservationDao;
-import com.driver.reservation.domain.Carpool;
+import com.driver.reservation.domain.lonlat;
 import com.driver.reservation.domain.DriverReservation;
 
 @Service

@@ -67,14 +67,22 @@
 </delete>
 
 <!-- 예약 거절,취소 -->
-<update id="cancleCarpoor" parameterType="com.driver.reservation.domain.DriverReservation">
+<update id="cancleCarpool" parameterType="com.driver.reservation.domain.DriverReservation">
 	delete from RESERVATION where r_idx = #{r_idx};
 </update>
 
 <!-- 예약 승낙 -->
-<update id="concentCarpoor" parameterType="com.driver.reservation.domain.DriverReservation">
+<update id="concentCarpool" parameterType="com.driver.reservation.domain.DriverReservation">
 	update RESERVATION set r_confirm = 'Y' where r_idx = #{r_idx};
 </update>
+
+<!-- R_idx 에 따른 위도 경도 출력 -->
+<select id="selectlonlat" resultType="com.driver.reservation.domain.lonlat">
+	select d.d_startlon, d.d_startlat, d.d_endlon, d.d_endlat
+	from D_CARPOOL as d join RESERVATION as r
+	on d.dr_idx = r.dr_idx
+	where r.r_idx = #{r_idx};
+</select>
 
 <!-- 예약 취소 -->
 <!-- <update id="refuseCarpoor" parameterType="drv">

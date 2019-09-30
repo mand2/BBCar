@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
 
 <head>
@@ -321,18 +320,9 @@
 
         function list(){
 
-            
-
-            
-
-
-
-
-
-
 
             $.ajax({
-                url: 'http://localhost:8080/reservation/carpool/B/' + 2,
+                url: 'http://localhost:8080/reservation/carpool/B/' + ${sessionScope.d_idx},
                 type: 'GET',
                 success: function(data) {
 
@@ -411,16 +401,6 @@
             });
             return false;
         };
-
-
-
-
-
-        
-
-      
-
-
 
 
    

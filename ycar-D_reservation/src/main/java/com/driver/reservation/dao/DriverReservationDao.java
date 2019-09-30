@@ -2,7 +2,7 @@ package com.driver.reservation.dao;
 
 import java.util.List;
 
-import com.driver.reservation.domain.Carpool;
+import com.driver.reservation.domain.lonlat;
 import com.driver.reservation.domain.DriverReservation;
 
 public interface DriverReservationDao {
@@ -27,4 +27,7 @@ public interface DriverReservationDao {
 		
 	//거절, 취소
 	public int cancleCarpool(int r_idx);
+	
+	//r_idx에 따른 위도 경도 출력
+	public lonlat selectlonlat(int r_idx);
 }

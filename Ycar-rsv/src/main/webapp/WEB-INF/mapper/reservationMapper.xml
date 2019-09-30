@@ -27,20 +27,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="r_confirm" column="r_confirm" />
 	</resultMap>
 	
-	<!-- D_CARPOOL 전체 리스트 전체 출력 -->
+	<!-- D_CARPOOL 예약 가능한 전체 리스트 전체 출력 -->
 	<select id="allCarpoolList" resultMap="carpoolList">
-		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee from D_CARPOOL c join RESERVATION r on c.dr_idx = r.dr_idx where r_confirm='B' and c.d_date >= curdate() order by d_date desc
+		<![CDATA[ 
+		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee 
+		from D_CARPOOL c left join RESERVATION r on c.dr_idx = r.dr_idx 
+		where (r.r_confirm is null or r.r_confirm != 'Y') and c.d_date >= curdate()
+		]]>
 	</select>
 	
-	<!-- D_CARPOOL에서 카풀조건 검색 -->
-	<select id="searchCarpoolList" resultType="com.ycar.reservation.domain.SearchCarpool">
-		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee 
-		from D_CARPOOL c join RESERVATION r on c.dr_idx = r.dr_idx 
-		where r_confirm='B' and c.d_date >= curdate()
-		and c.d_date =#{date} 
-		and (#{time} between c.d_starttime and c.d_endtime)
-		and c.d_startpoint like concat('%',#{startPoint},'%') 
-		and c.d_endpoint like concat('%',#{endPoint},'%')
+	<!-- D_CARPOOL에서 카풀조건 검색!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 이 조건 다시 넣기 and (r.p_idx! =#{p_idx} or r.p_idx is null) -->
+	<select id="searchCarpoolList" resultMap="carpoolList">
+		<![CDATA[ 
+		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee , r.r_idx, r.p_idx
+		from D_CARPOOL c left join RESERVATION r on c.dr_idx = r.dr_idx 
+		where (r.r_confirm is null or r.r_confirm != 'Y') 
+		and c.d_date >= curdate()
+		and c.d_date = #{param1} 
+		and (#{param2} between c.d_starttime and c.d_endtime)
+		and c.d_startpoint like concat('%',#{param3},'%') 
+		and c.d_endpoint like concat('%',#{param4},'%')
+		group by c.dr_idx
+		]]>
 	</select>
 	
 	<!-- D_CARPOOL리스트에서 선택 -->
@@ -53,32 +61,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into RESERVATION (p_idx, dr_idx, r_confirm) values (#{p_idx}, #{dr_idx}, default)
 	</insert>
 	
-	<!-- RESERVATION DB 출력 조인 다시 해야함 -->
-	<select id="selectByP_idx" resultMap="rsvList">
-		select * from RESERVATION where p_idx=#{p_idx}
+	<!-- mail 발송할 운전자 이메일 받아오기 -->
+	<select id="getDemail" resultType="String">
+		select d.email from DRIVER d join D_CARPOOL c on d.d_idx = c.d_idx where c.dr_idx = #{dr_idx}
 	</select>
+	
+	<!-- RESERVATION DB p_idx별 예약리스트 -->
+<!-- 	<select id="selectByP_idx" resultMap="rsvList">
+		select r.r_idx, r.r_date, d.nickname, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_fee, r.r_confirm
+		from DRIVER d join D_CARPOOL c on d.d_idx = c.d_idx join RESERVATION r on r.dr_idx = c.dr_idx 
+		where r.p_idx=#{p_idx} and c.d_date >= curdate() order by r.r_date asc
+	</select> -->
 	
 	<!-- 예약확정 리스트 출력 -->
 	<select id="confirmListByP_idx" resultType="com.ycar.reservation.domain.MyCarpool">
-		select r.r_idx, r.r_date, d.nickname, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_fee, r.r_confirm
+		<![CDATA[ 
+		select r.r_idx, r.r_date, d.nickname, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_fee, r.r_confirm, c.dr_idx
 		from DRIVER d join D_CARPOOL c on d.d_idx = c.d_idx join RESERVATION r on r.dr_idx = c.dr_idx 
-		where r.p_idx=#{p_idx} and r_confirm='Y' order by r.r_date desc
+		where r.p_idx=#{p_idx} and r_confirm='Y' and c.d_date >= curdate() order by r.r_date asc
+		]]>
 	</select>
-	
-	<!-- 예약거절 리스트 출력 -->
-<!--  	<select id="refusedListByP_idx" resultType="com.ycar.reservation.domain.MyCarpool">
-		select r.r_idx, r.r_date, d.nickname, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_fee, r.r_confirm
-		from DRIVER d join D_CARPOOL c on d.d_idx = c.d_idx join RESERVATION r on r.dr_idx = c.dr_idx 
-		where r.p_idx=#{p_idx} and r_confirm='N' order by r.r_date desc
-	</select> -->
 	
 	<!-- 예약대기 리스트 출력 -->
 	<select id="waitingListByP_idx" resultType="com.ycar.reservation.domain.MyCarpool">
+		<![CDATA[ 
 		select r.r_idx, r.r_date, d.nickname, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_fee, r.r_confirm
 		from DRIVER d join D_CARPOOL c on d.d_idx = c.d_idx join RESERVATION r on r.dr_idx = c.dr_idx 
-		where r.p_idx=#{p_idx} and r_confirm='B' order by r.r_date desc
+		where r.p_idx=#{p_idx} and r_confirm='B' and c.d_date >= curdate() order by r.r_date asc
+		]]>
 	</select>
-	 
+	
+	<!-- 과거 예역 리스트--> 
+ 	<select id="pastListByP_idx" resultType="com.ycar.reservation.domain.MyCarpool">
+ 		<![CDATA[ 
+ 		select r.r_idx, r.r_date, d.nickname, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_fee, r.r_confirm
+		from DRIVER d join D_CARPOOL c on d.d_idx = c.d_idx join RESERVATION r on r.dr_idx = c.dr_idx 
+		where r.p_idx=#{p_idx} and r_confirm='Y' and c.d_date < curdate() order by r.r_date desc
+		]]>
+	</select>
+	 	
+	<!-- 삭제할 예약 선택  -->
+	<select id="selectByR_idx" resultMap="rsvList">
+		select * from RESERVATION where r_idx = ${r_idx}
+	</select>
 	
 	<!-- 예약삭제 -->
 	<delete id="delete">
@@ -86,5 +111,3 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 
 </mapper>
-
-

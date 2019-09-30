@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Yeoncaha</title>
+<title>YCAR</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <!-- datepicker -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -17,65 +17,62 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- font -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-<link rel="stylesheet" href="css/owl.theme.default.min.css">
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/aos.css">
-<link rel="stylesheet" href="css/ionicons.min.css">
-<link rel="stylesheet" href="css/flaticon.css">
-<link rel="stylesheet" href="css/icomoon.css">
 <link rel="stylesheet" href="css/style.css">
 <style>
 body {
 	background-color: #FFFEF4;
 	font-family: 'Noto Sans KR', sans-serif;
- 	text-align: center; 
+	text-align: center;
 }
 
 .container {
 	margin-top: 100px;
-	min-width:100px;
-	width:500px;
+	margin-bottom: 100px;
+	min-width: 100px;
+	width: 500px;
 }
 
 .ftco-navbar-light.scrolled {
 	background-color: #FFFEF4 !important;
 }
+
 .check {
-        display: none;
-        color: red;
-    }
-.rsvform{
-display : inline-block !important;
-width : 230px !important;
-border: 1px solid #6258A4 !important;
-background:transparent !important;
-}
-.rsvbtn{
-display : inline-block !important;
-width : 230px !important;
-height:50px;
-}
-.rsbbtn{
-display : inline-block !important;
-width : 470px !important;
-height:50px;
-}
-.rsvsbtn{
-display : inline-block !important;
-width : 200px !important;
-height:40px;
-}
-.modal-body{
-text-align: left; 
-}
-.inputborder{
-border : 0px;
+	display: none;
+	color: red;
 }
 
+.rsvform {
+	display: inline-block !important;
+	width: 230px !important;
+	border: 1px solid #6258A4 !important;
+	background: transparent !important;
+}
+
+.rsvbtn {
+	display: inline-block !important;
+	width: 230px !important;
+	height: 50px;
+}
+
+.rsbbtn {
+	display: inline-block !important;
+	width: 470px !important;
+	height: 50px;
+}
+
+.rsvsbtn {
+	display: inline-block !important;
+	width: 200px !important;
+	height: 40px;
+}
+
+.modal-body {
+	text-align: left;
+}
+
+.inputborder {
+	border: 0px;
+}
 </style>
 </head>
 <body>
@@ -104,53 +101,54 @@ border : 0px;
 	<div id="title">
 		<h3 class="mb-4">카풀찾기</h3>
 	</div>
+	<!-- ------------------카풀검색폼------------------ -->
 	<div id="search">
-		<form action="#" class="search-property-1">
+		<form id="searchForm" class="search-property-1">
 			<div id="commute">
             	<input type="radio" id="towork" name="work" class="work" value="출근">출근
                	<input type="radio" id="fromwork" name="work" class="work" value="퇴근">퇴근<br>
                 <span id="workCheck" class="check">출근 또는 퇴근을 선택해주세요.</span>
 			</div><br>
 			<div id="datetime">
-	            	<input type="text" class="checkin_date form-control rsvform datepicker" placeholder="날짜를 선택해주세요" id="date" name="date">		
-                	<select name="time" id="time" class="form-control rsvform">
-                     	<option hidden>카풀시간</option>
-                        <option value="07:00" class="toworktime">07:00</option>
-                        <option value="07:15" class="toworktime">07:15</option>
-                        <option value="07:30" class="toworktime">07:30</option>
-                        <option value="07:45" class="toworktime">07:45</option>
-                        <option value="08:00" class="toworktime">08:00</option>
-                        <option value="08:15" class="toworktime">08:15</option>
-                        <option value="08:30" class="toworktime">08:30</option>
-						<option value="08:45" class="toworktime">08:45</option>
-                        <option value="09:00" class="toworktime">09:00</option>
-                        <option value="18:00" class="fromworktime">18:00</option>
-                        <option value="18:15" class="fromworktime">18:15</option>
-                        <option value="18:30" class="fromworktime">18:30</option>
-                        <option value="18:45" class="fromworktime">18:45</option>
-                        <option value="19:00" class="fromworktime">19:00</option>
-                        <option value="19:15" class="fromworktime">19:15</option>
-                        <option value="19:30" class="fromworktime">19:30</option>
-                        <option value="19:30" class="fromworktime">19:45</option>
-						<option value="20:00" class="fromworktime">20:00</option>
-					</select>
-					<span id="timeCheck" class="check">시간을 선택해주세요.</span>
+	            <input type="text" class="checkin_date form-control rsvform datepicker" placeholder="날짜를 선택해주세요" id="date" name="date">		
+                <select name="time" id="time" class="form-control rsvform">
+                	<option hidden>카풀시간</option>
+                    <option value="07:00" class="toworktime">07:00</option>
+                    <option value="07:15" class="toworktime">07:15</option>
+                    <option value="07:30" class="toworktime">07:30</option>
+                    <option value="07:45" class="toworktime">07:45</option>
+                    <option value="08:00" class="toworktime">08:00</option>
+                    <option value="08:15" class="toworktime">08:15</option>
+                    <option value="08:30" class="toworktime">08:30</option>
+					<option value="08:45" class="toworktime">08:45</option>
+                    <option value="09:00" class="toworktime">09:00</option>
+                    <option value="18:00" class="fromworktime">18:00</option>
+                    <option value="18:15" class="fromworktime">18:15</option>
+                    <option value="18:30" class="fromworktime">18:30</option>
+                    <option value="18:45" class="fromworktime">18:45</option>
+                    <option value="19:00" class="fromworktime">19:00</option>
+                    <option value="19:15" class="fromworktime">19:15</option>
+                    <option value="19:30" class="fromworktime">19:30</option>
+                    <option value="19:30" class="fromworktime">19:45</option>
+					<option value="20:00" class="fromworktime">20:00</option>
+				</select>
+				<span id="timeCheck" class="check">시간을 선택해주세요.</span>
 			</div><br>
 			<div id="showroute">
 				<div id="searchmap">
 					<div>
-						<input type="text" id="startPoint" placeholder="출발지찾기" class="form-control rsvform"> 
+						<input type="text" id="startPoint" name = "startPoint" placeholder="출발지찾기" class="form-control rsvform"> 
 						<input type="button" id="searchSP" onclick="searchPOI(countS+1);" value="출발지찾기" class="btn btn-primary rsvbtn">
 					</div>
 					<div>
-						<input type="text" id="endPoint" placeholder="도착지찾기" class="form-control rsvform"> 
+						<input type="text" id="endPoint" name = "endPoint" placeholder="도착지찾기" class="form-control rsvform"> 
 						<input type="button" id="searchEP" onclick="searchPOIs(countE+1);" value="도착지찾기" class="btn btn-primary rsvbtn">
 					</div>
 					<br>
 					<input type="text" id="p_startpoint" readonly class="form-control rsvform" placeholder="출발지">
 					<input type="text" id="p_endpoint" readonly class="form-control rsvform" placeholder="도착지">
 					<br><br>
-					<input type="button" id="routesearch" onclick="route();" value="경로확인" class="btn btn-primary rsbbtn"><br>						<br>
+					<input type="button" id="routesearch" onclick="route();" value="경로확인" class="btn btn-primary rsbbtn"><br><br>
 					<div id="map_div" class="bg-white"></div>
 					<input type="hidden" id="startlon" value=""> 
 					<input type="hidden" id="startlat" value=""> 
@@ -161,12 +159,13 @@ border : 0px;
 			</div>
 		</form>	
 	</div>
+	<!-- ------------------카풀검색폼------------------ -->
 	<br><br>
 	<div class="listed">
 		<div id=searchCarpoolList></div>
 	</div>
 
-	<div class="listed">
+ 	<div class="listed" style="display: none">
 		<input type="button" onclick="carpool();" value="전체카풀보기">
 		<div id="carpoolList"></div>
 	</div>
@@ -185,7 +184,7 @@ border : 0px;
       </div>
       <div class="modal-body">
       <form id="selectCp">
-      <!-- <input type="hidden" id="p_idx" name="p_idx"> -->
+      <input type="hidden" id="p_idx" name="p_idx" value="11"> <!-- 벨류값 빼야함!!!!!!!!!!!!!!!!!!! -->
       <input type="hidden" id="dr_idx" name="dr_idx">
       카풀날짜 <input type="text" id="d_date" name="d_date" class="inputborder" readonly><br>
       픽업시간 <input type="text" id="d_starttime" name="d_starttime" class="inputborder" readonly> - <input type="text" id="d_endtime" name="d_endtime" class="inputborder" readonly><br>
@@ -234,12 +233,64 @@ border : 0px;
 	
 	var p_idx= 11;
 	
-	function search(){
+	function search(p_idx){
 
-
+		$.ajax({
+			url : 'http://localhost:8080/reservation/searchcarpool',
+			type : 'GET',
+			data : $('#searchForm').serialize(), 
+			success : function(data) {
+				var html = '';
+				for (var i = 0; i < data.length; i++) {							
+					html += '<div>\n';
+					html += '<input type="hidden" id="'+ data[i].dr_idx + '"><input type="hidden" id="'+ data[i].d_idx + '">';
+					html +=  data[i].d_commute + '\t' + data[i].d_date + '<br>\n';
+					html += '픽업가능시간 ::: ' + data[i].d_starttime + '\t -\t ' + data[i].d_endtime + '<br>\n';
+					html += '출발 ::: ' + data[i].d_startpoint + '<br>\n';
+					html += '도착 ::: ' + data[i].d_endpoint + '<br>\n';
+					html += '요금 ::: '+ data[i].d_fee +'원 <br>\n';
+					html += '<button id="select" onclick="selectCarpool(' + data[i].dr_idx + ')" class="btn btn-primary rsvsbtn" data-toggle="modal" data-target="#selectModal">예약하기</button>';
+					html += '</div>'
+				}
+				$('#searchCarpoolList').html(html);
+			}
+		});
 	}
 	
-	function carpool(){
+	
+	function selectCarpool(dr_idx){
+    	  $.ajax({
+    		  url : 'http://localhost:8080/reservation/carpool/' + dr_idx,
+    		  type : 'GET',
+    		  success : function(data){
+    			  $('#p_idx').val(p_idx);
+    			  $('#dr_idx').val(data.dr_idx);
+    			  $('#d_date').val(data.d_date);
+    			  $('#d_starttime').val(data.d_starttime);
+    			  $('#d_endtime').val(data.d_endtime);
+    			  $('#d_startpoint').val(data.d_startpoint);
+    			  $('#d_endpoint').val(data.d_endpoint);
+    			  $('#d_fee').val(data.d_fee);
+    		  }
+    	  });
+      }
+      
+      function requestReserve(){
+    	  $.ajax({
+    		  url: 'http://localhost:8080/reservation/reserve/'+ p_idx,
+    		  type : 'POST',
+    		  data : $('#selectCp').serialize(),
+    		  success : function(data) {
+    			  $('#selectModal').modal('hide');
+    			  alert('카풀 예약 요청이 운전자님께 전달되었습니다!\n운전자님의 예약 요청 수락/거절 여부는 이메일로 받으실 수 있습니다.');
+    			  $('#searchCarpoolList').css('display', 'none');
+				}
+			});
+      }
+      
+         
+      
+  	function carpool(){
 		$.ajax({
 				url : 'http://localhost:8080/reservation/carpool',
 				type : 'GET',
@@ -263,36 +314,6 @@ border : 0px;
 			});
       }
 
-	
-	
-	function selectCarpool(dr_idx){
-    	  $.ajax({
-    		  url : 'http://localhost:8080/reservation/carpool/' + dr_idx,
-    		  type : 'GET',
-    		  success : function(data){
-    			  /* $('#p_idx').val(data.p_idx); */
-    			  $('#dr_idx').val(data.dr_idx);
-    			  $('#d_date').val(data.d_date);
-    			  $('#d_starttime').val(data.d_starttime);
-    			  $('#d_endtime').val(data.d_endtime);
-    			  $('#d_startpoint').val(data.d_startpoint);
-    			  $('#d_endpoint').val(data.d_endpoint);
-    			  $('#d_fee').val(data.d_fee);
-    		  }
-    	  });
-      }
-      
-      function requestReserve(){
-    	  $.ajax({
-    		  url: 'http://localhost:8080/reservation/reserve/'+ p_idx,
-    		  type : 'POST',
-    		  data : $('#selectCp').serialize(),
-    		  success : function(data) {
-    			  $('#selectModal').modal('hide');
-    			  alert('예약 요청이 완료되었습니다!');
-				}
-			});
-      }
       
           
           
@@ -522,13 +543,6 @@ border : 0px;
               /*$('#start').val("");*/
               initTmap();
           }
-
-          /*$('#routesearch').click(function saveroute(lonlat,lonlats){
-              
-              alert('눌렀다');
-              route(lonlat,lonlats);
-          });*/
-
 
 
 

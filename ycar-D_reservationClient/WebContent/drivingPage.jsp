@@ -62,7 +62,7 @@
         $(document).ready(function() {
             
 
-            /*var socket = io('http://localhost:3000');
+            var socket = io('http://localhost:3000');
 
             //이전 url 에서 r_idx 받아오기
             var params = document.location.search.substring('1');
@@ -81,19 +81,20 @@
                 setTimeout(function() {
                     window.location.href = "http://localhost:8080/parclient/payment/driverPaychk.jsp?r_idx=" + r_idx;
                 }, 3000);
-            });*/
+            });
             
-            //지도
-            lonlat();
+            //r_idx 넘기기
+            lonlat(r_idx);
             
             
             
         });
 
+        //위도 경도 가져오기
         function lonlat(r_idx) {
 
             $.ajax({
-                url: 'http://localhost:8080/reservation/carpool/lonlat/' + 66,
+                url: 'http://localhost:8080/reservation/carpool/lonlat/' + r_idx,
                 type: 'GET',
                 success: function(data) {
                            
@@ -112,6 +113,7 @@
 
         var map, marker, markerLayer;
         
+        //지도 실행
         function initTmap() {
             
              map = new Tmap.Map({
@@ -256,9 +258,6 @@
                 }
 
 
-            
-            
-            
         })
         };
         
@@ -277,11 +276,6 @@
         }
 
 
-
-        //데이터 로드중 발생하는 이벤트 함수입니다.
-        function onProgress() {
-            //alert("onComplete");
-        }
         //데이터 로드시 에러가 발생시 발생하는 이벤트 함수입니다.
         function onError() {
             alert("오류가 발생했습니다. 죄송합니다.");

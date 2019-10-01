@@ -280,7 +280,7 @@
 <script>
 
    //소켓 연결 
-   /* var socket = io('http://localhost:3000'); */
+   var socket = io('http://localhost:3000');
 
     var count = 0;
 
@@ -308,7 +308,7 @@
     $(document).ready(function() {
 
       //소켓 연결 
-     /*  var r_idx = $('#hiddenRidx').val();
+       var r_idx = $('#hiddenRidx').val();
       console.log('소켓 연결을 위한 r_idx '+r_idx);
 
       socket.emit('join start room', r_idx); 
@@ -322,7 +322,7 @@
          setTimeout(function(){
             window.location.href="http://localhost:8080/drivingPage.jsp?r_idx="+r_idx;
          }, 3000);
-      }); */
+      });
         
         //예약 된 카풀에 날짜 추가
     $('#thisyear').append(thisyear);
@@ -366,10 +366,6 @@
             $('#pastList').css('display', 'inline');
             $('#todayList').css('display', 'none');
             $('#futureList').css('display', 'none');
-            //버튼활성
-            /*$('#pastbutton').css('display', 'block');
-            $('#todaybutton').css('display', 'block');
-            $('#futurebutton').css('display', 'block');*/
 
         });
 
@@ -377,20 +373,12 @@
             $('#todayList').css('display', 'inline');
             $('#pastList').css('display', 'none');
             $('#futureList').css('display', 'none');
-            //버튼활성
-            /*$('#pastbutton').css('display', 'block');
-            $('#todaybutton').css('display', 'block');
-            $('#futurebutton').css('display', 'block');*/
         });
 
         $('#future').click(function() {
             $('#futureList').css('display', 'inline');
             $('#pastList').css('display', 'none');
             $('#todayList').css('display', 'none');
-            //버튼활성
-            /*$('#pastbutton').css('display', 'block');
-            $('#todaybutton').css('display', 'block');
-            $('#futurebutton').css('display', 'block');*/
         });
 
         
@@ -398,7 +386,6 @@
 
 
         //리스트 none
-        /*$('#todayList').css('display','none');*/
         $('#futureList').css('display', 'none');
         $('#pastList').css('display', 'none');
 
@@ -413,7 +400,7 @@
 
 
         $.ajax({
-            url: 'http://localhost:8080/reservation/carpool/Y/' + ${sessionScope.d_idx} ,
+            url: 'http://localhost:8080/reservation/carpool/Y/' + ${sessionScope.loginInfo.d_idx},
             type: 'GET',
             success: function(data) {
 
@@ -453,10 +440,8 @@
                         todayhtml += '<span class="EpointSPAN">도착장소 : </span>' + data[i].d_endPoint + '<br>\n';
                         todayhtml += '<button class="btn btn-primary" id="pastmapBTN" onclick="map(' + data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')">지도보기</button>' + '<br>\n';
                         todayhtml += '<span class="FeeSPAN">요금 : </span>' + feeSplit + '원<br>\n';
-                  todayhtml += '<button class="btn btn-primary" id="driving" onclick="drivingStart('+data[i].r_idx+')" >운행시작</button><br><br>\n';
-                  todayhtml += '<input type="hidden" id="hiddenRidx" value="'+data[i].r_idx+'">';
-
-                        /*todayhtml += '<button class="btn btn-primary" id="pastdelBTN"  onclick="deleteData(' + data[i].dr_idx + ')">삭제하기</button>' + '<br><br>\n';*/
+                 		todayhtml += '<button class="btn btn-primary" id="driving" onclick="drivingStart('+data[i].r_idx+')" >운행시작</button><br><br>\n';
+                 		todayhtml += '<input type="hidden" id="hiddenRidx" value="'+data[i].r_idx+'">';
                         todayhtml += '</div>';
 
                         //미래
@@ -495,7 +480,7 @@
 
 
         $.ajax({
-            url: 'http://localhost:8080/reservation/carpool/' + ${sessionScope.d_idx},
+            url: 'http://localhost:8080/reservation/carpool/' + ${sessionScope.loginInfo.d_idx},
             type: 'GET',
             success: function(data) {
                 
@@ -618,13 +603,6 @@
     };
 
 
-
-
-
-
-
-
-
     function pastMapClose(count) {
 
 
@@ -635,17 +613,6 @@
 
         }
     };
-
-    /*function pastMapClose(count){
-              
-              
-              if(count == 0){
-                  var html = '<button id="closebutton" onclick="closebutton()">지도 닫기</button>';
-
-                $('#pastMapClose').append(html);
-    
-                 }                     
-             };*/
 
     function closebutton() {
 

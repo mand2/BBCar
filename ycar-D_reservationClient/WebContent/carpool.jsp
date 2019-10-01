@@ -322,7 +322,7 @@
 
 
             $.ajax({
-                url: 'http://localhost:8080/reservation/carpool/B/' + ${sessionScope.d_idx},
+                url: 'http://localhost:8080/reservation/carpool/B/' + ${sessionScope.loginInfo.d_idx},
                 type: 'GET',
                 success: function(data) {
 
@@ -537,12 +537,6 @@
             map.zoomToExtent(vectorLayer.getDataExtent());
         }
 
-
-
-        //데이터 로드중 발생하는 이벤트 함수입니다.
-        function onProgress() {
-            //alert("onComplete");
-        }
         //데이터 로드시 에러가 발생시 발생하는 이벤트 함수입니다.
         function onError() {
             alert("오류가 발생했습니다. 죄송합니다.");

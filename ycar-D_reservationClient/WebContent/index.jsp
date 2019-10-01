@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<% session.setAttribute("d_idx", 2); %>
 <html>
 <head>
     <title>YeonCar</title>
@@ -810,7 +809,7 @@
 
                     console.log(xmlDoc);
 
-                    var tDistance = /*" 총 거리 : " +*/ ($intRate[0].getElementsByTagName("tmap:totalDistance")[0].childNodes[0].nodeValue / 1000).toFixed(1) /*+ "km,"*/ ;
+                    var tDistance = /*" 총 거리 : " +*/ ($intRate[0].getElementsByTagName("tmap:totalDistance")[0].childNodes[0].nodeValue / 1000).toFixed(1); /*+ "km,"*/
                     var tTime = ($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue / 60).toFixed(0) /*+ "분"*/ ;
                     var tFare = /*" 톨 게이트 비용 : " +*/ $intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue /*+ "원,"*/ ;
                     var taxiFare = /*" 예상 택시 요금 : " +*/ $intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue /*+ "원"*/ ;
@@ -920,7 +919,7 @@
         $('#rvForm').submit(function() {
 
             $.ajax({
-                url: 'http://localhost:8080/reservation/carpool/' + 2,
+                url: 'http://localhost:8080/reservation/carpool/' + ${sessionScope.loginInfo.d_idx},
                 type: 'POST',
                 data: JSON.stringify({
                     d_date: $('#datepicker').val().toString(),

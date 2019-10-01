@@ -19,7 +19,7 @@ $(document).ready(function(){
 //후기 form 제출 + DB 저장 + 성공시 redirect page 지정 
 function reviewSubmit(){
 	$.ajax({
-		url : 'http://localhost:8080/par/review/passenger',
+		url : 'http://localhost:8080/server/par/review/passenger',
 		type: 'post',
 		contentType:'application/json;charset=UTF-8',
 		data : JSON.stringify({
@@ -32,15 +32,15 @@ function reviewSubmit(){
 			//alert(data);
 			if(data>0) {
 				alert(data+'개의 소중한 리뷰가 등록되었습니다!');
-				window.location.href='http://localhost:8080/parclient/passengerMain.jsp';
+				window.location.href='http://localhost:8080/passenger/rsindex.jsp';
 			} else {
 				alert('리뷰 입력에 실패하였습니다!');
-				window.location.href='http://localhost:8080/parclient/passengerMain.jsp';
+				window.location.href='http://localhost:8080/passenger/rsindex.jsp';
 			}
 		}, 
 		error : function(e) {
 			alert('리뷰 입력에 실패하였습니다!');
-			window.location.href='http://localhost:8080/parclient/passengerMain.jsp';
+			window.location.href='http://localhost:8080/passenger/rsindex.jsp';
 		}
 	})
 }

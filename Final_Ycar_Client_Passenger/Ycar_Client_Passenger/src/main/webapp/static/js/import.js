@@ -80,7 +80,7 @@ $(document).ready(function(){
 			}, 
 			error : function(e) {
 				console.log('결제내역07 '+e);
-				window.location.href = "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+data.r_idx;
+				window.location.href = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+data.r_idx;
 			}
 		}) 
 	} 

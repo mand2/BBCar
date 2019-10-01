@@ -82,9 +82,9 @@ public class KakaoPayService {
 		params.add("quantity", "1"); //건당 결제이므로 1
 		params.add("total_amount", rsvBasicInfo.getD_fee()); //이용요금 
 		params.add("tax_free_amount", "0"); //
-		params.add("approval_url", "http://localhost:8080/parclient/kakao/success.jsp"); //결제 성공시 url 
-		params.add("cancel_url", "http://localhost:8080/par/payment/kakao/fail.jsp?r_idx="+rsvBasicInfo.getR_idx()); //결제 취소시 url 
-		params.add("fail_url", "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+rsvBasicInfo.getR_idx()); //결제 실패시 url 
+		params.add("approval_url", "http://localhost:8080/passenger/kakao/success.jsp"); //결제 성공시 url 
+		params.add("cancel_url", "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+rsvBasicInfo.getR_idx()); //결제 취소시 url 
+		params.add("fail_url", "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+rsvBasicInfo.getR_idx()); //결제 실패시 url 
 		
 		System.out.println("kakao pay 요청 05 "+params);
 		
@@ -110,7 +110,7 @@ public class KakaoPayService {
 		}
 		
 		//결제 요청 단계에서 실패 시 반환 주소 
-		return "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+rsvBasicInfo.getR_idx();
+		return "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+rsvBasicInfo.getR_idx();
 	}
 	
 	//결제 승인 : 결제된 결과를 보여준다. 

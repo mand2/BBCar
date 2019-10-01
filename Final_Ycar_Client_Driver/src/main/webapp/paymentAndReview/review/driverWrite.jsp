@@ -43,7 +43,7 @@
 <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="stylesheet" href="<c:url value='/css/fontawesome-stars.css'/>">
+<link rel="stylesheet" href="<c:url value='/static/css/fontawesome-stars.css'/>">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="<c:url value='/static/js/jquery.barrating.min.js'/>"></script>
 

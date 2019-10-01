@@ -19,7 +19,7 @@ function kakaoPayProcess() {
 		},
 		error : function(data) {
 			console.log('kakao 결제 실패 - 실패 페이지 이동 ');
-			window.location.href = "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+r_idx;
+			window.location.href = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx;
 		}
 	})
 }

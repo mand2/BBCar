@@ -6,7 +6,7 @@
 <head>
     <title>리스트 출력</title>
 
-  <!--  <script src="http://localhost:3000/socket.io/socket.io.js"></script>  -->
+   <script src="http://localhost:3000/socket.io/socket.io.js"></script> 
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -262,7 +262,7 @@
 	<script src="<c:url value='/staticD/js/jquery.min.js'/>"></script>
     <script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
     <script src="<c:url value='/staticD/js/popper.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/bootstrap.min.js'/>"></script>
+	<%-- <script src="<c:url value='/staticD/js/bootstrap.min.js'/>"></script> --%>
 	<script src="<c:url value='/staticD/js/jquery.easing.1.3.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.waypoints.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.stellar.min.js'/>"></script>
@@ -271,7 +271,7 @@
 	<script src="<c:url value='/staticD/js/aos.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.animateNumber.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/scrollax.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/main.js'/>"></script>
+	<%-- <script src="<c:url value='/staticD/js/main.js'/>"></script> --%>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -280,47 +280,64 @@
 <script>
 
    //소켓 연결 
-   /* var socket = io('http://localhost:3000'); */
+   var socket = io('http://localhost:3000');
 
-    var count = 0;
+   var count = 0;
 
-    var d = new Date();
+   var d = new Date();
 
-    var thisyear = d.getFullYear() + "년";
-
-    //오늘
-    var today = (d.getMonth() + 1) + "/" + d.getDate();
-
-    //과거
-    var past = "~" + (d.getMonth() + 1) + "/" + (d.getDate() - 1);
-
-    //미래
-    var future = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "~";
-
-    var thisday = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
-
-
-
-
-    
+   var thisyear = d.getFullYear() + "년";
+   var today;
+   var past;
+   var future;
+   var thisday;
+   
+   //날짜 비교 변수
+   //10월 미만, 10일 미만 은 0붙여주기
+   if(d.getMonth()+1 < 10 && d.getDate() < 10){
+      thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" +"0"+ d.getDate();   
+      //그냥 10월 미만
+   }if(d.getMonth()+1 < 10){
+      thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" + d.getDate();   
+      //10일 미만
+   }if(d.getDate() < 10){
+      thisday = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + "0" + d.getDate();   
+   }else{
+      thisday = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+   }
+      
+   
+   
+   //과거
+   //0일일경우
+   if(d.getDate()-1 < 1){
+      //3일일경우
+      }if(d.getMonth()+1 == '3'){
+         past = "~" + (d.getMonth() + 1) + "/28";
+         //홀수달일경우 
+      }if(d.getMonth()+1 == '1' || '5' || '7' || '9' || '11'){
+         past = "~" + (d.getMonth() + 1) + "/30";
+         //짝수달일경우
+      }if(d.getMonth()+1 == '2' || '4' || '6' || '8' || '10' || '12'){
+         past = "~" + (d.getMonth() + 1) + "/31";
+      }else{
+         past = "~" + (d.getMonth() + 1) + "/" + (d.getDate() - 1);   
+      }
+      
+      //오늘
+       today = (d.getMonth() + 1) + "/" + d.getDate();
+   
+      //미래
+      future = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "~";
 
 
     $(document).ready(function() {
-
-       //소켓 연결 
-       var r_idx = $('#hiddenRidx').val();
-      console.log('소켓 연결을 위한 r_idx '+r_idx);
-
-      socket.emit('join start room', r_idx); 
-      socket.on('startroom join result', function(msg){
-         console.log(msg);
-      });
 
       //운행중 page 로 redirect 
       socket.on('go driving page', function(r_idx){
          console.log('운전자님, 운행 중 페이지로 이동하실게요 '+r_idx);
          setTimeout(function(){
-            window.location.href="http://localhost:8080/drivingPage.jsp?r_idx="+r_idx;
+            window.location.href="http://localhost:8080/driver/driverCarpool/drivingPage.jsp?r_idx="+r_idx;
          }, 3000);
       });
          
@@ -441,7 +458,7 @@
                         todayhtml += '<button class="btn btn-primary" id="pastmapBTN" onclick="map(' + data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')">지도보기</button>' + '<br>\n';
                         todayhtml += '<span class="FeeSPAN">요금 : </span>' + feeSplit + '원<br>\n';
                  		todayhtml += '<button class="btn btn-primary" id="driving" onclick="drivingStart('+data[i].r_idx+')" >운행시작</button><br><br>\n';
-                 		todayhtml += '<input type="hidden" id="hiddenRidx" value="'+data[i].r_idx+'">';
+                 		/* todayhtml += '<input type="hidden" id="hiddenRidx" value="'+data[i].r_idx+'">'; */
                         todayhtml += '</div>';
 
                         //미래
@@ -769,15 +786,22 @@
         })
 
     };
-    /* 
+    
     //운행 시작
     function drivingStart(r_idx) {
-      if(confirm('운행을 시작하시겠습니까?')) {
+    	//소켓 연결 
+        console.log('소켓 연결을 위한 r_idx '+r_idx);        
+        socket.emit('join start room', r_idx); 
+        socket.on('startroom join result', function(msg){
+           console.log(msg);
+        });
+        
+      if(confirm('운행을 시작하시겠습니까?')) {    	  
          socket.emit('start journey', r_idx);
       }; 
       
    }
-       */
+    
     
 </script>
 

@@ -36,7 +36,7 @@ io.on('connection', function(socket){
 
         roomIdx = room.indexOf('room'+r_idx);
         socket.join(room[roomIdx], function(){
-            console.log(roomIdx+'번 룸에 조인됨');
+            console.log(roomIdx+'번 운행 종료룸에 조인됨');
         });
     });
 
@@ -59,7 +59,7 @@ io.on('connection', function(socket){
         payRoomIdx = payroom.indexOf('payroom'+r_idx);
         socket.join(payroom[payRoomIdx], function(){
             console.log(payRoomIdx+'번 결제 룸에 조인됨');
-            io.to(payroom[payRoomIdx]).emit('payroom result', payRoomIdx+'번 방에 조인되었습니다.');
+            io.to(payroom[payRoomIdx]).emit('payroom result', payRoomIdx+'번 결제 방에 조인되었습니다.');
         });
     });
 
@@ -73,7 +73,7 @@ io.on('connection', function(socket){
         d_starttime, d_startpoint, d_endtime, d_endpoint);
     });
 
-    //운행 시작 시 room join 처리 
+    //운행 시작 시 start room join 처리 
     socket.on('join start room', function(r_idx) {
         console.log('r_idx 로 운행시작 룸 조인 ', r_idx);
              
@@ -87,7 +87,7 @@ io.on('connection', function(socket){
         startRoomIdx = startroom.indexOf('startroom'+r_idx);
         socket.join(startroom[startRoomIdx], function(){
             console.log(startRoomIdx+'번 운행시작 룸에 조인됨');
-            io.to(startroom[startRoomIdx]).emit('startroom join result', startRoomIdx+'번 방에 조인되었습니다.');
+            io.to(startroom[startRoomIdx]).emit('startroom join result', startRoomIdx+'번 운행시작방에 조인되었습니다.');
         });
     });
 

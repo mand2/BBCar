@@ -100,29 +100,29 @@ body {
 
 
       <script>
-      $(document).ready(function() {
-         confirmList();
-         waitingList();
-         
-         var p_idx = ${sessionScope.login.idx};
-        
-        //소켓 연결 
-        var socket = io('http://localhost:3000');
-        var hiddenridx = $('#hiddenR_idx').val();
-        console.log('소켓 연결을 위한 hidden r_idx '+hiddenridx);
-        socket.emit('join start room', r_idx); 
-        socket.on('startroom join result', function(msg){
-           console.log(msg);
-        });
+      var p_idx = ${sessionScope.login.idx};
+      var socket = io('http://localhost:3000');
+
+      function drivingStart (r_idx) {
+    		//소켓 연결 
+          console.log('소켓 연결을 위한 r_idx '+r_idx);
+          socket.emit('join start room', r_idx); 
+          socket.on('startroom join result', function(msg){
+             console.log(msg);
+          });
+      }
+      
       //운행중 page 로 redirect 
       socket.on('go driving page', function(r_idx){
          console.log('탑승자님, 운행 중 페이지로 이동하실게요 '+r_idx);
          setTimeout(function(){
-            window.location.href="http://localhost:8080/server/rsv/passenger-driving.jsp?r_idx="+r_idx;
+            window.location.href="http://localhost:8080/passenger/passenger-driving.jsp?r_idx="+r_idx;
          }, 3000);
-      });     
-         
-        
+      });  
+      
+      $(document).ready(function() {
+         confirmList();
+         waitingList();
       });
       
       function confirmRsv(p_idx){
@@ -145,8 +145,9 @@ body {
                   html += '도착지 ' + data[i].d_endpoint + '<br>\n';
                   html += '요금 '+ data[i].d_fee +'원 <br>\n';
                   html += '<button id="delete" onclick="deleteRsv('+p_idx+',' + data[i].r_idx + ')" class="btn btn-primary">카풀취소</button>';
-                 html += '<input id="hiddenR_idx" type="hidden" value="'+data[i].r_idx+'">';
-                 html += '</div>' 
+                  html += '<button class="btn btn-primary" onclick="drivingStart('+data[i].r_idx+')" >탑승대기</button>';
+                  /* html += '<input id="hiddenR_idx" type="hidden" value="'+data[i].r_idx+'">'; */
+                  html += '</div>' 
                }
                $('#confirmList').html(html);
             }

@@ -108,7 +108,7 @@ function editReview() {
 		}),
 		contentType : 'application/json;charset=utf-8;',
 		success : function(data) {
-			alert(data+'개의 후기가 수정 성공인디?');
+			alert(data+'개의 후기가 수정되었습니다!');
 			$('#editReviewModal').modal('hide');
 			reviewList(p_idx);
 		},

@@ -33,16 +33,16 @@ function reviewSubmit(){
 			//alert(data);
 			if(data>0) {
 				alert(data+'개의 소중한 리뷰가 등록되었습니다!');
-				window.location.href='http://localhost:8080/driver/index.jsp';
+				window.location.href='http://localhost:8080/driver/driverCarpool/index.jsp';
 			} else {
 				alert('리뷰 등록에 실패하였습니다. 해당 건에 대한 리뷰를 이미 작성했는지 확인해주세요!');
-				window.location.href='http://localhost:8080/driver/index.jsp';
+				window.location.href='http://localhost:8080/driver/driverCarpool/index.jsp';
 			}
 		}, 
 		error : function(e) {
 			console.log('리뷰 입력 실패 '+e);
 			alert('리뷰 등록에 실패하였습니다! ');
-			window.location.href='http://localhost:8080/driver/index.jsp';
+			window.location.href='http://localhost:8080/driver/driverCarpool/index.jsp';
 		}
 	})
 	

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.ycar.reservation.domain.Carpool;
+import com.ycar.reservation.domain.lonlat;
 import com.ycar.reservation.domain.MyCarpool;
 import com.ycar.reservation.domain.Reservation;
 
@@ -42,5 +43,8 @@ public interface ReservationDao {
 	
 	//예약취소
 	public int delete(int r_idx);
+	
+	//r_idx에 따른 위도 경도 출력
+	public lonlat selectlonlat(int r_idx);
 	
 }

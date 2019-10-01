@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,52 +23,43 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 	text-align: center;
 }
-
 .container {
 	margin-top: 100px;
 	margin-bottom: 100px;
 	min-width: 100px;
 	width: 500px;
 }
-
 .ftco-navbar-light.scrolled {
 	background-color: #FFFEF4 !important;
 }
-
 .check {
 	display: none;
 	color: red;
 }
-
 .rsvform {
 	display: inline-block !important;
 	width: 230px !important;
 	border: 1px solid #6258A4 !important;
 	background: transparent !important;
 }
-
 .rsvbtn {
 	display: inline-block !important;
 	width: 230px !important;
 	height: 50px;
 }
-
 .rsbbtn {
 	display: inline-block !important;
 	width: 470px !important;
 	height: 50px;
 }
-
 .rsvsbtn {
 	display: inline-block !important;
 	width: 200px !important;
 	height: 40px;
 }
-
 .modal-body {
 	text-align: left;
 }
-
 .inputborder {
 	border: 0px;
 }
@@ -184,7 +174,7 @@ body {
       </div>
       <div class="modal-body">
       <form id="selectCp">
-      <input type="hidden" id="p_idx" name="p_idx" value="11"> <!-- 벨류값 빼야함!!!!!!!!!!!!!!!!!!! -->
+      <input type="hidden" id="p_idx" name="p_idx" value="${login.idx}"> <!-- 벨류값 빼야함!!!!!!!!!!!!!!!!!!! -->
       <input type="hidden" id="dr_idx" name="dr_idx">
       카풀날짜 <input type="text" id="d_date" name="d_date" class="inputborder" readonly><br>
       픽업시간 <input type="text" id="d_starttime" name="d_starttime" class="inputborder" readonly> - <input type="text" id="d_endtime" name="d_endtime" class="inputborder" readonly><br>
@@ -215,6 +205,8 @@ body {
         carpoolList(); //전체 카풀 리스트
 		searchCarpoolList(); //검색 조건에 맞는 카풀 리스트
 		
+		var p_idx = $('#p_idx').val();
+		
 		
 	
 		$('#selectModal').on('hide.bs.modal', function (e) {
@@ -226,15 +218,12 @@ body {
 /* 		$('#exampleModal').on('shown.bs.modal', function (event) {
 			  $('.modal-body').trigger('focus')
 			}) */	
-
 	});
-
 	
 	
-	var p_idx= 11;
 	
 	function search(p_idx){
-
+		
 		$.ajax({
 			url : 'http://localhost:8080/reservation/searchcarpool',
 			type : 'GET',
@@ -295,7 +284,6 @@ body {
 				url : 'http://localhost:8080/reservation/carpool',
 				type : 'GET',
 				success : function(data) {
-
 					var html = '';
 					for (var i = 0; i < data.length; i++) {						
 						
@@ -313,12 +301,10 @@ body {
 				}
 			});
       }
-
       
           
           
           /* ----------------------------------------- Tmap ----------------------------------------- */
-
           var map, markerLayer;
           var tdata;
           var markers;
@@ -333,12 +319,8 @@ body {
                   width: "100%",// map의 width 설정
                   height: "380px", // map의 height 설정
               });
-
               addMarkerLayer();
-
-
           }
-
           //레이어에 마커레이어를 추가해주는 함수입니다.
           function addMarkerLayer() {
               markerLayer = new Tmap.Layer.Markers("marker"); //마커레이어를 생성합니다.
@@ -347,7 +329,6 @@ body {
           // 시작
           function searchPOI(countS) {
               var startPoint = $('#startPoint').val();
-
               /* alert(startPoint); */
               tdata = new Tmap.TData();
               tdata.getPOIDataFromSearch(encodeURIComponent(startPoint), {
@@ -355,9 +336,7 @@ body {
                   resCoordType: "EPSG3857"
               });
               tdata.events.register("onComplete", tdata, onCompleteTData);
-
               console.log(countS);
-
               if (countS > 0) {
                   console.log(countS);
                   $('#searchSP').click(function() {
@@ -368,7 +347,6 @@ body {
                   });
               }
           }
-
           function onCompleteTData(e) {
               if (jQuery(this.responseXML).find("searchPoiInfo pois poi").text() != '') {
                   jQuery(this.responseXML).find("searchPoiInfo pois poi").each(function() { //결과를 each문으로 돌려 마커를 등록합니다.
@@ -380,10 +358,8 @@ body {
                       var options = {
                           label: new Tmap.Label(name), //마커 라벨 text 설정
                           lonlat: new Tmap.LonLat(lon, lat) //마커 라벨 좌표 설정
-
                       };
                       addMarker(options); //마커를 추가하는 함수입니다.
-
                   });
               } else {
                   alert('검색결과가 없습니다.');
@@ -391,7 +367,6 @@ body {
               map.zoomToExtent(markerLayer.getDataExtent()); //마커 레이어의 최대 익스텐트를 계산해 이에 맞게 지도를 줌합니다.
               tdata.events.unregister("onComplete", tdata, onCompleteTData); //onCompleteTData 이벤트 등록 해제
           }
-
           function addMarker(options) {
               var size = new Tmap.Size(24, 38); //아이콘 크기 설정
               var offset = new Tmap.Pixel(-(size.w / 2), -size.h); //아이콘 중심점 설정
@@ -402,13 +377,10 @@ body {
               marker.events.register("mouseover", marker, onOverMouse); //mouseover 이벤트, 마커에 마우스 커서를 올리면 실행하는 이벤트를 등록합니다. 
               marker.events.register("mouseout", marker, onOutMouse); //mouseout 이벤트, 마우스 커서가 마커에서 벗어나면 실행하는 이벤트를 등록합니다.
               marker.events.register("click", marker, onClickMouse); //click 이벤트, 마커를 클릭하면 실행하는 이벤트를 등록합니다.
-
           }
-
           //mouseover 이벤트 함수
           function onOverMouse(e) {
               this.popup.show(); //팝업을 보여준다.
-
           }
           //mouseout 이벤트 함수
           function onOutMouse(e) {
@@ -416,19 +388,13 @@ body {
           }
           //click 이벤트 함수
           function onClickMouse(e) {
-
               console.log(this.lonlat);
               console.log(this.labelHtml);
               change(this.lonlat, this.labelHtml);
-
           }
           // 도착
-
-
-
           function searchPOIs(countE) {
               var endPoint = $('#endPoint').val();
-
               /* alert(endPoint); */
               tdata = new Tmap.TData();
               tdata.getPOIDataFromSearch(encodeURIComponent(endPoint), {
@@ -438,7 +404,6 @@ body {
                   resCoordType: "EPSG3857"
               });
               tdata.events.register("onComplete", tdata, onCompleteTDatas);
-
               if (countE > 0) {
                   $('#searchEP').click(function() {
                       console.log('첫번쨰로들어옴2');
@@ -448,7 +413,6 @@ body {
                   });
               }
           }
-
           function onCompleteTDatas(e) {
               if (jQuery(this.responseXML).find("searchPoiInfo pois poi").text() != '') {
                   jQuery(this.responseXML).find("searchPoiInfo pois poi").each(function() { //결과를 each문으로 돌려 마커를 등록합니다.
@@ -460,10 +424,8 @@ body {
                       var options = {
                           label: new Tmap.Label(name), //마커 라벨 text 설정
                           lonlat: new Tmap.LonLat(lon, lat) //마커 라벨 좌표 설정
-
                       };
                       addMarkers(options); //마커를 추가하는 함수입니다.
-
                   });
               } else {
                   alert('검색결과가 없습니다.');
@@ -471,23 +433,17 @@ body {
               map.zoomToExtent(markerLayer.getDataExtent()); //마커 레이어의 최대 익스텐트를 계산해 이에 맞게 지도를 줌합니다.
               tdata.events.unregister("onComplete", tdata, onCompleteTDatas); //onCompleteTData 이벤트 등록 해제
           }
-
           function addMarkers(options) {
-
               var size = new Tmap.Size(24, 38); //아이콘 크기 설정
               var offset = new Tmap.Pixel(-(size.w / 2), -size.h); //아이콘 중심점 설정
               var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_e.png />', size, offset); //마커 아이콘 설정
               // var markers = new Tmap.Marker(new Tmap.LonLat(option.lonlat, "37.403049076341794").transform("EPSG:4326", "EPSG:3857"), icon); //설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
               markers = new Tmap.Markers(options.lonlat, icon, options.label); //위에서 설정한 값을 통해 마커를 생성합니다.
               markerLayer.addMarker(markers); //마커 레이어에 마커 추가*/
-
               markers.events.register("mouseover", markers, onOverMouses); //mouseover 이벤트, 마커에 마우스 커서를 올리면 실행하는 이벤트를 등록합니다. 
               markers.events.register("mouseout", markers, onOutMouses); //mouseout 이벤트, 마우스 커서가 마커에서 벗어나면 실행하는 이벤트를 등록합니다.
               markers.events.register("click", markers, onClickMouses); //click 이벤트, 마커를 클릭하면 실행하는 이벤트를 등록합니다.
-
-
           }
-
           //mouseover 이벤트 함수
           function onOverMouses(e) {
               this.popup.show(); //팝업을 보여준다.
@@ -498,43 +454,28 @@ body {
           }
           //click 이벤트 함수
           function onClickMouses(e) {
-
               console.log(this.lonlat);
               console.log(this.labelHtml);
-
               changes(this.lonlat, this.labelHtml);
-
           }
-
-
-
           function change(lonlat, labelHtml) {
-
               var pr_3857 = new Tmap.Projection("EPSG:3857");
               var pr_4326 = new Tmap.Projection("EPSG:4326");
               var lonlat = new Tmap.LonLat(lonlat.lon.toString(), lonlat.lat.toString()).transform(pr_3857, pr_4326);
               /*var lonlats = new Tmap.LonLat(lonlats.lon.toString(), lonlats.lat.toString()).transform(pr_3857, pr_4326);*/
-
-
               $('#p_startpoint').val(labelHtml.toString());
               $('#startlon').val(lonlat.lon);
               $('#startlat').val(lonlat.lat);
-
               map.events.clearMouseCache();
               map.destroy();
               /*$('#start').val("");*/
               initTmap();
-
           }
-
           function changes(lonlat, labelHtml) {
-
               var pr_3857 = new Tmap.Projection("EPSG:3857");
               var pr_4326 = new Tmap.Projection("EPSG:4326");
               var lonlat = new Tmap.LonLat(lonlat.lon.toString(), lonlat.lat.toString()).transform(pr_3857, pr_4326);
               /*var lonlats = new Tmap.LonLat(lonlats.lon.toString(), lonlats.lat.toString()).transform(pr_3857, pr_4326);*/
-
-
               $('#p_endpoint').val(labelHtml.toString());
               $('#endlon').val(lonlat.lon);
               $('#endlat').val(lonlat.lat);
@@ -543,14 +484,6 @@ body {
               /*$('#start').val("");*/
               initTmap();
           }
-
-
-
-
-
-
-
-
           function route() {
               var headers = {};
               headers["appKey"] = '5beda631-7db0-4be9-b0bd-b6b5a7f41945' //실행을 위한 키 입니다. 발급받으신 AppKey(서버키)를 입력하세요.
@@ -560,7 +493,6 @@ body {
                   url: "https://apis.openapi.sk.com/tmap/routes?version=1&format=xml", //자동차 경로안내 api 요청 url입니다.
                   async: false,
                   data: {
-
                       //출발지 위경도 좌표입니다.
                       startX: $('#startlon').val().toString(),
                       startY: $('#startlat').val().toString(),
@@ -584,7 +516,6 @@ body {
                       xmlDoc = $.parseXML(prtclString),
                           $xml = $(xmlDoc),
                           $intRate = $xml.find("Document");
-
                       console.log(xmlDoc);
                       var tDistance = " 총 거리 : " + ($intRate[0].getElementsByTagName("tmap:totalDistance")[0].childNodes[0].nodeValue / 1000).toFixed(1) + "km,";
                       var tTime = " 총 시간 : " + ($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue / 60).toFixed(0) + "분,";
@@ -596,7 +527,6 @@ body {
                       //교통정보가 포함되어 있으면 교통정보를 포함한 경로를 그려주고
                       //교통정보가 없다면  교통정보를 제외한 경로를 그려줍니다.
                       if (!traffic) {
-
                           var prtclLine = new Tmap.Format.KML({
                               extractStyles: true,
                               extractAttributes: true
@@ -604,8 +534,6 @@ body {
                           //표준 데이터 포맷인 KML을 Read/Write 하는 클래스 입니다.
                           //벡터 도형(Feature)이 추가되기 직전에 이벤트가 발생합니다.
                           routeLayer.events.register("beforefeatureadded", routeLayer, onBeforeFeatureAdded);
-
-
                           function onBeforeFeatureAdded(e) {
                               var style = {};
                               switch (e.feature.attributes.styleUrl) {
@@ -624,7 +552,6 @@ body {
                           }
                           routeLayer.addFeatures(prtclLine); //레이어에 도형을 등록합니다.
                       } else {
-
                           //기존 출발,도착지 마커릉 지웁니다.
                           markerLayer.removeMarker(marker);
                           markerLayer.removeMarker(markers);
@@ -638,14 +565,11 @@ body {
                               trafficType2Color: "#8E8111", //지체
                               trafficType3Color: "#FF0000" //정체
                           };
-
                           var kmlForm = new Tmap.Format.KML(trafficColors).readTraffic(prtcl);
                           routeLayer = new Tmap.Layer.Vector("vectorLayerID"); //백터 레이어 생성
                           routeLayer.addFeatures(kmlForm); //교통정보를 백터 레이어에 추가   
                           map.addLayer(routeLayer); // 지도에 백터 레이어 추가
                           //-------------------------- 교통정보를 그려주는 부분입니다. -------------------------- 
-
-
                       }
                       map.zoomToExtent(routeLayer.getDataExtent()); //map의 zoom을 routeLayer의 영역에 맞게 변경합니다.	
                   },
@@ -653,25 +577,17 @@ body {
                   error: function(request, status, error) {
                       console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                   }
-
-
-
-
               });
-
               $('#searchEP').click(function() {
                   map.events.clearMouseCache();
                   map.destroy();
                   initTmap();
               });
-
               $('#searchSP').click(function() {
                   map.events.clearMouseCache();
                   map.destroy();
                   initTmap();
               });
-
-
           }
       </script>
 </body>

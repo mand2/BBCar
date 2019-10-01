@@ -13,7 +13,6 @@
              getRsv();
 
             $('#edit').click(function() {
-
                 // 공백인 상태에서 수정버튼 눌렀을 시 못가게 막음
                 var pw1 = $('#pw1').val();
                 var pw2 = $('#pw2').val();

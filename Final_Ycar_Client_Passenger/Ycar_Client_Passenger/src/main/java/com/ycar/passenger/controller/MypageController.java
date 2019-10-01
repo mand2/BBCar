@@ -10,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
+import com.ycar.passenger.domain.ChangeInfo;
 
 @CrossOrigin
 @Controller
@@ -27,15 +31,15 @@ public class MypageController {
 
 	// 내 정보 업로드
 	@PutMapping
-	public int changeInfo(@RequestParam("id") String id, @RequestParam("pw1") String pw1,
-			@RequestParam("pw2") String pw2) {
+	@ResponseBody
+	public int changeInfo(@RequestBody ChangeInfo changeInfo) {
 		
 		RestTemplate rt = new RestTemplate();
 		
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", id);
-		map.put("pw1", pw1);
-		map.put("pw2", pw2);
+		map.put("id", changeInfo.getId());
+		map.put("pw1", changeInfo.getPw1());
+		map.put("pw2", changeInfo.getPw2());
 		
 		System.out.println(map);
 		

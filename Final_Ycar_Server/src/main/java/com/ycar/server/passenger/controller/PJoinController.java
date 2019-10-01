@@ -12,24 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ycar.server.passenger.domain.JoinInfo;
-import com.ycar.server.passenger.service.AuthService;
-import com.ycar.server.passenger.service.JoinService;
+import com.ycar.server.passenger.service.PAuthService;
+import com.ycar.server.passenger.service.PJoinService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/members/join")
-public class JoinController {
+public class PJoinController {
 
 	@Autowired
-	private JoinService joinService;
+	private PJoinService pjoinService;
 	// 직장인증 중 메일인증
 	@Autowired
-	private AuthService authService;
+	private PAuthService pauthService;
 
 	@PostMapping
 	public int join(@RequestBody JoinInfo joinInfo) {
 
-		int result = joinService.join(joinInfo);
+		int result = pjoinService.join(joinInfo);
 		System.out.println("잘 들어갔니 3 ======" + result);
 		return result;
 	}
@@ -37,7 +37,7 @@ public class JoinController {
 	@CrossOrigin
 	@GetMapping("/mailAuth")
 	public ResponseEntity<String> mailAuth(@RequestParam("cemail") String cemail) {
-		String code = authService.send(cemail);
+		String code = pauthService.send(cemail);
 		System.out.println("인증번호 잘 전송되었나?=====" + code);
 		return new ResponseEntity<String>(code, HttpStatus.OK);
 	}
@@ -45,7 +45,7 @@ public class JoinController {
 	@CrossOrigin
 	@GetMapping("/idcheck")
 	public ResponseEntity<String> idcheck(@RequestParam("id") String id) {
-		return new ResponseEntity<String>(joinService.idCheck(id), HttpStatus.OK);
+		return new ResponseEntity<String>(pjoinService.idCheck(id), HttpStatus.OK);
 	}
 
 }

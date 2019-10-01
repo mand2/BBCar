@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- review insert -->
-	<insert id="insertReview" parameterType="com.ycha.par.domain.Review">
+	<insert id="insertReview" parameterType="com.ycar.server.par.domain.Review">
 		insert into REVIEW 
 		values (null, #{p_idx}, #{d_idx}, #{payidx}, #{writer}, #{content}, #{star});
 	</insert>

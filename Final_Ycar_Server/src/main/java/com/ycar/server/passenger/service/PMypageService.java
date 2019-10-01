@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.ycar.server.passenger.dao.PassengerDao;
 import com.ycar.server.passenger.domain.PassengerInfo;
 
-@Service("mypageService")
-public class MypageService {
+@Service("pmypageService")
+public class PMypageService {
 
 	@Autowired
 	private SqlSessionTemplate template;

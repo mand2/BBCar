@@ -20,7 +20,7 @@ import com.ycar.server.reservation.domain.lonlat;
 import com.ycar.server.reservation.service.CarpoolService;
 import com.ycar.server.reservation.service.MyCarpoolListService;
 import com.ycar.server.reservation.service.ReservationService;
-import com.ycar.server.reservation.service.SelectLonLat;
+import com.ycar.server.reservation.service.LonLatService;
 
 @RestController
 public class ReservationController {
@@ -35,7 +35,7 @@ public class ReservationController {
 	private MyCarpoolListService myCarpoolService;
 	
 	@Autowired
-	private SelectLonLat lonlatService;
+	private LonLatService lonlatService;
 	
 	//전체 카풀 리스트
 	@CrossOrigin

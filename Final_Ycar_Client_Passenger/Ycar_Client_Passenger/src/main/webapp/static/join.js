@@ -240,7 +240,7 @@ $('#id').focusout(function() {
 	} else if (chk) {
 
 		$.ajax({
-			url : 'http://localhost:8080/passenger/members/join/idcheck',
+			url : 'http://localhost:8080/server/members/join/idcheck',
 			type : 'GET',
 			data : {
 				id : id
@@ -363,7 +363,7 @@ function verifyEmail() {
 	if (chkbox) {
 		$
 				.ajax({
-					url : 'http://localhost:8080/passenger/members/join/mailAuth',
+					url : 'http://localhost:8080/server/members/join/mailAuth',
 					type : 'GET',
 					data : {
 						cemail : cemail

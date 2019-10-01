@@ -30,7 +30,7 @@
                 }
 
                 $.ajax({
-                    url: 'http://localhost:8080/passenger/members/mypage',
+                    url: 'http://localhost:8080/passenger/mypage',
                     type: 'PUT',
                     data: JSON.stringify({
                         id: $('#id').val(),

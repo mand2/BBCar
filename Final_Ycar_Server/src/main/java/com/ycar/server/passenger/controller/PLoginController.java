@@ -16,15 +16,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ycar.server.passenger.service.LoginService;
+import com.ycar.server.passenger.service.PLoginService;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/members/login")
-public class LoginController {
+public class PLoginController {
 
 	@Autowired
-	private LoginService loginService;
+	private PLoginService ploginService;
 
 	// 로그인
 	@PostMapping
@@ -34,7 +34,7 @@ public class LoginController {
 		String pw = map.get("pw");
 				
 		Map<String, Object> maps = new HashMap<String, Object>();
-		maps = loginService.login(id, pw);
+		maps = ploginService.login(id, pw);
 
 		return maps;
 	}
@@ -44,7 +44,7 @@ public class LoginController {
 	public Map<String, Object> kakaoLogin(@PathVariable("id") String id) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map = loginService.kakaoLogin(id);
+		map = ploginService.kakaoLogin(id);
 
 		return map;
 	}
@@ -56,7 +56,7 @@ public class LoginController {
 		String name = map.getFirst("name");
 		String email = map.getFirst("email");
 		
-		int result = loginService.findId(name, email);
+		int result = ploginService.findId(name, email);
 
 		return result;
 	}
@@ -68,7 +68,7 @@ public class LoginController {
 		String name = map.get("name");
 		String email = map.get("email");
 		
-		int result = loginService.findPw(name, email);
+		int result = ploginService.findPw(name, email);
 
 		return result;
 	}

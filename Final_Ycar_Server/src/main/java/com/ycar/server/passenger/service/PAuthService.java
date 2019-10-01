@@ -12,8 +12,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 // 회원가입 시 직장인 인증 이메일 중 회사 메일 확인하는 서비스
-@Service("authService")
-public class AuthService {
+@Service("pauthService")
+public class PAuthService {
 	
 	@Autowired
 	private JavaMailSender sender;

@@ -9,8 +9,8 @@ import com.ycar.server.passenger.domain.JoinInfo;
 import com.ycar.server.passenger.domain.PassengerSE;
 import com.ycar.server.passenger.domain.PassengerSP;
 
-@Service(value = "joingService")
-public class JoinService {
+@Service(value = "pjoinService")
+public class PJoinService {
 
 	@Autowired
 	private SqlSessionTemplate template;

@@ -9,7 +9,7 @@ import com.ycar.server.reservation.dao.ReservationDao;
 import com.ycar.server.reservation.domain.lonlat;
 
 @Service("lonlatService")
-public class SelectLonLat {
+public class LonLatService {
 
 	@Inject
 	private SqlSessionTemplate template;

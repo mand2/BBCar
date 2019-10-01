@@ -37,6 +37,8 @@ public class MypageController {
 		map.put("pw1", pw1);
 		map.put("pw2", pw2);
 		
+		System.out.println(map);
+		
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<Map<String,String>> entity = new HttpEntity<Map<String,String>>(map,headers);
 		

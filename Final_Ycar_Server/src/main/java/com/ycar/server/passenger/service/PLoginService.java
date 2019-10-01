@@ -20,8 +20,8 @@ import com.ycar.server.passenger.dao.PassengerDao;
 import com.ycar.server.passenger.domain.LoginInfo;
 import com.ycar.server.passenger.domain.PassengerInfo;
 
-@Service("loginService")
-public class LoginService {
+@Service("ploginService")
+public class PLoginService {
 
 	@Autowired
 	private SqlSessionTemplate template;

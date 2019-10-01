@@ -27,7 +27,7 @@ import com.ycar.server.carpool.service.updateService;
 @CrossOrigin
 @RestController
 @RequestMapping("/carpool")
-public class ReservationController {
+public class CarpoolController {
 
 	@Autowired
 	private InsertReservationService insertRV;

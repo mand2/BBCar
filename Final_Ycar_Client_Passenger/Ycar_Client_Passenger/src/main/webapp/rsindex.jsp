@@ -66,24 +66,10 @@ body {
 </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
-	<div class="container">
-		<a class="navbar-brand" href="index.html">YCAR</a>
-		<button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="oi oi-menu"></span> Menu
-		</button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
-			<ul class="navbar-nav nav ml-auto">
-				<li class="nav-item"><a href="#" class="nav-link"><span>카풀찾기</span></a></li>
-				<li class="nav-item"><a href="myCarpool.jsp" class="nav-link"><span>나의카풀</span></a></li>
-				<li class="nav-item"><a href="#about-section" class="nav-link"><span>결제</span></a></li>
-				<li class="nav-item"><a href="#destination-section" class="nav-link"><span>후기</span></a></li>
-				<li class="nav-item"><a href="#hotel-section" class="nav-link"><span>마이페이지</span></a></li>
-				<li class="nav-item"><a href="#contact-section" class="nav-link"><span>로그아웃</span></a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
+	
+	<!--navbar 시작-->
+	<%@ include file="frame/passengerNavbar.jsp"%>
+	<!--navbar 끝 -->
 
 
 
@@ -192,7 +178,9 @@ body {
 </div>
 
 <script>
-	
+	var p_idx = $('#p_idx').val();
+	console.log('p_idx 세션 안오냐'+p_idx);
+
     //datepicker 설정
     $(function() {
   	  $( ".datepicker" ).datepicker({
@@ -202,10 +190,11 @@ body {
     
 	$(document).ready(function() {
         initTmap(); //티맵 지도 보여주기
-        carpoolList(); //전체 카풀 리스트
+        //carpoolList(); //전체 카풀 리스트
 		searchCarpoolList(); //검색 조건에 맞는 카풀 리스트
 		
-		var p_idx = $('#p_idx').val();
+		//var p_idx = $('#p_idx').val();
+		//console.log('p_idx 세션 안오냐'+p_idx);
 		
 		
 	

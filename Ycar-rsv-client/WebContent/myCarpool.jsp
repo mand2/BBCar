@@ -40,38 +40,31 @@ body {
    font-family: 'Noto Sans KR', sans-serif;
    text-align: center;
 }
-
 .container {
    margin-top: 100px;
    margin-bottom: 100px;
    min-width: 100px;
    width: 500px;
 }
-
 .ftco-navbar-light.scrolled {
    background-color: #FFFEF4 !important;
 }
-
 .boxes {
    text-align: center;
    margin: 0 auto;
    width: 70%
 }
-
 .modal-body {
    text-align: left;
 }
-
 .inputborder {
    border: 0px;
 }
-
 .rsvsbtn {
    display: inline-block !important;
    width: 100px !important;
    height: 40px;
 }
-
 .rsv {
    text-align: left;
    color: black;
@@ -123,17 +116,17 @@ body {
       $(document).ready(function() {
          confirmList();
          waitingList();
+         
+         var p_idx = ${sessionScope.login.idx};
         
         //소켓 연결 
         var socket = io('http://localhost:3000');
         var hiddenridx = $('#hiddenR_idx').val();
         console.log('소켓 연결을 위한 hidden r_idx '+hiddenridx);
-
         socket.emit('join start room', r_idx); 
         socket.on('startroom join result', function(msg){
            console.log(msg);
         });
-
       //운행중 page 로 redirect 
       socket.on('go driving page', function(r_idx){
          console.log('탑승자님, 운행 중 페이지로 이동하실게요 '+r_idx);
@@ -141,14 +134,12 @@ body {
             window.location.href="http://localhost:8080/reservation/passenger-driving.jsp?r_idx="+r_idx;
          }, 3000);
       });     
-
          
         
-      var p_idx = 11; //나중에 세션으로 받아서 넣어야함\
       });
       
       function confirmRsv(p_idx){
-         var p_idx=11; 
+    	  var p_idx = ${sessionScope.login.idx};
          $('#waitingList').css('display', 'none');
          $('#pastList').css('display', 'none');
          $('#confirmList').css('display', 'block');
@@ -192,7 +183,7 @@ body {
     	  }
       
       function waitingRsv(p_idx){
-         var p_idx=11;
+    	  var p_idx = ${sessionScope.login.idx};
          $('#confirmList').css('display', 'none');
          $('#pastList').css('display', 'none');
          $('#waitingList').css('display', 'block');
@@ -232,7 +223,7 @@ body {
     	 }
       
       function pastRsv(){
-         var p_idx = 11; 
+    	  var p_idx = ${sessionScope.login.idx};
          $('#waitingList').css('display', 'none');
          $('#confirmList').css('display', 'none');
          $('#pastList').css('display', 'block');

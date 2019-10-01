@@ -1,7 +1,6 @@
 package com.ycar.reservation.service;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;

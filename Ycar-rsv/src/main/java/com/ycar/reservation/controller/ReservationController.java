@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ycar.reservation.domain.Carpool;
+import com.ycar.reservation.domain.lonlat;
 import com.ycar.reservation.domain.MyCarpool;
 import com.ycar.reservation.domain.Reservation;
 import com.ycar.reservation.service.CarpoolService;
 import com.ycar.reservation.service.MyCarpoolListService;
 import com.ycar.reservation.service.ReservationService;
+import com.ycar.reservation.service.SelectLonLat;
 
 @RestController
 public class ReservationController {
@@ -31,6 +33,9 @@ public class ReservationController {
 	
 	@Autowired
 	private MyCarpoolListService myCarpoolService;
+	
+	@Autowired
+	private SelectLonLat lonlatService;
 	
 	//전체 카풀 리스트
 	@CrossOrigin
@@ -144,6 +149,18 @@ public class ReservationController {
 		int result = rsvService.delete(p_idx, r_idx);
 		
 		return result > 0 ?"success":"fail";
+	}
+	
+	@CrossOrigin
+	@GetMapping("/lonlat/{r_idx}")
+	public lonlat selectLonlat(
+			@PathVariable("r_idx") int r_idx
+			) {
+		System.out.println("r_idx 값은 :  " + r_idx);
+		lonlat DR = lonlatService.selectlonlat(r_idx);
+		
+		System.out.println("lonlat을 가져온 결과를 출력해보쟛  : " + DR);
+		return DR;
 	}
 	
 }

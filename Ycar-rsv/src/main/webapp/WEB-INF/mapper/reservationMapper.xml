@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	<!-- D_CARPOOL 예약 가능한 전체 리스트 전체 출력 -->
-	<select id="allCarpoolList" resultMap="carpoolList">
+	<select id="allCarpoolList" resultType="com.ycar.reservation.domain.Carpool">
 		<![CDATA[ 
 		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee 
 		from D_CARPOOL c left join RESERVATION r on c.dr_idx = r.dr_idx 
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- D_CARPOOL에서 카풀조건 검색!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 이 조건 다시 넣기 and (r.p_idx! =#{p_idx} or r.p_idx is null) -->
-	<select id="searchCarpoolList" resultMap="carpoolList">
+	<select id="searchCarpoolList" resultType="com.ycar.reservation.domain.Carpool">
 		<![CDATA[ 
 		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee , r.r_idx, r.p_idx
 		from D_CARPOOL c left join RESERVATION r on c.dr_idx = r.dr_idx 
@@ -52,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- D_CARPOOL리스트에서 선택 -->
-	<select id="selectByDr_idx" resultMap="carpoolList">
+	<select id="selectByDr_idx" resultType="com.ycar.reservation.domain.Carpool">
 		select * from D_CARPOOL where dr_idx = #{dr_idx}
 	</select>
 	
@@ -101,13 +101,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	 	
 	<!-- 삭제할 예약 선택  -->
-	<select id="selectByR_idx" resultMap="rsvList">
+<!-- 	<select id="selectByR_idx" resultMap="rsvList">
 		select * from RESERVATION where r_idx = ${r_idx}
-	</select>
+	</select> -->
 	
 	<!-- 예약삭제 -->
 	<delete id="delete">
 		delete from RESERVATION where r_idx = #{r_idx}
 	</delete>
-
+	
+	<!-- R_idx 에 따른 위도 경도 출력 -->
+	<select id="selectlonlat" resultType="com.ycar.reservation.domain.lonlat">
+		select d.d_startlon, d.d_startlat, d.d_endlon, d.d_endlat
+		from D_CARPOOL as d join RESERVATION as r
+		on d.dr_idx = r.dr_idx
+		where r.r_idx = #{r_idx};
+	</select> 
 </mapper>

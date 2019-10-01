@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>YeonCha</title>
+<title>YCAR</title>
 <script src="http://localhost:3000/socket.io/socket.io.js"></script> 
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -131,7 +131,7 @@ body {
       socket.on('go driving page', function(r_idx){
          console.log('탑승자님, 운행 중 페이지로 이동하실게요 '+r_idx);
          setTimeout(function(){
-            window.location.href="http://localhost:8080/reservation/passenger-driving.jsp?r_idx="+r_idx;
+            window.location.href="http://localhost:8080/server/rsv/passenger-driving.jsp?r_idx="+r_idx;
          }, 3000);
       });     
          
@@ -144,7 +144,7 @@ body {
          $('#pastList').css('display', 'none');
          $('#confirmList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/reservation/mycarpool/' + p_idx,
+            url : 'http://localhost:8080/server/rsv/mycarpool/' + p_idx,
             type : 'GET',
             success : function(data){
                var html = '';
@@ -170,7 +170,7 @@ body {
       function deleteRsv(p_idx, r_idx){
     	  if (confirm('삭제하시겠습니까?')) {
     		  $.ajax({
-    		  url : 'http://localhost:8080/reservation/mycarpool/'+p_idx+'/'+r_idx,
+    		  url : 'http://localhost:8080/server/rsv/mycarpool/'+p_idx+'/'+r_idx,
     		  type : 'DELETE',
     		  success : function(data) {
     			  if (data == 'success') {
@@ -188,7 +188,7 @@ body {
          $('#pastList').css('display', 'none');
          $('#waitingList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/reservation/waitcarpool/' + p_idx,
+            url : 'http://localhost:8080/server/rsv/waitcarpool/' + p_idx,
             type : 'GET',
             success : function(data){
                var html = '';
@@ -210,7 +210,7 @@ body {
      function deleteReq(p_idx, r_idx){
     	 if (confirm('삭제하시겠습니까?')) {
     		 $.ajax({
-    		  url : 'http://localhost:8080/reservation/waitcarpool/'+p_idx+'/'+r_idx,
+    		  url : 'http://localhost:8080/server/rsv/waitcarpool/'+p_idx+'/'+r_idx,
     		  type : 'DELETE',
     		  success : function(data) {
     			  if (data == 'success') {
@@ -228,7 +228,7 @@ body {
          $('#confirmList').css('display', 'none');
          $('#pastList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/reservation/pastcarpool/'+ p_idx,
+            url : 'http://localhost:8080/server/rsv/pastcarpool/'+ p_idx,
             type : 'GET',
             success : function(data){
                var html = '';

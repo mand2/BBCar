@@ -40,7 +40,7 @@ public class MypageController {
 		HttpHeaders headers = new HttpHeaders();
 		HttpEntity<Map<String,String>> entity = new HttpEntity<Map<String,String>>(map,headers);
 		
-		int result = rt.exchange("http://localhost:9090/passenger/members/mypage", HttpMethod.PUT, entity, Integer.class).getBody();
+		int result = rt.exchange("http://localhost:8080/server/members/mypage", HttpMethod.PUT, entity, Integer.class).getBody();
 		System.out.println(result);
 		// [수정 추가예정 내용: email수정] result = 1일때, session에 업데이트된 정보로 다시 저장
 		

@@ -7,7 +7,7 @@ function kakaoPayProcess() {
 	console.log('kakaopay 요청 01  '+r_idx);
 	
 	$.ajax({
-		url : "http://localhost:8080/par/payment/kakao/r_idx/"+r_idx,
+		url : "http://localhost:8080/sever/par/payment/kakao/r_idx/"+r_idx,
         type: 'POST',
 		dataType : "text",
 		success : function(data) {
@@ -50,7 +50,7 @@ function tossPayProcess() {
 		},
 		error : function(e) {
 			console.log('결제 요청 실패 ' + e);
-			window.location.replace = "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+r_idx;
+			window.location.replace = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx;
 		}
 	})
 }
@@ -108,7 +108,7 @@ function importProcess() {
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					
 					console.log(msg);
-					var url = 'http://localhost:8080/parclient/import/success.jsp?paid_amount='+rsp.paid_amount+'&apply_num='+rsp.apply_num+'&r_idx='+r_idx;
+					var url = 'http://localhost:8080/passenger/import/success.jsp?paid_amount='+rsp.paid_amount+'&apply_num='+rsp.apply_num+'&r_idx='+r_idx;
 					location.replace(url); //결제 성공 페이지로 이동
 				} else {
 					// 결제 실패 시 로직,
@@ -117,13 +117,13 @@ function importProcess() {
 					msg += '에러내용 : ' + rsp.error_msg;
 					
 					console.log(msg);
-					window.location.replace = "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
+					window.location.replace = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
 				}
 			});
 		}, 
 		error : function(e) {
 			console.log('아임포트 결제요청 에러발생', e);
-			window.location.replace = "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
+			window.location.replace = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
 		}
 	});
 }

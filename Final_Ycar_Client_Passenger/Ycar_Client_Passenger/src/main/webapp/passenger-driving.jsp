@@ -72,7 +72,7 @@
          socket.on('redirect', function(r_idx){
             console.log('redirect 리슨 ', r_idx);
             setTimeout(function(){
-               window.location.href="http://localhost:8080/parclient/index.jsp?r_idx="+r_idx;
+               window.location.href="http://localhost:8080/passenger/payindex.jsp?r_idx="+r_idx;
             }, 2000);
          }); 
          
@@ -84,7 +84,7 @@
       function lonlat(r_idx) {
 
           $.ajax({
-              url: 'http://localhost:8080/reservation/lonlat/' + r_idx,
+              url: 'http://localhost:8080/server/rsv/lonlat/' + r_idx,
               type: 'GET',
               success: function(data) {
                          

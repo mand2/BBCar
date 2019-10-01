@@ -74,7 +74,7 @@ $(document).ready(function(){
 						//탑승자 페이지 갱신 
 						setTimeout(function(){
 							//일정 시간 후 : 탑승자 후기 작성 페이지로 이동 
-							window.location.href='http://localhost:8080/parclient/review/passengerWrite.jsp?payidx='+data.payidx;
+							window.location.href='http://localhost:8080/passenger/review/passengerWrite.jsp?payidx='+data.payidx;
 						}, 10000);
 					});
 			}, 

@@ -30,7 +30,7 @@
                 }
 
                 $.ajax({
-                    url: 'http://localhost:9090/passenger/members/mypage',
+                    url: 'http://localhost:8080/passenger/members/mypage',
                     type: 'PUT',
                     data: JSON.stringify({
                         id: $('#id').val(),
@@ -45,7 +45,7 @@
                         if (data == 1) {
                             alert('내 정보 수정 성공!');
                             // 임시 비밀번호 수정한 경우를 위해 마이페이지 다시 로딩
-                            location.href = "http://localhost:9090/pClient/mypage";
+                            location.href = "http://localhost:8080/passenger/mypage";
                         }
                         if (data == 2) {
                             alert('*수정오류');
@@ -126,7 +126,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://localhost:8080/findRoute/' + idx,
+                url: 'http://localhost:8090/findRoute/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	
@@ -145,7 +145,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://localhost:8080/findEnv/' + idx,
+                url: 'http://localhost:8090/findEnv/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	
@@ -176,7 +176,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://localhost:8080/rsvList/' + idx,
+                url: 'http://localhost:8090/rsvList/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	

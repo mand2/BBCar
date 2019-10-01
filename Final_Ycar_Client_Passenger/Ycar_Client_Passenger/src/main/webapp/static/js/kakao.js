@@ -6,7 +6,7 @@ $(document).ready(function(){
 	console.log('kakao 결제 성공 후 token 값 01: '+tokenValue);
 	
 	$.ajax({
-		url : "http://localhost:8080/par/payment/kakao/success?"+tokenValue,
+		url : "http://localhost:8080/server/par/payment/kakao/success?"+tokenValue,
 		success : function(data) {
 			console.log('결제 승인08 까지 성공! '+data.paymethod);
 			
@@ -16,7 +16,7 @@ $(document).ready(function(){
 		}, 
 		error : function(e) {
 			console.log('결제 승인 실패함 ');
-			window.location.href = "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+data.r_idx;
+			window.location.href = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+data.r_idx;
 		}
 	})
 })
@@ -36,7 +36,7 @@ function paymentDetail(data){
 	});
 
 	$.ajax({
-		url : "http://localhost:8080/par/payment/passenger",
+		url : "http://localhost:8080/server/par/payment/passenger",
 		type: 'post',
 		data : JSON.stringify({
 			r_idx : r_idx,
@@ -96,13 +96,13 @@ function paymentDetail(data){
 					//탑승자 페이지 갱신 
 					setTimeout(function(){
 						//일정 시간 후 : 탑승자 후기 작성 페이지로 이동 
-						window.location.href='http://localhost:8080/parclient/review/passengerWrite.jsp?payidx='+data.payidx;
+						window.location.href='http://localhost:8080/passenger/review/passengerWrite.jsp?payidx='+data.payidx;
 					}, 10000);
 				});
 		}, 
 		error : function(e) {
 			console.log('결제내역07 '+e);
-			window.location.href = "http://localhost:8080/parclient/kakao/fail.jsp?r_idx="+data.r_idx;
+			window.location.href = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+data.r_idx;
 		}
 	})	
 }

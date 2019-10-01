@@ -158,7 +158,7 @@ function join() {
 	console.log(JSON.stringify(all));
 
 	$.ajax({
-		url : 'http://localhost:9090/passenger/join',
+		url : 'http://localhost:8080/passenger/join',
 		type : 'post',
 		data : JSON.stringify(all),
 		contentType : 'application/json;charset=utf-8',
@@ -167,12 +167,12 @@ function join() {
 			if (data > 0) {
 				console.log('success성공');
 				// 로그인 페이지로 이동
-				location.href = "http://localhost:9090/passenger/login";
+				location.href = "http://localhost:8080/passenger/login";
 				
 			} else {
 				console.log('success:실패')
 				// 회원가입 페이지로 이동
-				location.href = "http://localhost:9090/passenger/join";
+				location.href = "http://localhost:8080/passenger/join";
 			}
 		},
 		error : function(data) {
@@ -240,7 +240,7 @@ $('#id').focusout(function() {
 	} else if (chk) {
 
 		$.ajax({
-			url : 'http://localhost:9090/passenger/members/join/idcheck',
+			url : 'http://localhost:8080/passenger/members/join/idcheck',
 			type : 'GET',
 			data : {
 				id : id
@@ -363,7 +363,7 @@ function verifyEmail() {
 	if (chkbox) {
 		$
 				.ajax({
-					url : 'http://localhost:9090/passenger/members/join/mailAuth',
+					url : 'http://localhost:8080/passenger/members/join/mailAuth',
 					type : 'GET',
 					data : {
 						cemail : cemail

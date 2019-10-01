@@ -1,15 +1,10 @@
-      // KAKAO :: 사용할 앱의 JavaScript 키를 설정해 주세요.
+ // KAKAO :: 사용할 앱의 JavaScript 키를 설정해 주세요.
         Kakao.init('b4d22862e49da7bced7dc7592288a369');
-
-        var userType = sessionStorage.getItem("userType"); // 메인페이지에서 사용자가 선택한 사용자 타입
 
         $(document).ready(
             function() {
 
-                if (userType == null) {
-                    alert('사용자모드를 먼저 선택해주세요!');
-                    location.href = "http://localhost:9090/pClient";
-                }
+            	var userType = 1; // 사용자 타입 --> 탑승자
 
                 $('#form').css('display', 'block');
 
@@ -17,7 +12,7 @@
                     .submit(
                         function() {
                             $.ajax({
-                                url: 'http://localhost:9090/pClient/login/' +
+                                url: 'http://localhost:8080/passenger/login/' +
                                     userType,
                                 type: 'POST',
                                 data: $('#form')
@@ -32,7 +27,7 @@
                                         $('#form').css(
                                             'display',
                                             'none');
-                                        location.href = "http://localhost:9090/pClient/mypage";
+                                        location.href = "http://localhost:8080/passenger/mypage";
                                     }
                                     if (data == '3') {
                                         alert('비밀번호 불일치, 다시 로그인해주세요.');
@@ -42,7 +37,7 @@
                                         // 마이페이지 -> 내 정보 수정
                                         // (비밀번호 변경에
                                         // cursor올리기)
-                                        location.href = "http://localhost:9090/pClient/mypage?user=temp";
+                                        location.href = "http://localhost:8080/passenger/mypage?user=temp";
                                     }
                                 }
                             });
@@ -63,7 +58,7 @@
                         success: function(res) {
                             var id = res.id;
                             $.ajax({
-                                url: 'http://localhost:9090/pClient/login/kakao/' + id +
+                                url: 'http://localhost:8080/passenger/login/kakao/' + id +
                                     '/' + userType,
                                 type: 'GET',
                                 success: function(data) {
@@ -96,7 +91,7 @@
 
         $('#findIdForm').submit(function() {
             $.ajax({
-                url: 'http://localhost:9090/pClient/login/findId/' + userType,
+                url: 'http://localhost:8080/passenger/login/findId/' + userType,
                 type: 'POST',
                 data: $('#findIdForm').serialize(),
                 success: function(data) {
@@ -124,7 +119,7 @@
 
         $('#findPwForm').submit(function() {
             $.ajax({
-                url: 'http://localhost:9090/pClient/login/findPw/' + userType,
+                url: 'http://localhost:8080/passenger/login/findPw/' + userType,
                 type: 'POST',
                 data: $('#findPwForm').serialize(),
                 success: function(data) {
@@ -151,5 +146,5 @@
 
         // 회원가입으로 이동
         function join() {
-            location.href = "http://localhost:9090/pClient/join";
+            location.href = "http://localhost:8080/passenger/join";
         }

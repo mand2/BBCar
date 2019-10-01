@@ -307,7 +307,7 @@
 
     $(document).ready(function() {
 
-/*       //소켓 연결 
+       //소켓 연결 
        var r_idx = $('#hiddenRidx').val();
       console.log('소켓 연결을 위한 r_idx '+r_idx);
 
@@ -323,7 +323,7 @@
             window.location.href="http://localhost:8080/drivingPage.jsp?r_idx="+r_idx;
          }, 3000);
       });
-         */
+         
         //예약 된 카풀에 날짜 추가
     $('#thisyear').append(thisyear);
     $('#today').append(today);

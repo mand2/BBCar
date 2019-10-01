@@ -80,6 +80,7 @@ public class LoginController {
 			LoginInfo info = new LoginInfo(idx,id,nickname,email,name); 
 			
 			session.setAttribute("login", info);
+			System.out.println("로그인 후 저장된 session:"+session.getAttribute("login"));
 		}
 
 		return msg;
@@ -118,6 +119,7 @@ public class LoginController {
 			LoginInfo info = new LoginInfo(idx,id,nickname,email,name); 
 					
 			session.setAttribute("login", info);
+			System.out.println("로그인 후 저장된 session:"+session.getAttribute("login"));
 		}
 
 		return session.getAttribute("login") != null ? "success" : "fail";

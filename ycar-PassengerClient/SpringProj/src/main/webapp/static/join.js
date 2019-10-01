@@ -166,9 +166,13 @@ function join() {
 		success : function(data) {
 			if (data > 0) {
 				console.log('success성공');
-				// TODO LOGIN 으로 넘겨야함
+				// 로그인 페이지로 이동
+				location.href = "http://localhost:9090/pClient/login";
+				
 			} else {
 				console.log('success:실패')
+				// 회원가입 페이지로 이동
+				location.href = "http://localhost:9090/pClient/join";
 			}
 		},
 		error : function(data) {

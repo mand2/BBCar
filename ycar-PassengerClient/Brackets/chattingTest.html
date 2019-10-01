@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>client</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <button id="chatting">채팅하기</button>
+
+    <script>
+        $('#chatting').click(function() {
+
+            // 로그인된 탑승자 idx
+            var idx = 11;
+
+            $.ajax({
+                url: 'http://localhost:8080/writeMemo/' + pIdx + '/' + dIdx,
+                type: 'POST',
+                data: {
+                    memo: $('#memo').val()
+                },
+                success: function(data) {
+                    alert(data);
+                },
+            });
+        });
+    </script>
+</body></html>

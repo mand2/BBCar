@@ -73,7 +73,7 @@ public class LoginController {
 			LinkedHashMap<String, Object> hashM = new LinkedHashMap<String, Object>();
 			hashM = (LinkedHashMap<String, Object>) maps.get("login");
 			
-			int idx = (int)hashM.get("idx"); 
+			int idx = (int)hashM.get("idx");
 			String nickname = (String)hashM.get("nickname");
 			String email = (String)hashM.get("email");
 			String name = (String)hashM.get("name");

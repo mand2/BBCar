@@ -125,7 +125,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://15.164.166.15:8080/boot/findRoute/' + idx,
+                url: 'http://localhost:8090/findRoute/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	
@@ -144,7 +144,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://15.164.166.15:8080/boot/findEnv/' + idx,
+                url: 'http://localhost:8090/findEnv/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	

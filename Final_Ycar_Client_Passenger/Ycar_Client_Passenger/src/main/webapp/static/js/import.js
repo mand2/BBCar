@@ -33,7 +33,7 @@ $(document).ready(function(){
 		//1. 결제 DB에 저장 
 		//2. 결제 내역 보여주기 위해 따로 매서드로 페이지 구성 처리 
 		$.ajax({
-			url : "http://15.164.166.15:8080/boot/parboot/payment/toss",
+			url : "http://localhost:8090/parboot/payment/toss",
 			type: 'post',
 			data : JSON.stringify({
 				r_idx : paramArray2[1],

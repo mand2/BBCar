@@ -108,7 +108,7 @@ function importProcess() {
 					msg += '카드 승인번호 : ' + rsp.apply_num;
 					
 					console.log(msg);
-					var url = 'http://localhost:8080/passenger/import/success.jsp?paid_amount='+rsp.paid_amount+'&apply_num='+rsp.apply_num+'&r_idx='+r_idx;
+					var url = ' http://13.125.252.85:8080/passenger/import/success.jsp?paid_amount='+rsp.paid_amount+'&apply_num='+rsp.apply_num+'&r_idx='+r_idx;
 					location.replace(url); //결제 성공 페이지로 이동
 				} else {
 					// 결제 실패 시 로직,
@@ -117,13 +117,13 @@ function importProcess() {
 					msg += '에러내용 : ' + rsp.error_msg;
 					
 					console.log(msg);
-					window.location.replace = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
+					window.location.replace = " http://13.125.252.85:8080/passenger/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
 				}
 			});
 		}, 
 		error : function(e) {
 			console.log('아임포트 결제요청 에러발생', e);
-			window.location.replace = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
+			window.location.replace = " http://13.125.252.85:8080/passenger/kakao/fail.jsp?r_idx="+r_idx; //결제 실패 페이지로 이동
 		}
 	});
 }

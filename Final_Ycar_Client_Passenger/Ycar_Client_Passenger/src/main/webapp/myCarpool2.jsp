@@ -197,7 +197,7 @@ body {
    
             <!-- chat room -->
             <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
-	            <input type="hidden"  value="${sessionScope.loginInfo.nickname}" id="chatNickName">
+	            <input type="hidden"  value="${sessionScope.login.nickname}" id="chatNickName">
             </div>
             <h1 class="mb-4">채팅</h1>
 
@@ -248,7 +248,7 @@ body {
          $('#pastList').css('display', 'none');
          $('#confirmList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/server/rsv/mycarpool/' + p_idx,
+            url : 'http://13.125.252.85:8080/server/rsv/mycarpool/' + p_idx,
             type : 'GET',
             success : function(data){
                var html = '';
@@ -275,7 +275,7 @@ body {
       function deleteRsv(p_idx, r_idx){
     	  if (confirm('삭제하시겠습니까?')) {
     		  $.ajax({
-    		  url : 'http://localhost:8080/server/rsv/mycarpool/'+p_idx+'/'+r_idx,
+    		  url : 'http://13.125.252.85:8080/server/rsv/mycarpool/'+p_idx+'/'+r_idx,
     		  type : 'DELETE',
     		  success : function(data) {
     			  if (data == 'success') {
@@ -293,7 +293,7 @@ body {
          $('#pastList').css('display', 'none');
          $('#waitingList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/server/rsv/waitcarpool/' + p_idx,
+            url : 'http://13.125.252.85:8080/server/rsv/waitcarpool/' + p_idx,
             type : 'GET',
             success : function(data){
                var html = '';
@@ -316,7 +316,7 @@ body {
      function deleteReq(p_idx, r_idx){
     	 if (confirm('삭제하시겠습니까?')) {
     		 $.ajax({
-    		  url : 'http://localhost:8080/server/rsv/waitcarpool/'+p_idx+'/'+r_idx,
+    		  url : 'http://13.125.252.85:8080/server/rsv/waitcarpool/'+p_idx+'/'+r_idx,
     		  type : 'DELETE',
     		  success : function(data) {
     			  if (data == 'success') {
@@ -334,7 +334,7 @@ body {
          $('#confirmList').css('display', 'none');
          $('#pastList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/server/rsv/pastcarpool/'+ p_idx,
+            url : 'http://13.125.252.85:8080/server/rsv/pastcarpool/'+ p_idx,
             type : 'GET',
             success : function(data){
                var html = '';

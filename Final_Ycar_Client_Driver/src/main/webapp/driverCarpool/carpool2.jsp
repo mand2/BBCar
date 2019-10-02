@@ -9,17 +9,24 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-    <link rel="stylesheet" href="<c:url value='/staticD/css/open-iconic-bootstrap.min.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/animate.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/owl.carousel.min.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/owl.theme.default.min.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/magnific-popup.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/aos.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/ionicons.min.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/flaticon.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/icomoon.css'/>">
-	<link rel="stylesheet" href="<c:url value='/staticD/css/style.css'/>">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/open-iconic-bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/staticD/css/animate.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/owl.carousel.min.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/owl.theme.default.min.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/magnific-popup.css'/>">
+<link rel="stylesheet" href="<c:url value='/staticD/css/aos.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/ionicons.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/staticD/css/flaticon.css'/>">
+<link rel="stylesheet" href="<c:url value='/staticD/css/icomoon.css'/>">
+<link rel="stylesheet" href="<c:url value='/staticD/css/style.css'/>">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
 
     <!-- 한글 폰트 -->
@@ -31,202 +38,194 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
-    #content {
-        margin: 0 auto;
-        /*max-width: 100%;*/
-        text-align: center;
-        /*height: auto;*/
-        font-family: 'Noto Sans KR', sans-serif;
-    }
 
-    /*팝업창 css*/
-    #popupDiv {
-        top: 0px;
-        position: fixed;
-        background: white;
-        width: 500px;
-        height: 550px;
-        display: none;
-        padding-left: 10px;
-    }
+#content {
+	margin: 0 auto;
+	/*max-width: 100%;*/
+	text-align: center;
+	/*height: auto;*/
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
-    /* 팝업 배경 css*/
-    #popup_mask {
-        position: fixed;
-        width: 100%;
-        height: 1000px;
-        top: 0px;
-        left: 0px;
-        display: none;
-        background-color: #000;
-        -moz-opacity: 0.8;
-        filter: alpha(opacity=80);
-        opacity: 0.8;
-    }
+/*팝업창 css*/
+#popupDiv {
+	top: 0px;
+	position: fixed;
+	background: white;
+	width: 500px;
+	height: 550px;
+	display: none;
+	padding-left: 10px;
+}
 
-    #popCloseBtn {
-        margin-left: 330px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        width: 100px;
-        height: 40px;
-    }
+/* 팝업 배경 css*/
+#popup_mask {
+	position: fixed;
+	width: 100%;
+	height: 1000px;
+	top: 0px;
+	left: 0px;
+	display: none;
+	background-color: #000;
+	-moz-opacity: 0.8;
+	filter: alpha(opacity = 80);
+	opacity: 0.8;
+}
 
-    #year {
-        text-align: center;
-    }
+#popCloseBtn {
+	margin-left: 330px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100px;
+	height: 40px;
+}
 
-    #listdiv {
-        margin: 0 auto;
-        width: 100%;
-    }
+#year {
+	text-align: center;
+}
 
-    #list {
-        display: inline-block;
-        border: 1px solid #DDD;
-        margin-top: 20px;
-        overflow: scroll;
-        overflow-x: hidden;
-        width: 500px;
-        height: 600px;
-    }
+#listdiv {
+	margin: 0 auto;
+	width: 100%;
+}
 
-    .pastDiv {
-        text-align: left;
-        border-radius: 10px;
-        /*border: 1px solid #DDD;*/
-        width: 400px;
-        padding-left: 10px;
-        line-height: 40px;
-        display: inline-block;
-        background-color: white;
-        margin-bottom: 25px;
+#list {
+	display: inline-block;
+	border: 1px solid #DDD;
+	margin-top: 20px;
+	overflow: scroll;
+	overflow-x: hidden;
+	width: 500px;
+	height: 600px;
+}
 
+.pastDiv {
+	text-align: left;
+	border-radius: 10px;
+	/*border: 1px solid #DDD;*/
+	width: 400px;
+	padding-left: 10px;
+	line-height: 40px;
+	display: inline-block;
+	background-color: white;
+	margin-bottom: 25px;
+}
 
-    }
+#footer {
+	height: 100px;
+}
 
-    #footer {
-        height: 100px;
-    }
+/*부트시작*/
+body {
+	background-color: #FFFEF4;
+	height: 100%;
+}
 
-    /*부트시작*/
-    body {
-        background-color: #FFFEF4;
-        height: 100%;
-    }
+#ftco-nav {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
-    #ftco-nav {
-        font-family: 'Noto Sans KR', sans-serif;
-    }
+#past {
+	width: 100px;
+	height: 40px;
+}
 
-    #past {
-        width: 100px;
-        height: 40px;
-    }
+#today {
+	width: 100px;
+	height: 40px;
+}
 
-    #today {
-        width: 100px;
-        height: 40px;
+#future {
+	width: 100px;
+	height: 40px;
+}
 
-    }
+span {
+	color: black;
+	font-weight: bolder;
+}
 
-    #future {
-        width: 100px;
-        height: 40px;
-    }
+.CommuteSPAN {
+	display: inline-block;
+	font-weight: 100;
+	background-color: #cd3184;
+	color: white;
+	width: 50px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
 
-    span {
-        color: black;
-        font-weight: bolder;
-    }
+#pastmapBTN {
+	width: 100px;
+	height: 35px;
+	line-height: 20px;
+}
 
-    .CommuteSPAN {
-        display: inline-block;
-        font-weight: 100;
-        background-color: #cd3184;
-        color: white;
-        width: 50px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        border-radius: 5px;
-        margin-top: 20px;
-    }
+#home-section {
+	margin-top: 170px;
+}
 
-    #pastmapBTN {
-        width: 100px;
-        height: 35px;
-        line-height: 20px;
+#pastdelBTN {
+	width: 300px;
+	height: 40px;
+	margin-left: 35px;
+	margin-top: 10px;
+}
 
-    }
+.ftco-navbar-light.scrolled {
+	background-color: #FFFEF4 !important;
+}
 
-    #home-section {
-        margin-top: 170px;
-    }
+.mb-4 {
+	font-family: 'Noto Sans KR', sans-serif;
+	padding-bottom: 20px;
+	font-weight: bolder;
+	font-size: 35px;
+}
 
-    #pastdelBTN {
-        width: 300px;
-        height: 40px;
-        margin-left: 35px;
-        margin-top: 10px;
-    }
+#todaymapBTN {
+	width: 100px;
+	height: 35px;
+	line-height: 20px;
+}
 
-    .ftco-navbar-light.scrolled {
-        background-color: #FFFEF4 !important;
-    }
+#futuremapBTN {
+	width: 100px;
+	height: 35px;
+	line-height: 20px;
+}
 
-    .mb-4 {
-
-        font-family: 'Noto Sans KR', sans-serif;
-        padding-bottom: 20px;
-
-        font-weight: bolder;
-        font-size: 35px;
-    }
-
-    #todaymapBTN {
-        width: 100px;
-        height: 35px;
-        line-height: 20px;
-
-    }
-     #futuremapBTN {
-        width: 100px;
-        height: 35px;
-        line-height: 20px;
-
-    }
-    
-    /*오늘 수락버튼*/
-    #todayYbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 33px;
-        margin-top: 10px;
-    }
-    /*오늘 거절버튼*/
-    #todayNbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 15px;
-        margin-top: 10px;
-    }
-     /*미래 수락버튼*/
-    #futureYbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 33px;
-        margin-top: 10px;
-    }
-    /*미래 거절버튼*/
-    #futureNbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 15px;
-        margin-top: 10px;
-    }
-
-   
+/*오늘 수락버튼*/
+#todayYbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 33px;
+	margin-top: 10px;
+}
+/*오늘 거절버튼*/
+#todayNbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+/*미래 수락버튼*/
+#futureYbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 33px;
+	margin-top: 10px;
+}
+/*미래 거절버튼*/
+#futureNbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 15px;
+	margin-top: 10px;
+}
 
     
     /* --------------------------------- */
@@ -317,37 +316,67 @@
     
 
 </style>
-<script src="<c:url value='/staticD/js/jquery.min.js'/>"></script>
-    <script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
-    <script src="<c:url value='/staticD/js/popper.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.easing.1.3.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.waypoints.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.stellar.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/owl.carousel.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.magnific-popup.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/aos.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.animateNumber.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/scrollax.min.js'/>"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=61f9f7ec-2010-4d26-97e1-806dc10dce63"></script>
 <script>
-    var count = 0;
-    
-            var d = new Date();
+var count = 0;
 
-            var thisyear = d.getFullYear() + "년";
+var d = new Date();
 
-            //오늘
-            var today = (d.getMonth() + 1) + "/" + d.getDate();
+var thisyear = d.getFullYear() + "년";
+var today;
+var past;
+var future;
+var thisday;
 
-            //과거
-            var past = "~" + (d.getMonth() + 1) + "/" + (d.getDate() - 1);
+//날짜 비교 변수
+//10월 미만, 10일 미만 은 0붙여주기
+if(d.getMonth()+1 < 10 && d.getDate() < 10){
+   thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" +"0"+ d.getDate();   
+   //그냥 10월 미만
+}else if(d.getMonth()+1 < 10){
+   thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" + d.getDate();   
+   //10일 미만
+}else if(d.getDate() < 10){
+   thisday = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + "0" + d.getDate();   
+}else if(d.getMonth() + 1 == 13){
+   thisday = d.getFullYear() + "-" + "01" + "-" + d.getDate();
+}else{
+   thisday = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+}
+   
 
-            //미래
-            var future = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "~";
 
-            var thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" + d.getDate();
+//과거
+//0일일경우..
+if(d.getDate()-1 < 1){
+   //3일일경우..
+   }else if(d.getMonth()+1 == '3'){
+      past = "~" + (d.getMonth() + 1) + "/28";
+      //홀수달일경우.. 
+   }else if(d.getMonth()+1 == '1' || '5' || '7' || '9' || '11'){
+      past = "~" + (d.getMonth() + 1) + "/30";
+      //짝수달일경우..
+   }else if(d.getMonth()+1 == '2' || '4' || '6' || '8' || '10' || '12'){
+      past = "~" + (d.getMonth() + 1) + "/31";
+   }else{
+      past = "~" + (d.getMonth() + 1) + "/" + (d.getDate() - 1);   
+   }
+   
+   //오늘
+    today = (d.getMonth() + 1) + "/" + d.getDate();
+
+
+//미래
+//32일이 되어버린다면..
+if(d.getDate() + 1 == 32){
+   future = (d.getMonth() + 2) + "/1" + "~";   
+}else{
+   future = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "~";
+}
+
+
+//오늘
+today = (d.getMonth() + 1) + "/" + d.getDate();
     
             
     
@@ -402,10 +431,13 @@
 
 
         function list(){
-
-
+			
+        	console.log('버튼 날짜 :' + today);
+        	console.log('리스트 날짜 :' + thisday);
+        	
+        	
             $.ajax({
-                url: 'http://localhost:8080/server/carpool/B/' + ${sessionScope.loginInfo.d_idx},
+                url: 'http://13.125.252.85:8080/server/carpool/B/' + ${sessionScope.loginInfo.d_idx},
                 type: 'GET',
                 success: function(data) {
 
@@ -449,9 +481,8 @@
                             todayhtml += '<span class="FeeSPAN">요금 : </span>' + feeSplit + '원<br>\n';
                             todayhtml += '<button class="btn btn-primary" id="todayYbtn" onclick="concent(' + data[i].r_idx + ')">수락</button>';
                             todayhtml += '<button class="btn btn-primary" id="todayNbtn" onclick="refuse(' + data[i].r_idx + ')">거절</button>' + '<br><br>\n';
-
-                     		todayhtml += '<span class = "btn_chat" onclick="fn_chat('+data[i].r_idx+')">채팅하기</span><br>\n' ;
-                     		todayhtml += '</div>';
+                            todayhtml += '<span class = "btn_chat" onclick="fn_chat('+data[i].r_idx+')">채팅하기</span><br>\n' ;
+                            todayhtml += '</div>';
 
                             //미래
                         } else if (data[i].d_date > thisday) {
@@ -471,9 +502,7 @@
                             futurehtml += '<span class="FeeSPAN">요금 : </span>' + feeSplit + '원<br>\n';
                             futurehtml += '<button class="btn btn-primary" id="futureYbtn" onclick="concent(' + data[i].r_idx + ')">수락</button>';
                             futurehtml += '<button class="btn btn-primary" id="futureNbtn" onclick="refuse(' + data[i].r_idx + ')">거절</button>' + '<br><br>\n';
-
-                            futurehtml += '<span class = "btn_chat" onclick="fn_chat('+data[i].r_idx+')">채팅하기</span><br>\n' ; 
-
+                            futurehtml += '<span class = "btn_chat" onclick="fn_chat('+data[i].r_idx+')">채팅하기</span><br>\n' ;
                             futurehtml += '</div>';
                         }
 
@@ -498,7 +527,7 @@
         confirm('수락 하시겠습니까?');
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/Y/' + r_idx,
+            url: 'http://13.125.252.85:8080/server/carpool/Y/' + r_idx,
             type: 'PUT',
             success: function(data) {
                 if (data != null) {
@@ -517,7 +546,7 @@
         confirm('거절 하시겠습니까?');
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/N/' + r_idx,
+            url: 'http://13.125.252.85:8080/server/carpool/N/' + r_idx,
             type: 'DELETE',
             success: function(data) {
                 if (data != null) {
@@ -699,7 +728,20 @@
     <div id="footer"></div>
 
 
+<script src="<c:url value='/staticD/js/jquery.min.js'/>"></script>
+    <script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
+    <script src="<c:url value='/staticD/js/popper.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/jquery.easing.1.3.js'/>"></script>
+	<script src="<c:url value='/staticD/js/jquery.waypoints.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/jquery.stellar.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/owl.carousel.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/jquery.magnific-popup.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/aos.js'/>"></script>
+	<script src="<c:url value='/staticD/js/jquery.animateNumber.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/scrollax.min.js'/>"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+<script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=61f9f7ec-2010-4d26-97e1-806dc10dce63"></script>
 <script>
 
 /**********************
@@ -772,6 +814,8 @@ function fn_chat(r_idx){
 
 
 </script>
+
+
 </body>
 
 </html>

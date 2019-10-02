@@ -195,7 +195,8 @@ function join() {
 	$.ajax({
 //		url : 'http://13.209.40.5:8080/dClient/join',
 //		url : 'http://localhost:8080/dClient/join',
-		url : 'http://localhost:8080/driver/join',
+//		url : 'http://localhost:8080/driver/join',
+		url : 'http://13.125.252.85:8080/driver/join',
 		type : 'post',
 		data : JSON.stringify(all),
 		contentType : 'application/json;charset=utf-8',
@@ -204,7 +205,8 @@ function join() {
 			if (data > 0) {
 				console.log('success성공');
 				alert('회원가입을 축하합니다! \n로그인 창으로 이동합니다');
-				location.href="http://localhost:8080/driver/login";
+				location.href="http://13.125.252.85:8080/driver/login";
+//				location.href="http://localhost:8080/driver/login";
 //				location.href="http://localhost:8080/dClient/login";
 			} else {
 				console.log('success:실패')
@@ -279,7 +281,8 @@ $('#id').focusout(function(){
   } else if(chk){
       
       $.ajax({
-          url:'http://localhost:8080/server/join/idcheck',
+          url:'http://13.125.252.85:8080/server/join/idcheck',
+//          url:'http://localhost:8080/server/join/idcheck',
 //          url:'http://13.209.40.5:8080/driver/join/idcheck',
 //          url:'http://localhost:8080/driver/join/idcheck',
           type: 'GET',
@@ -405,7 +408,8 @@ function verifyEmail(){
   
   if(chkbox){
       $.ajax({
-          url:'http://localhost:8080/server/join/mailAuth',
+          url:'http://13.125.252.85:8080/server/join/mailAuth',
+//          url:'http://localhost:8080/server/join/mailAuth',
 //          url:'http://13.209.40.5:8080/driver/join/mailAuth',
 //          url:'http://localhost:8080/driver/join/mailAuth',
           type: 'GET',

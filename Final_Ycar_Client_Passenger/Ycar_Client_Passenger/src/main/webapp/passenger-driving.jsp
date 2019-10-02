@@ -72,7 +72,7 @@
          socket.on('redirect', function(r_idx){
             console.log('redirect 리슨 ', r_idx);
             setTimeout(function(){
-               window.location.href="http://localhost:8080/passenger/payindex.jsp?r_idx="+r_idx;
+               window.location.href="http://13.125.252.85:8080/passenger/payindex.jsp?r_idx="+r_idx;
             }, 2000);
          }); 
          

@@ -33,7 +33,7 @@ $(document).ready(function(){
 		//1. 결제 DB에 저장 
 		//2. 결제 내역 보여주기 위해 따로 매서드로 페이지 구성 처리 
 		$.ajax({
-			url : "http://localhost:8090/parboot/payment/toss",
+			url : "http://15.164.166.15:8080/boot/parboot/payment/toss",
 			type: 'post',
 			data : JSON.stringify({
 				r_idx : paramArray2[1],
@@ -74,14 +74,14 @@ $(document).ready(function(){
 						//탑승자 페이지 갱신 
 						setTimeout(function(){
 							//일정 시간 후 : 탑승자 후기 작성 페이지로 이동 
-							window.location.href='http://localhost:8080/passenger/review/passengerWrite.jsp?payidx='+data.payidx;
+							window.location.href='http://13.125.252.85:8080/passenger/review/passengerWrite.jsp?payidx='+data.payidx;
 						}, 10000);
 					});
 			}, 
 			error : function(e) {
 				console.log('결제내역07 '+e);
-				window.location.href = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+data.r_idx;
+				window.location.href = "http://13.125.252.85:8080/passenger/kakao/fail.jsp?r_idx="+data.r_idx;
 			}
 		}) 
 	} 
-}) 
+}); 

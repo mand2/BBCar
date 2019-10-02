@@ -6,7 +6,8 @@ var idx = $('#hiddenIDX').val();
 
 //비밀번호 변경 눌렀을 때
 function changeMyPW() {
-	location.href="http://localhost:8080/driver/mypage/changePW";
+	location.href="http://13.125.252.85:8080/driver/mypage/changePW";
+//	location.href="http://localhost:8080/driver/mypage/changePW";
 //	location.href="http://13.209.40.5:8080/dClient/mypage/changePW";
 //	location.href="http://localhost:8080/dClient/mypage/changePW";
 }
@@ -48,7 +49,8 @@ function checkMyCurPW() {
 	if(chk1){
 		console.log('pw?\n'+ pw);
 		$.ajax({
-			url : 'http://localhost:8080/driver/mypage/chkpw' ,
+			url : 'http://13.125.252.85:8080/driver/mypage/chkpw' ,
+//			url : 'http://localhost:8080/driver/mypage/chkpw' ,
 //			url : 'http://13.209.40.5:8080/dClient/mypage/chkpw' ,
 //			url : 'http://localhost:8080/dClient/mypage/chkpw' ,
 			type : 'POST',
@@ -89,7 +91,8 @@ function updatePW() {
 	//둘다 ok 되었을 때 전송가능하게 함.
 	if(chk1 && chk2){
 		$.ajax({
-			url : 'http://localhost:8080/driver/mypage/chkpw' ,
+			url : 'http://13.125.252.85:8080/driver/mypage/chkpw' ,
+//			url : 'http://localhost:8080/driver/mypage/chkpw' ,
 //			url : 'http://13.209.40.5:8080/dClient/mypage/chkpw' ,
 //			url : 'http://localhost:8080/dClient/mypage/chkpw' ,
 			type : 'PUT',
@@ -104,7 +107,8 @@ function updatePW() {
 				
 				if(data == 1){
 					alert('비밀번호 변경완료');
-					location.href = "http://localhost:8080/driver/mypage";
+					location.href = "http://13.125.252.85:8080/driver/mypage";
+//					location.href = "http://localhost:8080/driver/mypage";
 //					location.href = "http://13.209.40.5:8080/dClient/mypage";
 //					location.href = "http://localhost:8080/dClient/mypage";
 	

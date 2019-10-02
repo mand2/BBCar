@@ -79,9 +79,9 @@ public class TossService {
 			tossVO.setProductDesc("연차 카풀 서비스");
 			tossVO.setApiKey("sk_test_apikey1234567890");
 			tossVO.setAutoExecute(true);
-			tossVO.setResultCallback("https://localhost:8080/passenger/toss/success.jsp?r_idx="+r_idx); //결제 성공시 : 가맹점에서 autoexeccute=false 시에만 호출됨
-			tossVO.setRetUrl("http://localhost:8080/passenger/toss/success.jsp?r_idx="+r_idx); //결제 완료 시 페이지 
-			tossVO.setRetCancelUrl("http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx); //결제 실패 or 취소 
+			tossVO.setResultCallback("http://13.125.252.85:8080/passenger/toss/success.jsp?r_idx="+r_idx); //결제 성공시 : 가맹점에서 autoexeccute=false 시에만 호출됨
+			tossVO.setRetUrl("http://13.125.252.85:8080/passenger/toss/success.jsp?r_idx="+r_idx); //결제 완료 시 페이지 
+			tossVO.setRetCancelUrl("http://13.125.252.85:8080/passenger/kakao/fail.jsp?r_idx="+r_idx); //결제 실패 or 취소 
 			
 			System.out.println("toss pay 요청 04  "+tossVO.toString());
 			

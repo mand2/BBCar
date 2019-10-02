@@ -70,7 +70,8 @@ public class MyPageController {
 			RestTemplate template = new RestTemplate();
 			
 			return
-			template.exchange("http://localhost:8080/server/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
+			template.exchange("http://13.125.252.85:8080/server/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
+//			template.exchange("http://localhost:8080/server/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
 //			template.exchange("http://13.209.40.5:8080/driver/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
 //			template.exchange("http://localhost:8080/driver/mypage/"+idx, HttpMethod.GET, entity, String.class, idx);
 		}
@@ -87,7 +88,8 @@ public class MyPageController {
 			
 			RestTemplate template = new RestTemplate();
 			
-			return template.exchange("http://localhost:8080/server/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
+			return template.exchange("http://13.125.252.85:8080/server/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
+//			return template.exchange("http://localhost:8080/server/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
 //			return template.exchange("http://13.209.40.5:8080/driver/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
 //			return template.exchange("http://localhost:8080/driver/mypage/"+idx, HttpMethod.PUT, entity, String.class, idx);
 		}
@@ -103,7 +105,8 @@ public class MyPageController {
 			
 			RestTemplate template = new RestTemplate();
 			
-			return template.exchange("http://localhost:8080/server/mypage/chkpw", HttpMethod.POST, entity, String.class);
+			return template.exchange("http://13.125.252.85:8080/server/mypage/chkpw", HttpMethod.POST, entity, String.class);
+//			return template.exchange("http://localhost:8080/server/mypage/chkpw", HttpMethod.POST, entity, String.class);
 //			return template.exchange("http://13.209.40.5:8080/driver/mypage/chkpw", HttpMethod.POST, entity, String.class);
 //			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.POST, entity, String.class);
 		}
@@ -116,7 +119,8 @@ public class MyPageController {
 			
 			RestTemplate template = new RestTemplate();
 			
-			return template.exchange("http://localhost:8080/server/mypage/chkpw", HttpMethod.PUT, entity, String.class);
+			return template.exchange("http://13.125.252.85:8080/server/mypage/chkpw", HttpMethod.PUT, entity, String.class);
+//			return template.exchange("http://localhost:8080/server/mypage/chkpw", HttpMethod.PUT, entity, String.class);
 //			return template.exchange("http://13.209.40.5:8080/driver/mypage/chkpw", HttpMethod.PUT, entity, String.class);
 //			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.PUT, entity, String.class);
 		}
@@ -130,7 +134,8 @@ public class MyPageController {
 			
 			RestTemplate template = new RestTemplate();
 			
-			return template.exchange("http://localhost:8080/server/mypage/signout", HttpMethod.PUT, entity, String.class);
+//			return template.exchange("http://localhost:8080/server/mypage/signout", HttpMethod.PUT, entity, String.class);
+			return template.exchange("http://13.125.252.85:8080/server/mypage/signout", HttpMethod.PUT, entity, String.class);
 		}
 		
 }

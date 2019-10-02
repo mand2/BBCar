@@ -27,7 +27,7 @@
                                         $('#form').css(
                                             'display',
                                             'none');
-                                        location.href = "http://13.125.252.85:8080/passenger/mypage";
+                                        location.href = "http://13.125.252.85:8080/passenger/rsindex.jsp";
                                     }
                                     if (data == '3') {
                                         alert('비밀번호 불일치, 다시 로그인해주세요.');

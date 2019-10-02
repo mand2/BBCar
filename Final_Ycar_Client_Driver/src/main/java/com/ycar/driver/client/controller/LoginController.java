@@ -56,7 +56,8 @@ public class LoginController {
 		RestTemplate template = new RestTemplate();
 		
 		Map<String, Object> maps = new HashMap<String, Object>();
-		maps = template.postForObject("http://localhost:8080/server/login", search, Map.class);
+		maps = template.postForObject("http://13.125.252.85:8080/server/login", search, Map.class);
+//		maps = template.postForObject("http://localhost:8080/server/login", search, Map.class);
 //		maps = template.postForObject("http://13.209.40.5:8080/driver/login", search, Map.class);
 //		maps = template.postForObject("http://localhost:8080/driver/login", search, Map.class);
 		
@@ -84,7 +85,8 @@ public class LoginController {
 		Map<String, Object> maps = new HashMap<String, Object>();
 //		maps = template.getForObject("http://13.209.40.5:8080/driver/login/kakao"+id, Map.class, id);
 //		maps = template.getForObject("http://localhost:8080/driver/login/kakao/"+id, Map.class, id);
-		maps = template.getForObject("http://localhost:8080/server/login/kakao/"+id, Map.class, id);
+//		maps = template.getForObject("http://localhost:8080/server/login/kakao/"+id, Map.class, id);
+		maps = template.getForObject("http://13.125.252.85:8080/server/login/kakao/"+id, Map.class, id);
 		msg = (int) maps.get("msg");
 		
 		if(msg == 2) {
@@ -124,7 +126,8 @@ public class LoginController {
 		
 		RestTemplate template = new RestTemplate();
 		ResponseEntity<String> result= 
-				template.exchange("http://localhost:8080/server/login/findID", HttpMethod.POST, entity, String.class);
+				template.exchange("http://13.125.252.85:8080/server/login/findID", HttpMethod.POST, entity, String.class);
+//		template.exchange("http://localhost:8080/server/login/findID", HttpMethod.POST, entity, String.class);
 //		template.exchange("http://13.209.40.5:8080/driver/login/findID", HttpMethod.POST, entity, String.class);
 //		template.exchange("http://localhost:8080/driver/login/findID", HttpMethod.POST, entity, String.class);
 		
@@ -141,7 +144,8 @@ public class LoginController {
 		
 		RestTemplate template = new RestTemplate();
 		
-		return template.exchange("http://localhost:8080/server/login/findPW", HttpMethod.POST, entity, String.class);
+		return template.exchange("http://13.125.252.85:8080/server/login/findPW", HttpMethod.POST, entity, String.class);
+//		return template.exchange("http://localhost:8080/server/login/findPW", HttpMethod.POST, entity, String.class);
 //		return template.exchange("http://13.209.40.5:8080/driver/login/findPW", HttpMethod.POST, entity, String.class);
 //		return template.exchange("http://localhost:8080/driver/login/findPW", HttpMethod.POST, entity, String.class);
 	}

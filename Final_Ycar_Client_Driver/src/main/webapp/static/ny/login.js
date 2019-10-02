@@ -78,7 +78,8 @@ function login() {
 		$.ajax({
 //			url : 'http://13.209.40.5:8080/dClient/login',
 //			url : 'http://localhost:8080/dClient/login',
-			url : 'http://localhost:8080/driver/login',
+//			url : 'http://localhost:8080/driver/login',
+			url : 'http://13.125.252.85:8080/driver/login',
 			type : 'POST',
 			data : JSON.stringify({
 				id : $('#id').val(),
@@ -88,7 +89,8 @@ function login() {
 			success : function(data) {
 				console.log('성공 ㅎㅎ' + data);
 				if(data == '4'){
-					location.href="http://localhost:8080/driver/driverCarpool/index.jsp";
+					location.href="http://13.125.252.85:8080/driver/driverCarpool/index.jsp";
+//					location.href="http://localhost:8080/driver/driverCarpool/index.jsp";
 //					location.href="http://localhost:8080/driver/mypage";
 //					location.href="http://13.209.40.5:8080/dClient/mypage";
 				} else if (data == '3'){
@@ -123,7 +125,8 @@ function loginWithKakao() {
 					$.ajax({
 //						url : 'http://13.209.40.5:8080/dClient/login/kakao/'+ id,
 //						url : 'http://localhost:8080/dClient/login/kakao/'+ id,
-						url : 'http://localhost:8080/driver/login/kakao/'+ id,
+//						url : 'http://localhost:8080/driver/login/kakao/'+ id,
+						url : 'http://13.125.252.85:8080/driver/login/kakao/'+ id,
 						type: 'POST',
 						contentType : 'application/json;charset=utf-8',
 						success : function(data) {
@@ -133,7 +136,8 @@ function loginWithKakao() {
 //								location.href="http://13.209.40.5:8080/dClient/mypage";
 //								location.href="http://localhost:8080/dClient/mypage";
 //								location.href="http://localhost:8080/driver/mypage";
-								location.href="http://localhost:8080/driver/driverCarpool/index.jsp";
+//								location.href="http://localhost:8080/driver/driverCarpool/index.jsp";
+								location.href="http://13.125.252.85:8080/driver/driverCarpool/index.jsp";
 							} else {
 								warnMsg('login_msg', '카카오로 가입해주시거나 탈퇴한 회원입니다');
 							}
@@ -160,7 +164,8 @@ function searchID() {
 	$.ajax({
 //		url : 'http://13.209.40.5:8080/dClient/login/findID',
 //		url : 'http://localhost:8080/dClient/login/findID',
-		url : 'http://localhost:8080/driver/login/findID',
+//		url : 'http://localhost:8080/driver/login/findID',
+		url : 'http://13.125.252.85:8080/driver/login/findID',
 		type : 'POST',
 		data : JSON.stringify({
 			name : name,
@@ -197,7 +202,8 @@ function searchPW() {
 	$.ajax({
 //		url : 'http://13.209.40.5:8080/dClient/login/findPW',
 //		url : 'http://localhost:8080/dClient/login/findPW',
-		url : 'http://localhost:8080/driver/login/findPW',
+//		url : 'http://localhost:8080/driver/login/findPW',
+		url : 'http://13.125.252.85:8080/driver/login/findPW',
 		type : 'POST',
 		data : JSON.stringify({
 			id : id,
@@ -258,7 +264,8 @@ function verifyEmail() {
 		$.ajax({
 //					url : 'http://13.209.40.5:8080/driver/join/mailAuth',
 //					url : 'http://localhost:8080/driver/join/mailAuth',
-					url : 'http://localhost:8080/server/join/mailAuth',
+//					url : 'http://localhost:8080/server/join/mailAuth',
+					url : 'http://13.125.252.85:8080/server/join/mailAuth',
 					type : 'GET',
 					data : {
 						cemail : cemail

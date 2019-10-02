@@ -906,7 +906,7 @@
         $('#rvForm').submit(function() {
 
             $.ajax({
-                url: 'http://localhost:8080/server/carpool/' + ${sessionScope.loginInfo.d_idx},
+                url: 'http://13.125.252.85:8080/server/carpool/' + ${sessionScope.loginInfo.d_idx},
                 type: 'POST',
                 data: JSON.stringify({
                     d_date: $('#datepicker').val().toString(),

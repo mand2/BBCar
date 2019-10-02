@@ -7,7 +7,7 @@ function kakaoPayProcess() {
 	console.log('kakaopay 요청 01  '+r_idx);
 	
 	$.ajax({
-		url : "http://localhost:8080/sever/par/payment/kakao/r_idx/"+r_idx,
+		url : " http://13.125.252.85:8080/sever/par/payment/kakao/r_idx/"+r_idx,
         type: 'POST',
 		dataType : "text",
 		success : function(data) {
@@ -19,7 +19,7 @@ function kakaoPayProcess() {
 		},
 		error : function(data) {
 			console.log('kakao 결제 실패 - 실패 페이지 이동 ');
-			window.location.href = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx;
+			window.location.href = " http://13.125.252.85:8080/passenger/kakao/fail.jsp?r_idx="+r_idx;
 		}
 	})
 }
@@ -50,7 +50,7 @@ function tossPayProcess() {
 		},
 		error : function(e) {
 			console.log('결제 요청 실패 ' + e);
-			window.location.replace = "http://localhost:8080/passenger/kakao/fail.jsp?r_idx="+r_idx;
+			window.location.replace = " http://13.125.252.85:8080/passenger/kakao/fail.jsp?r_idx="+r_idx;
 		}
 	})
 }

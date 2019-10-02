@@ -125,7 +125,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://13.125.252.85:8080/boot/findRoute/' + idx,
+                url: 'http://15.164.166.15:8080/boot/findRoute/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	
@@ -144,7 +144,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://13.125.252.85:8080/boot/findEnv/' + idx,
+                url: 'http://15.164.166.15:8080/boot/findEnv/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	

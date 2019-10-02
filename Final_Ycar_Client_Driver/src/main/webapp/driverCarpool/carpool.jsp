@@ -366,7 +366,7 @@ today = (d.getMonth() + 1) + "/" + d.getDate();
         	
         	
             $.ajax({
-                url: 'http://localhost:8080/server/carpool/B/' + ${sessionScope.loginInfo.d_idx},
+                url: 'http://13.125.252.85:8080/server/carpool/B/' + ${sessionScope.loginInfo.d_idx},
                 type: 'GET',
                 success: function(data) {
 
@@ -454,7 +454,7 @@ today = (d.getMonth() + 1) + "/" + d.getDate();
         confirm('수락 하시겠습니까?');
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/Y/' + r_idx,
+            url: 'http://13.125.252.85:8080/server/carpool/Y/' + r_idx,
             type: 'PUT',
             success: function(data) {
                 if (data != null) {
@@ -473,7 +473,7 @@ today = (d.getMonth() + 1) + "/" + d.getDate();
         confirm('거절 하시겠습니까?');
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/N/' + r_idx,
+            url: 'http://13.125.252.85:8080/server/carpool/N/' + r_idx,
             type: 'DELETE',
             success: function(data) {
                 if (data != null) {

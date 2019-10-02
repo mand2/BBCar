@@ -180,4 +180,20 @@ public class LoginController {
 		
 		return result;
 	}
+	
+	// 로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@ResponseBody
+	public String logout(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession(false);
+		
+		if(session.getAttribute("login")!=null) {
+			session.invalidate();
+			return "success";
+		} 
+		
+		return "fail";
+		
+	}
 }

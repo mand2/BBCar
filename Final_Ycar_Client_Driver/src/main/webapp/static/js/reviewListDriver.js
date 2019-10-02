@@ -36,7 +36,7 @@ $(document).ready(function(){
 //나의 후기 리스트 출력 + //내가 작성한 후기 리스트 출력 
 function reviewListByPassengers(d_idx) {
 	$.ajax({
-		url: 'http://localhost:8080/server/par/review/driver/'+d_idx,
+		url: 'http://13.125.252.85:8080/server/par/review/driver/'+d_idx,
 		type: 'GET',
 		success : function(data) {
 			console.log('첫번쩨 리스트 성공'+data);
@@ -105,7 +105,7 @@ function editReview() {
 	console.log('리뷰 수정 시작 01'+rv_idx);
 	
 	$.ajax({
-		url : 'http://localhost:8080/server/par/review/driver/'+rv_idx,
+		url : 'http://13.125.252.85:8080/server/par/review/driver/'+rv_idx,
 		type: 'PUT',
 		data : JSON.stringify({
 			rv_idx : rv_idx,
@@ -131,7 +131,7 @@ function deleteReview(rv_idx, d_idx) {
 	
 	if(confirm('삭제한 후기는 복구가 불가능합니다. 정말 삭제하시겠습니까?')) {
 		$.ajax({
-			url : 'http://localhost:8080/server/par/review/driver/'+rv_idx+'/d_idx/'+d_idx,
+			url : 'http://13.125.252.85:8080/server/par/review/driver/'+rv_idx+'/d_idx/'+d_idx,
 			type: 'DELETE',
 			success : function(data) {
 				console.log('탑승자의 후기 삭제 성공'+data);

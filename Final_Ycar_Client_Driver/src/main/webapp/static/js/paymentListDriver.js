@@ -6,7 +6,7 @@ $(document).ready(function(){
     
     //결제 리스트 출력 
     $.ajax({
-    	url : 'http://localhost:8080/server/par/payment/driver/'+d_idx,
+    	url : 'http://13.125.252.85:8080/server/par/payment/driver/'+d_idx,
     	type: 'GET',
     	success : function(data) {
     		console.log('입금 리스트 출력 05 ', data);
@@ -34,7 +34,7 @@ $(document).ready(function(){
     			output += '<tr><th scope="row">총 운행거리</th><td>'+data[i].d_distance+' km</td></tr>';
     			output += '<tr><th scope="row">출발시간/출발지</th><td id="stime">'+data[i].d_starttime+' / '+data[i].d_startpoint+'</td></tr>';
     			output += '<tr><th scope="row">도착시간/도착지</th><td id="etime">'+data[i].d_endtime+' / '+data[i].d_endpoint+'</td></tr>';
-    			output += '</tbody></table></div><a href="'+'http://localhost:8080/driver/paymentAndReview/review/driverWrite.jsp?payidx='+data[i].payidx+'" class="btn btn-primary rvBtn">후기작성</a></div></div></div>';
+    			output += '</tbody></table></div><a href="'+'http://13.125.252.85:8080/driver/paymentAndReview/review/driverWrite.jsp?payidx='+data[i].payidx+'" class="btn btn-primary rvBtn">후기작성</a></div></div></div>';
     		}
     		
     		$('#driverDepositList').html(output);

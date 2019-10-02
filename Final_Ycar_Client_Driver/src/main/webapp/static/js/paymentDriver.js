@@ -46,7 +46,7 @@ $(document).ready(function(){
     //운전자 페이지 갱신 
     setTimeout(function(){
       //일정 시간 후 : 탑승자 후기 작성 페이지로 이동 
-      window.location.href='http://localhost:8080/driver/paymentAndReview/review/driverWrite.jsp?payidx='+payidx;
+      window.location.href='http://13.125.252.85:8080/driver/paymentAndReview/review/driverWrite.jsp?payidx='+payidx;
     }, 10000);
   });
     

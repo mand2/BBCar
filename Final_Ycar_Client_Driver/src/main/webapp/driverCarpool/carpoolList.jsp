@@ -348,12 +348,11 @@
 
 
     $(document).ready(function() {
-
       //운행중 page 로 redirect 
       socket.on('go driving page', function(r_idx){
          console.log('운전자님, 운행 중 페이지로 이동하실게요 '+r_idx);
          setTimeout(function(){
-            window.location.href="http://localhost:8080/driver/driverCarpool/drivingPage.jsp?r_idx="+r_idx;
+            window.location.href="http://13.125.252.85:8080/driver/driverCarpool/drivingPage.jsp?r_idx="+r_idx;
          }, 3000);
       });
          
@@ -433,7 +432,7 @@
 
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/Y/' + ${sessionScope.loginInfo.d_idx},
+            url: 'http://13.125.252.85:8080/server/carpool/Y/' + ${sessionScope.loginInfo.d_idx},
             type: 'GET',
             success: function(data) {
 
@@ -513,7 +512,7 @@
 
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/' + ${sessionScope.loginInfo.d_idx},
+            url: 'http://13.125.252.85:8080/server/carpool/' + ${sessionScope.loginInfo.d_idx},
             type: 'GET',
             success: function(data) {
                 
@@ -756,7 +755,7 @@
         confirm('정말 삭제하시겠습니까?');
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/' + dr_idx,
+            url: 'http://13.125.252.85:8080/server/carpool/' + dr_idx,
             type: 'DELETE',
             success: function(data) {
                 if (data != null) {
@@ -786,7 +785,7 @@
         confirm('정말 취소하시겠습니까?');
 
         $.ajax({
-            url: 'http://localhost:8080/server/carpool/N/' + r_idx,
+            url: 'http://13.125.252.85:8080/server/carpool/N/' + r_idx,
             type: 'DELETE',
             success: function(data) {
                 if (data != null) {

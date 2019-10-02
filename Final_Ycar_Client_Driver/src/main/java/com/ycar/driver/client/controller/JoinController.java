@@ -40,6 +40,7 @@ public class JoinController {
 		
 //		return template.exchange("http://13.209.40.5:8080/driver/join", HttpMethod.POST, entity, String.class);
 //		return template.exchange("http://localhost:8080/driver/join", HttpMethod.POST, entity, String.class);
-		return template.exchange("http://localhost:8080/server/join", HttpMethod.POST, entity, String.class);
+//		return template.exchange("http://localhost:8080/server/join", HttpMethod.POST, entity, String.class);
+		return template.exchange("http://13.125.252.85:8080/server/join", HttpMethod.POST, entity, String.class);
 	}
 }

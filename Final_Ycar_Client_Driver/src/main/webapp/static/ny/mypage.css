@@ -98,11 +98,21 @@
      }
         
      /* 버튼:: myInfoForm2, myInfoForm3 등록및변경버튼 */
-    #changeinfo2, #changeinfo3{
+    #changeinfo2, #changeinfo3, 
+    #changeinfo5, #changeinfo6 {
          padding: 8px 20px !important; 
          clear: both;
          font-size: 13px;
          width: 100%;
+    }
+    
+    #changeinfo4 {
+   	    margin-top: 20px;
+	    padding: 8px 20px !important;
+	    clear: both;
+	    font-size: 13px;
+	    width: 100%;
+	    background-color: #413A6D !important;
     }
 
      #changeinfo1_2 {

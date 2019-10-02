@@ -41,25 +41,23 @@ import com.ycar.driver.client.domain.EditDriverPW;
  * @editMyInfo: 개인 이메일 혹은 차량관련 정보 및 선호운전환경 변경 시
  * -------------------*/
 @Controller
-@RequestMapping("/mypage")
 public class MyPageController {
 
 		//내정보 페이지
-		@RequestMapping(method = RequestMethod.GET)
+		@RequestMapping(value = "/mypage",method = RequestMethod.GET)
 		public String showMyPage() {
 			
 			return "driver/mypage/form";
 		}
 		
 		//비밀번호변경 페이지
-		@RequestMapping(method = RequestMethod.GET, value = "/changePW")
+		@RequestMapping(value = "/mypage/changePW",method = RequestMethod.GET)
 		public String showChangePWPage() {
 			return "driver/mypage/changePW";
 		}
 	
 		//마이페이지에 내 정보 전체 넘겨주기
-		@GetMapping(value = "/{idx}")
-		@RequestMapping(value = "/{idx}", method = RequestMethod.GET)
+		@RequestMapping(value = "/mypage/{idx}", method = RequestMethod.GET)
 		public @ResponseBody ResponseEntity<String> getMyPage(@PathVariable("idx")int idx){
 			HttpHeaders headers = new HttpHeaders();
 			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -78,7 +76,7 @@ public class MyPageController {
 		}
 		
 		//마이페이지 수정
-		@RequestMapping(method = RequestMethod.PUT)
+		@RequestMapping(value = "/mypage",method = RequestMethod.PUT)
 		public @ResponseBody ResponseEntity<String> editMyInfo(@RequestBody EditDriverMyInfo driver){
 			HttpHeaders headers = new HttpHeaders();
 			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -97,7 +95,7 @@ public class MyPageController {
 		
 		//---------- 비밀번호 변경 관련 ---------- 
 		//현재 패스워드 맞는지 확인~
-		@RequestMapping(value = "/chkpw" , method = RequestMethod.POST)
+		@RequestMapping(value = "/mypage/chkpw" , method = RequestMethod.POST)
 		public @ResponseBody ResponseEntity<String> checkMyCurPW(@RequestBody EditDriverPW driver){
 			HttpHeaders headers = new HttpHeaders();
 			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -110,7 +108,7 @@ public class MyPageController {
 //			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.POST, entity, String.class);
 		}
 		//비밀번호 변경
-		@RequestMapping(value = "/chkpw" , method = RequestMethod.PUT)
+		@RequestMapping(value = "/mypage/chkpw" , method = RequestMethod.PUT)
 		public @ResponseBody ResponseEntity<String> updateMyPW(@RequestBody EditDriverPW driver){
 			HttpHeaders headers = new HttpHeaders();
 			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -122,4 +120,17 @@ public class MyPageController {
 //			return template.exchange("http://13.209.40.5:8080/driver/mypage/chkpw", HttpMethod.PUT, entity, String.class);
 //			return template.exchange("http://localhost:8080/driver/mypage/chkpw", HttpMethod.PUT, entity, String.class);
 		}
+		
+		//회원탈퇴
+		@RequestMapping(value = "/mypage/signout", method = RequestMethod.PUT)
+		public @ResponseBody ResponseEntity<String> signOut(@RequestBody EditDriverPW driver) {
+			HttpHeaders headers = new HttpHeaders();
+			headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+			HttpEntity<EditDriverPW> entity = new HttpEntity<EditDriverPW>(driver, headers);
+			
+			RestTemplate template = new RestTemplate();
+			
+			return template.exchange("http://localhost:8080/server/mypage/signout", HttpMethod.PUT, entity, String.class);
+		}
+		
 }

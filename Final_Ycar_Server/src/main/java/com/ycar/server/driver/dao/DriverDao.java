@@ -35,4 +35,5 @@ public interface DriverDao {
 	public int updateFindPW(String pw, int d_idx);
 	public int updatePW(String pw, int d_idx);
 	
+	public int signOut(int d_idx);
 }

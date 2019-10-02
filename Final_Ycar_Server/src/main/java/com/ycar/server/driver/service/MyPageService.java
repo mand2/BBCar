@@ -92,5 +92,20 @@ public class MyPageService {
 		result = dao.updatePW(pw, idx);
 		return result;
 	}
+	
+	//회원탈퇴
+	public int signOut(int d_idx, String pw) {
+		int result = 0;
+		dao = template.getMapper(DriverDao.class);
+		
+		Driver driver = dao.selectByIdx(d_idx);
+
+		//pw맞는지 확인
+		if(driver.matchPW(pw)) {
+			result = dao.signOut(d_idx);
+		}
+		
+		return result;
+	}
 
 }

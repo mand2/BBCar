@@ -144,4 +144,10 @@
 			pw = #{param1}
 		where d_idx = #{param2}
 	</update>
+	
+	<update id="signOut">
+		update DRIVER
+		set signout = 'Y'
+		where d_idx = #{d_idx}
+	</update>
 </mapper>

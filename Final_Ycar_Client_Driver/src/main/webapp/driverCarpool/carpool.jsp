@@ -1,267 +1,311 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 <head>
-    <title>리스트 출력</title>
+<title>리스트 출력</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
 
-    <link rel="stylesheet" href="<c:url value='/staticD/css/open-iconic-bootstrap.min.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/open-iconic-bootstrap.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/staticD/css/animate.css'/>">
-<link rel="stylesheet" href="<c:url value='/staticD/css/owl.carousel.min.css'/>">
-<link rel="stylesheet" href="<c:url value='/staticD/css/owl.theme.default.min.css'/>">
-<link rel="stylesheet" href="<c:url value='/staticD/css/magnific-popup.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/owl.carousel.min.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/owl.theme.default.min.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/magnific-popup.css'/>">
 <link rel="stylesheet" href="<c:url value='/staticD/css/aos.css'/>">
-<link rel="stylesheet" href="<c:url value='/staticD/css/ionicons.min.css'/>">
+<link rel="stylesheet"
+	href="<c:url value='/staticD/css/ionicons.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/staticD/css/flaticon.css'/>">
 <link rel="stylesheet" href="<c:url value='/staticD/css/icomoon.css'/>">
 <link rel="stylesheet" href="<c:url value='/staticD/css/style.css'/>">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<!--<link rel="stylesheet" href="/resources/demos/style.css">-->
 
-    <!-- 한글 폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+<!-- 한글 폰트 -->
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
+	rel="stylesheet">
 
 </head>
 <style>
-    #content {
-        margin: 0 auto;
-        /*max-width: 100%;*/
-        text-align: center;
-        /*height: auto;*/
-        font-family: 'Noto Sans KR', sans-serif;
-    }
+#content {
+	margin: 0 auto;
+	/*max-width: 100%;*/
+	text-align: center;
+	/*height: auto;*/
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
-    /*팝업창 css*/
-    #popupDiv {
-        top: 0px;
-        position: fixed;
-        background: white;
-        width: 500px;
-        height: 550px;
-        display: none;
-        padding-left: 10px;
-    }
+/*팝업창 css*/
+#popupDiv {
+	top: 0px;
+	position: fixed;
+	background: white;
+	width: 500px;
+	height: 550px;
+	display: none;
+	padding-left: 10px;
+}
 
-    /* 팝업 배경 css*/
-    #popup_mask {
-        position: fixed;
-        width: 100%;
-        height: 1000px;
-        top: 0px;
-        left: 0px;
-        display: none;
-        background-color: #000;
-        -moz-opacity: 0.8;
-        filter: alpha(opacity=80);
-        opacity: 0.8;
-    }
+/* 팝업 배경 css*/
+#popup_mask {
+	position: fixed;
+	width: 100%;
+	height: 1000px;
+	top: 0px;
+	left: 0px;
+	display: none;
+	background-color: #000;
+	-moz-opacity: 0.8;
+	filter: alpha(opacity = 80);
+	opacity: 0.8;
+}
 
-    #popCloseBtn {
-        margin-left: 330px;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        width: 100px;
-        height: 40px;
-    }
+#popCloseBtn {
+	margin-left: 330px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	width: 100px;
+	height: 40px;
+}
 
-    #year {
-        text-align: center;
-    }
+#year {
+	text-align: center;
+}
 
-    #listdiv {
-        margin: 0 auto;
-        width: 100%;
-    }
+#listdiv {
+	margin: 0 auto;
+	width: 100%;
+}
 
-    #list {
-        display: inline-block;
-        border: 1px solid #DDD;
-        margin-top: 20px;
-        overflow: scroll;
-        overflow-x: hidden;
-        width: 500px;
-        height: 600px;
-    }
+#list {
+	display: inline-block;
+	border: 1px solid #DDD;
+	margin-top: 20px;
+	overflow: scroll;
+	overflow-x: hidden;
+	width: 500px;
+	height: 600px;
+}
 
-    .pastDiv {
-        text-align: left;
-        border-radius: 10px;
-        /*border: 1px solid #DDD;*/
-        width: 400px;
-        padding-left: 10px;
-        line-height: 40px;
-        display: inline-block;
-        background-color: white;
-        margin-bottom: 25px;
+.pastDiv {
+	text-align: left;
+	border-radius: 10px;
+	/*border: 1px solid #DDD;*/
+	width: 400px;
+	padding-left: 10px;
+	line-height: 40px;
+	display: inline-block;
+	background-color: white;
+	margin-bottom: 25px;
+}
 
+#footer {
+	height: 100px;
+}
 
-    }
+/*부트시작*/
+body {
+	background-color: #FFFEF4;
+	height: 100%;
+}
 
-    #footer {
-        height: 100px;
-    }
+#ftco-nav {
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
-    /*부트시작*/
-    body {
-        background-color: #FFFEF4;
-        height: 100%;
-    }
+#past {
+	width: 100px;
+	height: 40px;
+}
 
-    #ftco-nav {
-        font-family: 'Noto Sans KR', sans-serif;
-    }
+#today {
+	width: 100px;
+	height: 40px;
+}
 
-    #past {
-        width: 100px;
-        height: 40px;
-    }
+#future {
+	width: 100px;
+	height: 40px;
+}
 
-    #today {
-        width: 100px;
-        height: 40px;
+span {
+	color: black;
+	font-weight: bolder;
+}
 
-    }
+.CommuteSPAN {
+	display: inline-block;
+	font-weight: 100;
+	background-color: #cd3184;
+	color: white;
+	width: 50px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 5px;
+	margin-top: 20px;
+}
 
-    #future {
-        width: 100px;
-        height: 40px;
-    }
+#pastmapBTN {
+	width: 100px;
+	height: 35px;
+	line-height: 20px;
+}
 
-    span {
-        color: black;
-        font-weight: bolder;
-    }
+#home-section {
+	margin-top: 170px;
+}
 
-    .CommuteSPAN {
-        display: inline-block;
-        font-weight: 100;
-        background-color: #cd3184;
-        color: white;
-        width: 50px;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        border-radius: 5px;
-        margin-top: 20px;
-    }
+#pastdelBTN {
+	width: 300px;
+	height: 40px;
+	margin-left: 35px;
+	margin-top: 10px;
+}
 
-    #pastmapBTN {
-        width: 100px;
-        height: 35px;
-        line-height: 20px;
+.ftco-navbar-light.scrolled {
+	background-color: #FFFEF4 !important;
+}
 
-    }
+.mb-4 {
+	font-family: 'Noto Sans KR', sans-serif;
+	padding-bottom: 20px;
+	font-weight: bolder;
+	font-size: 35px;
+}
 
-    #home-section {
-        margin-top: 170px;
-    }
+#todaymapBTN {
+	width: 100px;
+	height: 35px;
+	line-height: 20px;
+}
 
-    #pastdelBTN {
-        width: 300px;
-        height: 40px;
-        margin-left: 35px;
-        margin-top: 10px;
-    }
+#futuremapBTN {
+	width: 100px;
+	height: 35px;
+	line-height: 20px;
+}
 
-    .ftco-navbar-light.scrolled {
-        background-color: #FFFEF4 !important;
-    }
-
-    .mb-4 {
-
-        font-family: 'Noto Sans KR', sans-serif;
-        padding-bottom: 20px;
-
-        font-weight: bolder;
-        font-size: 35px;
-    }
-
-    #todaymapBTN {
-        width: 100px;
-        height: 35px;
-        line-height: 20px;
-
-    }
-     #futuremapBTN {
-        width: 100px;
-        height: 35px;
-        line-height: 20px;
-
-    }
-    
-    /*오늘 수락버튼*/
-    #todayYbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 33px;
-        margin-top: 10px;
-    }
-    /*오늘 거절버튼*/
-    #todayNbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 15px;
-        margin-top: 10px;
-    }
-     /*미래 수락버튼*/
-    #futureYbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 33px;
-        margin-top: 10px;
-    }
-    /*미래 거절버튼*/
-    #futureNbtn {
-        width: 150px;
-        height: 40px;
-        margin-left: 15px;
-        margin-top: 10px;
-    }
-
-   
-
-    
-
+/*오늘 수락버튼*/
+#todayYbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 33px;
+	margin-top: 10px;
+}
+/*오늘 거절버튼*/
+#todayNbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+/*미래 수락버튼*/
+#futureYbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 33px;
+	margin-top: 10px;
+}
+/*미래 거절버튼*/
+#futureNbtn {
+	width: 150px;
+	height: 40px;
+	margin-left: 15px;
+	margin-top: 10px;
+}
 </style>
 <script src="<c:url value='/staticD/js/jquery.min.js'/>"></script>
-    <script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
-    <script src="<c:url value='/staticD/js/popper.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/bootstrap.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.easing.1.3.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.waypoints.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.stellar.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/owl.carousel.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.magnific-popup.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/aos.js'/>"></script>
-	<script src="<c:url value='/staticD/js/jquery.animateNumber.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/scrollax.min.js'/>"></script>
-	<script src="<c:url value='/staticD/js/main.js'/>"></script>
+<script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/popper.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/bootstrap.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/jquery.easing.1.3.js'/>"></script>
+<script src="<c:url value='/staticD/js/jquery.waypoints.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/jquery.stellar.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/owl.carousel.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/jquery.magnific-popup.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/aos.js'/>"></script>
+<script src="<c:url value='/staticD/js/jquery.animateNumber.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/scrollax.min.js'/>"></script>
+<script src="<c:url value='/staticD/js/main.js'/>"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=61f9f7ec-2010-4d26-97e1-806dc10dce63"></script>
+<script
+	src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=61f9f7ec-2010-4d26-97e1-806dc10dce63"></script>
 <script>
-    var count = 0;
-    
-            var d = new Date();
+var count = 0;
 
-            var thisyear = d.getFullYear() + "년";
+var d = new Date();
 
-            //오늘
-            var today = (d.getMonth() + 1) + "/" + d.getDate();
+var thisyear = d.getFullYear() + "년";
+var today;
+var past;
+var future;
+var thisday;
 
-            //과거
-            var past = "~" + (d.getMonth() + 1) + "/" + (d.getDate() - 1);
+//날짜 비교 변수
+//10월 미만, 10일 미만 은 0붙여주기
+if(d.getMonth()+1 < 10 && d.getDate() < 10){
+   thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" +"0"+ d.getDate();   
+   //그냥 10월 미만
+}else if(d.getMonth()+1 < 10){
+   thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" + d.getDate();   
+   //10일 미만
+}else if(d.getDate() < 10){
+   thisday = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + "0" + d.getDate();   
+}else if(d.getMonth() + 1 == 13){
+   thisday = d.getFullYear() + "-" + "01" + "-" + d.getDate();
+}else{
+   thisday = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+}
+   
 
-            //미래
-            var future = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "~";
 
-            var thisday = d.getFullYear() + "-" + "0" + (d.getMonth() + 1) + "-" + d.getDate();
+//과거
+//0일일경우..
+if(d.getDate()-1 < 1){
+   //3일일경우..
+   }else if(d.getMonth()+1 == '3'){
+      past = "~" + (d.getMonth() + 1) + "/28";
+      //홀수달일경우.. 
+   }else if(d.getMonth()+1 == '1' || '5' || '7' || '9' || '11'){
+      past = "~" + (d.getMonth() + 1) + "/30";
+      //짝수달일경우..
+   }else if(d.getMonth()+1 == '2' || '4' || '6' || '8' || '10' || '12'){
+      past = "~" + (d.getMonth() + 1) + "/31";
+   }else{
+      past = "~" + (d.getMonth() + 1) + "/" + (d.getDate() - 1);   
+   }
+   
+   //오늘
+    today = (d.getMonth() + 1) + "/" + d.getDate();
+
+
+//미래
+//32일이 되어버린다면..
+if(d.getDate() + 1 == 32){
+   future = (d.getMonth() + 2) + "/1" + "~";   
+}else{
+   future = (d.getMonth() + 1) + "/" + (d.getDate() + 1) + "~";
+}
+
+
+//오늘
+today = (d.getMonth() + 1) + "/" + d.getDate();
     
             
     
@@ -316,8 +360,11 @@
 
 
         function list(){
-
-
+			
+        	console.log('버튼 날짜 :' + today);
+        	console.log('리스트 날짜 :' + thisday);
+        	
+        	
             $.ajax({
                 url: 'http://localhost:8080/server/carpool/B/' + ${sessionScope.loginInfo.d_idx},
                 type: 'GET',
@@ -554,53 +601,55 @@
 
 </script>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
 
-    <!--navbar 시작-->
+	<!--navbar 시작-->
 	<%@ include file="../paymentAndReview/frame/driverNavbar.jsp"%>
 	<!--navbar 끝 -->
-	
-    <section id="home-section" class="ftco-section ftco-no-pb ftco-no-pt">
-        <div id="content">
-            <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+
+	<section id="home-section" class="ftco-section ftco-no-pb ftco-no-pt">
+		<div id="content">
+			<div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
 
 
-                <h1 class="mb-4">카풀요청</h1>
+				<h1 class="mb-4">카풀요청</h1>
 
 
-            </div>
+			</div>
 
 
-            <div id="year">
+			<div id="year">
 
-                <button id="today" class="btn btn-primary"></button>
-                <button id="future" class="btn btn-primary"></button>
-            </div>
-            <div id="listdiv">
-                <div id="list">
-                    <br>
-
-
-                    <div id="todayList"></div>
-                    <div id="futureList"></div>
+				<button id="today" class="btn btn-primary"></button>
+				<button id="future" class="btn btn-primary"></button>
+			</div>
+			<div id="listdiv">
+				<div id="list">
+					<br>
 
 
+					<div id="todayList"></div>
+					<div id="futureList"></div>
 
-                </div>
-            </div>
 
-            <div id="popup_mask"></div> <!-- 팝업 배경 DIV -->
 
-            <div id="popupDiv">
-                <!-- 팝업창 -->
-                <button id="popCloseBtn" class="btn btn-primary">닫기</button>
-                <div id="map_div"></div>
-            </div>
+				</div>
+			</div>
 
-        </div>
+			<div id="popup_mask"></div>
+			<!-- 팝업 배경 DIV -->
 
-    </section>
-    <div id="footer"></div>
+			<div id="popupDiv">
+				<!-- 팝업창 -->
+				<button id="popCloseBtn" class="btn btn-primary">닫기</button>
+				<div id="map_div"></div>
+			</div>
+
+		</div>
+
+	</section>
+	<div id="footer"></div>
 
 </body>
 

@@ -129,7 +129,7 @@
 	</div>
 
 	<script src="<c:url value='/static/js/popper.min.js'/>"></script>
-	<%-- <script src="<c:url value='/static/js/bootstrap.min.js'/>"></script> --%>
+	<script src="<c:url value='/static/js/bootstrap.min.js'/>"></script>
 	<script src="<c:url value='/static/js/jquery.easing.1.3.js'/>"></script>
 	<script src="<c:url value='/static/js/jquery.waypoints.min.js'/>"></script>
 	<script src="<c:url value='/static/js/jquery.stellar.min.js'/>"></script>

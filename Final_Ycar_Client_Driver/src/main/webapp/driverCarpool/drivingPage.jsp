@@ -128,7 +128,8 @@
 
             var size = new Tmap.Size(60, 60);
             var offset = new Tmap.Pixel(-(size.w / 2), -(size.h));
-            var icon = new Tmap.Icon('<img src="<c:url value='/staticD/images/bluecar.png'/>">', size, offset);
+            var icon = new Tmap.Icon('../staticD/images/bluecar.png', size, offset);
+            //var icon = new Tmap.Icon('<img src="<c:url value='/staticD/images/bluecar.png'/>"'>', size, offset);
 
             if (navigator.geolocation) {
                 // GeoLocation을 이용해서 접속 위치를 얻어옵니다

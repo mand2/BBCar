@@ -7,7 +7,21 @@
 * 전체 : 
 <img src="">
 
-#### 기술/구조
+#### 참여자
+* 임욱표 @[dladnrvy](https://github.com/dladnrvy)
+* 강다은 @[iDaeun](https://github.com/iDaeun)
+* 김나연 @[mand2](https://github.com/mand2)
+* 노유리 @[yforyuri](https://github.com/yforyuri)
+* 손민희 @[Miniminis](https://github.com/Miniminis)
+
+
+
+------------
+
+
+
+#### 1. 기술/구조
+
 * 웹 표준 
     * `HTML5`
     * `CSS3`
@@ -22,22 +36,24 @@
 * `MyBatis`
 * `JPA`
 * `nodeJs` 
-* 다양한 Api 사용 
-    * `jQuery`, `aJax`, `JSON` 파싱
-    * 카카오 로그인 Api 
-    * T-Map Api : 출발지-도착지 경로 검색기능 구현, GPS로 실시간 이동경로 체크기능 구현 
-    * 카카오페이 api 
-    * Toss Api 
+* 다양한 Api 사용   
+    * `jQuery`, `aJax`, `JSON` 파싱  
+    * 카카오 로그인 Api   
+    * T-Map Api : 출발지-도착지 경로 검색기능 구현, GPS로 실시간 이동경로 체크기능 구현   
+    * 카카오페이 api   
+    * Toss Api   
     * 아임포트 api 
 * `RESTful Api 구조`  
     * 서버 <--> 클라이언트 통신을 위한 REST 인터페이스 구현
-* `AWS` 배포
-    * `EC2`
+* `AWS` 배포  
+    * `EC2`  
     * `RDS`
 * `Firebase` 배포 
- 
 
-#### 버전설명
+
+
+#### 2. 버전설명
+
 * 자세한 사항은 본 repository의 커밋 내역 참고
 * v0
    * 프로젝트 기획, 업무분담
@@ -52,13 +68,40 @@
    * `nodeJs` 서버로 실시간 일대일 채팅기능, 탑승자-운전자간 연결 구현 
    * `Spring-Boot` 및 `JPA` 이용하여 일부 기능 구현
    
-#### 구현 중 겪었던 어려움 
-* 
-* 
-* 
 
-#### 프로젝트 설명 PPT 
-* 각 기능 설명 
-* 구현 중 어려웠던 점 
-* 개선사항 
+
+
+#### 3. 구현 중 겪었던 어려움 
+
+* 효율적인 프로젝트 구조 고민
+
+* API를 용이하게 사용하기 어려웠던 점들(결제,  T-map  등)
+
+* DB 테이블 관계설정 미숙으로 인한 DB 수정
+
+* Boot 및 JPA 적용   
+  간단 개념만 배운 후 바로 프로젝트에 적용해 봄.   
+  생각보다 Entity를 이용한 관계설정, DB 데이터 추출이 어려웠음
+
+* 통신 및 연동
+  프로젝트 개념 상 탑승자 운전자가 실시간으로 같은 데이터를 공유해야 하기에 socket.io를 이용
+  
+* rest 구조
+  client 컨트롤러에서 server 컨트롤러를 호출 할 때 객체를 제대로 넘길 수 없는 이슈 발생  
+  exchange 메서드로 header와 body 및 호출 메서드를 각각 설정, 해결.
+
+* 각자 기능 구현한 프로젝트를 합칠 때   
+  코드 결합 시 발생하는 세부적인 오류(예- 패키지명 혹은 클래스명 동일) 등 
+
+  
+  
+  
+
+
+
+#### 4. 프로젝트 설명 PPT 
+
+* 각 기능 설명   
+* 구현 중 어려웠던 점   
+* 개선사항   
 * [Link](https://docs.google.com/presentation/d/1_1OVTik6grzxKbo3_WMnwzl9_Jl6KYHD/edit?dls=true)

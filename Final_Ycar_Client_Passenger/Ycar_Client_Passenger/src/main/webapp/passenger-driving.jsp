@@ -84,7 +84,7 @@
       function lonlat(r_idx) {
 
           $.ajax({
-              url: 'http://localhost:8080/server/rsv/lonlat/' + r_idx,
+              url: 'http://13.125.252.85:8080/server/rsv/lonlat/' + r_idx,
               type: 'GET',
               success: function(data) {
                          

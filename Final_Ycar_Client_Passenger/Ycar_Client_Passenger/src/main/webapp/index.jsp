@@ -81,8 +81,8 @@
                                 <!--<span class="subheading pl-5">YCAR carpooling service</span>-->
                                 <h1 class="mb-4 mt-3">사용자 모드를 선택해주세요</h1>
 
-                                <p><a href="http://localhost:8080/passenger/login" class="btn btn-primary px-5 py-3 mt-3" id="modeBtn">탑승자모드 <span class="ion-ios-arrow-forward"></span></a></p>
-                                <p><a href="http://localhost:8080/driver/login" class="btn btn-primary px-5 py-3 mt-3" id="modeBtn">운전자모드 <span class="ion-ios-arrow-forward"></span></a></p>
+                                <p><a href="http://13.125.252.85:8080/passenger/login" class="btn btn-primary px-5 py-3 mt-3" id="modeBtn">탑승자모드 <span class="ion-ios-arrow-forward"></span></a></p>
+                                <p><a href="http://13.125.252.85:8080/driver/login" class="btn btn-primary px-5 py-3 mt-3" id="modeBtn">운전자모드 <span class="ion-ios-arrow-forward"></span></a></p>
                             </div>
                         </div>
                     </div>

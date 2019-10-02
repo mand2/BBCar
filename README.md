@@ -60,4 +60,4 @@
 * 각 기능 설명 
 * 구현 중 어려웠던 점 
 * 개선사항 
-* [Link](https://drive.google.com/file/d/1_1OVTik6grzxKbo3_WMnwzl9_Jl6KYHD/view?usp=sharing)
+* [Link](https://docs.google.com/presentation/d/1_1OVTik6grzxKbo3_WMnwzl9_Jl6KYHD/edit?dls=true)

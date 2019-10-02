@@ -5,7 +5,7 @@
 
 #### 흐름도
 * 전체 : 
-<img src="">
+[기본적인 흐름도 UI/UX형식으로 보러가기](https://ovenapp.io/view/QFfffnY9rAvOFqIp4uoxwwOHzGEu17o8/uXdsG)
 
 #### 참여자
 * 임욱표 @[dladnrvy](https://github.com/dladnrvy)

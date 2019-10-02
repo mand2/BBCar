@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +9,6 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
 	rel="stylesheet">
@@ -31,12 +30,17 @@
 <link rel="stylesheet" href="static/css/flaticon.css">
 <link rel="stylesheet" href="static/css/icomoon.css">
 <link rel="stylesheet" href="static/css/style.css">
+
 <link rel="stylesheet" href="static/ny/mypage.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
-	
+
 	<!--navbar 시작-->
 	<%@ include file="/paymentAndReview/frame/driverNavbar.jsp"%>
 	<!--navbar 끝 -->
@@ -62,35 +66,35 @@
 							<label for="id">ID</label> <span id="id" class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="name">NAME</label> 
-							<span id="name" class="form-control"></span>
+							<label for="name">NAME</label> <span id="name"
+								class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="nickname">NICK NAME</label> 
-							<span id="nickname" class="form-control"></span>
+							<label for="nickname">NICK NAME</label> <span id="nickname"
+								class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="email">개인 이메일주소</label> 
-							<span id="email" class="form-control"></span>
+							<label for="email">개인 이메일주소</label> <span id="email"
+								class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="company">회사명</label> 
-							<span id="company" class="form-control"></span>
+							<label for="company">회사명</label> <span id="company"
+								class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="carnum">자동차번호</label> 
-							<span id="carnum" class="form-control"></span>
+							<label for="carnum">자동차번호</label> <span id="carnum"
+								class="form-control"></span>
 						</div>
 						<div class="form-group">
-							<label for="cartype">차종</label> 
-							<span id="cartype" class="form-control"></span>
+							<label for="cartype">차종</label> <span id="cartype"
+								class="form-control"></span>
 						</div>
 
 						<div class="form-group pt-3">
 							<span class="btn py-3 px-4 btn-black" id="changeinfo1_1"
 								onclick="setMyInfo()">내정보 변경</span> <span
-								class="btn py-3 px-4 btn-primary" id="changeinfo1_2" onclick="changeMyPW()">비밀번호
-								변경</span>
+								class="btn py-3 px-4 btn-primary" id="changeinfo1_2"
+								onclick="changeMyPW()">비밀번호 변경</span>
 						</div>
 
 					</form>
@@ -108,16 +112,16 @@
 							<p id="routeNotice">운전할 때 즐겨찾는 장소를 등록 &amp; 관리해 보세요</p>
 						</div>
 						<div class="form-group">
-							<label for="myHome">집</label> 
-							<span id="myHome" class="form-control">없어욧-! 등록해주세욧-!</span>
+							<label for="myHome">집</label> <span id="myHome"
+								class="form-control">없어욧-! 등록해주세욧-!</span>
 						</div>
 						<div class="form-group">
-							<label for="myCompany">회사</label> 
-							<span id="myCompany" class="form-control">없어욧-! 등록해주세욧-!</span>
+							<label for="myCompany">회사</label> <span id="myCompany"
+								class="form-control">없어욧-! 등록해주세욧-!</span>
 						</div>
 						<div class="form-group">
-							<label for="MyEtc">기타</label> 
-							<span id="MyEtc" class="form-control">없어욧-! 등록해주세욧-!</span>
+							<label for="MyEtc">기타</label> <span id="MyEtc"
+								class="form-control">없어욧-! 등록해주세욧-!</span>
 						</div>
 						<div class="form-group pt-3">
 							<span class="btn py-3 px-4 btn-black" id="changeinfo2">등록
@@ -169,10 +173,11 @@
 							<label for="edit_cartype">차종류</label>
 							<div class="form-field">
 								<div class="select-wrap">
-									<select name="edit_cartype" id="edit_cartype" class="form-control">
+									<select name="edit_cartype" id="edit_cartype"
+										class="form-control">
 										<option id="edit_cartype_S" value="S">소형</option>
-                                        <option id="edit_cartype_M" value="M">중형</option>
-                                        <option id="edit_cartype_L" value="L">대형</option>
+										<option id="edit_cartype_M" value="M">중형</option>
+										<option id="edit_cartype_L" value="L">대형</option>
 									</select>
 								</div>
 							</div>
@@ -183,6 +188,25 @@
 						<div class="form-group pt-3">
 							<span class="btn py-3 px-4 btn-black" id="changeinfo3"
 								onclick="edit_myinfo()">내 정보 변경하기</span>
+								<span class="btn py-3 px-4 btn-black" id="changeinfo4"
+								onclick="showSignOutForm()">연차 탈퇴하기</span>
+						</div>
+					</form>
+					
+					<!-- 탈퇴 -->
+					<form class="p-3 bg-light search-property-1" id="myInfoForm5">
+						<div class="day-wrap">
+							<h3 class="pl-5">연차 탈퇴</h3>
+						</div>
+						<div class="form-group">
+							<p id="optNotice">탈퇴를 원하신다면 비밀번호를 입력해 주세요</p>
+							<input type="password" id="pwForSignout" placeholder="비밀번호 입력">
+							<span id="signOutCheckMsg" class="warn_red"></span>
+						</div>
+
+						<div class="form-group pt-3">
+							<span class="btn py-3 px-4 btn-black" id="changeinfo4"
+								onclick="signout()">연차 탈퇴하기</span>
 						</div>
 					</form>
 
@@ -238,12 +262,10 @@
 					</form>
 				</div>
 				<!--끝등록및변경:::: -->
-
 			</div>
 		</div>
 	</section>
 	<!--마이페이지-->
-
 	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
@@ -254,21 +276,21 @@
 	</div>
 
 
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="static/js/popper.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/jquery.easing.1.3.js"></script>
-    <script src="static/js/jquery.waypoints.min.js"></script>
-    <script src="static/js/jquery.stellar.min.js"></script>
-    <script src="static/js/owl.carousel.min.js"></script>
-    <script src="static/js/jquery.magnific-popup.min.js"></script>
-    <script src="static/js/aos.js"></script>
-    <script src="static/js/jquery.animateNumber.min.js"></script>
-    <script src="static/js/scrollax.min.js"></script>
+	<script src="static/js/jquery.min.js"></script>
+	<script src="static/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="static/js/popper.min.js"></script>
+	<script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/jquery.easing.1.3.js"></script>
+	<script src="static/js/jquery.waypoints.min.js"></script>
+	<script src="static/js/jquery.stellar.min.js"></script>
+	<script src="static/js/owl.carousel.min.js"></script>
+	<script src="static/js/jquery.magnific-popup.min.js"></script>
+	<script src="static/js/aos.js"></script>
+	<script src="static/js/jquery.animateNumber.min.js"></script>
+	<script src="static/js/scrollax.min.js"></script>
 
-    <script src="static/js/main.js"></script>
-    <script src="static/ny/mypage.js"></script>
+	<script src="static/js/main.js"></script>
+	<script src="static/ny/mypage.js"></script>
 
 </body>
 </html>

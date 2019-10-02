@@ -8,6 +8,7 @@ var idx = $('#hiddenIDX').val();
 $(document).ready(function() {
 	showMyInfo();
 	console.log('idx?  \n ' + idx);
+	
 });
 
 
@@ -263,4 +264,40 @@ function edit_myinfo() {
 //비밀번호 변경 관련
 function changeMyPW() {
 	location.href="mypage/changePW";
+}
+
+function showSignOutForm() {
+	displayForm();
+	$('#hiddenform').css("display", "block");
+	$('#myInfoForm5').css("display", "block");
+}
+//회원 탈퇴
+function signout() {
+	
+	var pw = $('#pwForSignout').val();
+	console.log('탈퇴신청 직전ㅇㅇ \n',pw);
+	$.ajax({
+		url: 'http://localhost:8080/driver/mypage/signout',
+		type: 'PUT',
+		data : JSON.stringify({
+			d_idx : idx,
+			pw: pw
+		}),
+		contentType : 'application/json; charset=utf-8',
+		success: function(data){
+			console.log('data? \n',data);
+			console.log('data type? \n' + typeof(data));
+			
+			if(data != 0){
+				alert('정상 탈퇴되었습니다');
+				location.href="http://localhost:8080/driver";
+			} else {
+				$('#signOutCheckMsg').html('비밀번호를 다시 입력해 주세요');
+			}
+		},
+		error : function(err) {
+			console.log('err,,,,,,gg,,,,');
+			$('#signOutCheckMsg').html('비밀번호를 다시 입력해 주세요');
+		}
+	});
 }

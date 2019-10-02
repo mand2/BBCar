@@ -146,4 +146,12 @@ public class LoginController {
 //		return template.exchange("http://localhost:8080/driver/login/findPW", HttpMethod.POST, entity, String.class);
 	}
 	
+	//로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		session.invalidate();
+		
+		return "redirect:/login";
+	}
 }

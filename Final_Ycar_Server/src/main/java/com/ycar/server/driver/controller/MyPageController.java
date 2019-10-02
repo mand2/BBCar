@@ -83,4 +83,13 @@ public class MyPageController {
 		String pw = driver.getPw();
 		return mypageService.updateMyPW(idx, pw);
 	}
+	
+	//--------------회원탈퇴
+	@CrossOrigin
+	@PutMapping("/signout")
+	public int signOut(@RequestBody Driver driver) {
+		int d_idx = driver.getD_idx();
+		String pw = driver.getPw();
+		return mypageService.signOut(d_idx, pw);
+	}
 }

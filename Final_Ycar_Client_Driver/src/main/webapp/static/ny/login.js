@@ -88,7 +88,8 @@ function login() {
 			success : function(data) {
 				console.log('성공 ㅎㅎ' + data);
 				if(data == '4'){
-					location.href="http://localhost:8080/driver/mypage";
+					location.href="http://localhost:8080/driver/driverCarpool/index.jsp";
+//					location.href="http://localhost:8080/driver/mypage";
 //					location.href="http://13.209.40.5:8080/dClient/mypage";
 				} else if (data == '3'){
 					location.href="mypage/changePW";
@@ -131,7 +132,8 @@ function loginWithKakao() {
 							if(data == 2){
 //								location.href="http://13.209.40.5:8080/dClient/mypage";
 //								location.href="http://localhost:8080/dClient/mypage";
-								location.href="http://localhost:8080/driver/mypage";
+//								location.href="http://localhost:8080/driver/mypage";
+								location.href="http://localhost:8080/driver/driverCarpool/index.jsp";
 							} else {
 								warnMsg('login_msg', '카카오로 가입해주시거나 탈퇴한 회원입니다');
 							}

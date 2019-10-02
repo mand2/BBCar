@@ -116,7 +116,7 @@ body {
       socket.on('go driving page', function(r_idx){
          console.log('탑승자님, 운행 중 페이지로 이동하실게요 '+r_idx);
          setTimeout(function(){
-            window.location.href="http://localhost:8080/passenger/passenger-driving.jsp?r_idx="+r_idx;
+            window.location.href="http://13.125.252.85:8080/passenger/passenger-driving.jsp?r_idx="+r_idx;
          }, 3000);
       });  
       
@@ -131,7 +131,7 @@ body {
          $('#pastList').css('display', 'none');
          $('#confirmList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/server/rsv/mycarpool/' + p_idx,
+            url : 'http://13.125.252.85:8080/server/rsv/mycarpool/' + p_idx,
             type : 'GET',
             success : function(data){
                var html = '';
@@ -144,8 +144,8 @@ body {
                   html += '출발지 '+ data[i].d_startpoint + '<br>\n';
                   html += '도착지 ' + data[i].d_endpoint + '<br>\n';
                   html += '요금 '+ data[i].d_fee +'원 <br>\n';
-                  html += '<button id="delete" onclick="deleteRsv('+p_idx+',' + data[i].r_idx + ')" class="btn btn-primary">카풀취소</button>';
-                  html += '<button class="btn btn-primary" onclick="drivingStart('+data[i].r_idx+')" >탑승대기</button>';
+                  html += '<button id="delete" onclick="deleteRsv('+p_idx+',' + data[i].r_idx + ')" class="btn btn-primary">카풀취소</button>\t';
+                  html += '\t<button class="btn btn-primary" onclick="drivingStart('+data[i].r_idx+')" >탑승대기</button>';
                   /* html += '<input id="hiddenR_idx" type="hidden" value="'+data[i].r_idx+'">'; */
                   html += '</div>' 
                }
@@ -156,14 +156,14 @@ body {
       }
       
       function deleteRsv(p_idx, r_idx){
-    	  if (confirm('삭제하시겠습니까?')) {
+    	  if (confirm('예약을 취소하시겠습니까?')) {
     		  $.ajax({
-    		  url : 'http://localhost:8080/server/rsv/mycarpool/'+p_idx+'/'+r_idx,
+    		  url : 'http://13.125.252.85:8080/server/rsv/mycarpool/'+p_idx+'/'+r_idx,
     		  type : 'DELETE',
     		  success : function(data) {
     			  if (data == 'success') {
     			 /*  $('#deleteModal').modal('hide'); */
-    			  alert('삭제되었습니다!');
+    			  alert('취소되었습니다!');
     			  }
     			}
     	  });
@@ -176,7 +176,7 @@ body {
          $('#pastList').css('display', 'none');
          $('#waitingList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/server/rsv/waitcarpool/' + p_idx,
+            url : 'http://13.125.252.85:8080/server/rsv/waitcarpool/' + p_idx,
             type : 'GET',
             success : function(data){
                var html = '';
@@ -196,14 +196,14 @@ body {
       }
       
      function deleteReq(p_idx, r_idx){
-    	 if (confirm('삭제하시겠습니까?')) {
+    	 if (confirm('예약을 취소하시겠습니까?')) {
     		 $.ajax({
-    		  url : 'http://localhost:8080/server/rsv/waitcarpool/'+p_idx+'/'+r_idx,
+    		  url : 'http://13.125.252.85:8080/server/rsv/waitcarpool/'+p_idx+'/'+r_idx,
     		  type : 'DELETE',
     		  success : function(data) {
     			  if (data == 'success') {
     	    			 /*  $('#deleteModal').modal('hide'); */
-    	    			  alert('삭제되었습니다!');
+    	    			  alert('취소되었습니다!');
     	    			  }
     			  	}
     		 	});
@@ -216,7 +216,7 @@ body {
          $('#confirmList').css('display', 'none');
          $('#pastList').css('display', 'block');
          $.ajax({
-            url : 'http://localhost:8080/server/rsv/pastcarpool/'+ p_idx,
+            url : 'http://13.125.252.85:8080/server/rsv/pastcarpool/'+ p_idx,
             type : 'GET',
             success : function(data){
                var html = '';

@@ -214,7 +214,7 @@ body {
 	function search(p_idx){
 		
 		$.ajax({
-			url : 'http://localhost:8080/server/rsv/searchcarpool',
+			url : 'http://13.125.252.85:8080/server/rsv/searchcarpool',
 			type : 'GET',
 			data : $('#searchForm').serialize(), 
 			success : function(data) {
@@ -238,7 +238,7 @@ body {
 	
 	function selectCarpool(dr_idx){
     	  $.ajax({
-    		  url : 'http://localhost:8080/server/rsv/carpool/' + dr_idx,
+    		  url : 'http://13.125.252.85:8080/server/rsv/carpool/' + dr_idx,
     		  type : 'GET',
     		  success : function(data){
     			  $('#p_idx').val(p_idx);
@@ -255,7 +255,7 @@ body {
       
       function requestReserve(){
     	  $.ajax({
-    		  url: 'http://localhost:8080/server/rsv/reserve/'+ p_idx,
+    		  url: 'http://13.125.252.85:8080/server/rsv/reserve/'+ p_idx,
     		  type : 'POST',
     		  data : $('#selectCp').serialize(),
     		  success : function(data) {
@@ -270,7 +270,7 @@ body {
       
   	function carpool(){
 		$.ajax({
-				url : 'http://localhost:8080/server/rsv/carpool',
+				url : 'http://13.125.252.85:8080/server/rsv/carpool',
 				type : 'GET',
 				success : function(data) {
 					var html = '';

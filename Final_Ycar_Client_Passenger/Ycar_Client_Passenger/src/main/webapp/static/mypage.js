@@ -29,7 +29,7 @@
                 }
 
                 $.ajax({
-                    url: 'http://localhost:8080/passenger/mypage',
+                    url: 'http://13.125.252.85:8080/passenger/mypage',
                     type: 'PUT',
                     data: JSON.stringify({
                         id: $('#id').val(),
@@ -44,7 +44,7 @@
                         if (data == 1) {
                             alert('내 정보 수정 성공!');
                             // 임시 비밀번호 수정한 경우를 위해 마이페이지 다시 로딩
-                            location.href = "http://localhost:8080/passenger/mypage";
+                            location.href = "http://13.125.252.85:8080/passenger/mypage";
                         }
                         if (data == 2) {
                             alert('*수정오류');
@@ -125,7 +125,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://localhost:8090/findRoute/' + idx,
+                url: 'http://13.125.252.85:8080/boot/findRoute/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	
@@ -144,7 +144,7 @@
         	var idx = $('#sessionIdx').val();
         	
         	$.ajax({
-                url: 'http://localhost:8090/findEnv/' + idx,
+                url: 'http://13.125.252.85:8080/boot/findEnv/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	

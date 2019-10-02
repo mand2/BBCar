@@ -12,7 +12,7 @@
                     .submit(
                         function() {
                             $.ajax({
-                                url: 'http://localhost:8080/passenger/login/' +
+                                url: 'http://13.125.252.85:8080/passenger/login/' +
                                     userType,
                                 type: 'POST',
                                 data: $('#form')
@@ -27,7 +27,7 @@
                                         $('#form').css(
                                             'display',
                                             'none');
-                                        location.href = "http://localhost:8080/passenger/mypage";
+                                        location.href = "http://13.125.252.85:8080/passenger/mypage";
                                     }
                                     if (data == '3') {
                                         alert('비밀번호 불일치, 다시 로그인해주세요.');
@@ -37,7 +37,7 @@
                                         // 마이페이지 -> 내 정보 수정
                                         // (비밀번호 변경에
                                         // cursor올리기)
-                                        location.href = "http://localhost:8080/passenger/mypage?user=temp";
+                                        location.href = "http://13.125.252.85:8080/passenger/mypage?user=temp";
                                     }
                                 }
                             });
@@ -58,7 +58,7 @@
                         success: function(res) {
                             var id = res.id;
                             $.ajax({
-                                url: 'http://localhost:8080/passenger/login/kakao/' + id +
+                                url: 'http://13.125.252.85:8080/passenger/login/kakao/' + id +
                                     '/' + userType,
                                 type: 'GET',
                                 success: function(data) {
@@ -91,7 +91,7 @@
 
         $('#findIdForm').submit(function() {
             $.ajax({
-                url: 'http://localhost:8080/passenger/login/findId/' + userType,
+                url: 'http://13.125.252.85:8080/passenger/login/findId/' + userType,
                 type: 'POST',
                 data: $('#findIdForm').serialize(),
                 success: function(data) {
@@ -119,7 +119,7 @@
 
         $('#findPwForm').submit(function() {
             $.ajax({
-                url: 'http://localhost:8080/passenger/login/findPw/' + userType,
+                url: 'http://13.125.252.85:8080/passenger/login/findPw/' + userType,
                 type: 'POST',
                 data: $('#findPwForm').serialize(),
                 success: function(data) {
@@ -146,5 +146,5 @@
 
         // 회원가입으로 이동
         function join() {
-            location.href = "http://localhost:8080/passenger/join";
+            location.href = "http://13.125.252.85:8080/passenger/join";
         }

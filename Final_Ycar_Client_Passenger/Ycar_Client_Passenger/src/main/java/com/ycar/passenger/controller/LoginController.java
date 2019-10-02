@@ -59,7 +59,7 @@ public class LoginController {
 		Map<String, Object> maps = new HashMap<String, Object>();
 
 		if (userType == 1) {
-			maps = rt.postForObject("http://localhost:8080/server/members/login", map, Map.class);
+			maps = rt.postForObject("http://13.125.252.85:8080/server/members/login", map, Map.class);
 		}
 		if (userType == 2) {
 			// 운전자 SERVER로 전달하기!!
@@ -100,7 +100,7 @@ public class LoginController {
 		Map<String, Object> maps = new HashMap<String, Object>();
 
 		if (userType == 1) {
-			maps = rt.getForObject("http://localhost:8080/server/members/login/{id}", Map.class, id);
+			maps = rt.getForObject("http://13.125.252.85:8080/server/members/login/{id}", Map.class, id);
 		}
 		if (userType == 2) {
 			// 운전자 SERVER로 전달하기!!
@@ -146,7 +146,7 @@ public class LoginController {
 		int result = 0;
 		
 		if(userType == 1) {
-			result = rt.exchange("http://localhost:8080/server/members/login/findId", HttpMethod.POST, entity, Integer.class).getBody();
+			result = rt.exchange("http://13.125.252.85:8080/server/members/login/findId", HttpMethod.POST, entity, Integer.class).getBody();
 			//result = rt.postForObject("http://localhost:9090/passenger/members/login/findId", map, Integer.class);
 		}
 		if (userType == 2) {
@@ -171,7 +171,7 @@ public class LoginController {
 		int result = 0;
 		
 		if(userType == 1) {
-			result = rt.postForObject("http://localhost:8080/server/members/login/findPw", map, Integer.class);
+			result = rt.postForObject("http://13.125.252.85:8080/server/members/login/findPw", map, Integer.class);
 			System.out.println(result);
 		}
 		if (userType == 2) {

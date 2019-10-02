@@ -41,7 +41,7 @@ public class JoinController {
 		// int result = template.postForObject("http://localhost:8080/driver/join", driverInfo, Integer.class);
 		// System.out.println("잘들어갔니 4 ====" + result);
 		// return new ResponseEntity<String>(result>0 ? "success":"fail",HttpStatus.OK);
-		return template.exchange("http://localhost:8080/server/members/join", HttpMethod.POST, entity, String.class);
+		return template.exchange("http://13.125.252.85:8080/server/members/join", HttpMethod.POST, entity, String.class);
 	}
 
 }

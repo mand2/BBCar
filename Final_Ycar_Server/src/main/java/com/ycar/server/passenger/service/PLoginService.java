@@ -101,7 +101,7 @@ public class PLoginService {
 				message.setSubject("[연차 풀카서비스]아이디찾기 발송 이메일 입니다", "UTF-8");
 				String text = "<h1>문의하신 이용자 ID는 ";
 				text += changedId + "입니다</h1>";
-				text += "<a href=\"http://localhost:8080/passenger\">로그인하기</a>";
+				text += "<a href=\" http://13.125.252.85:8080/passenger\">로그인하기</a>";
 				message.setText(text, "UTF-8", "html");
 				message.setFrom(new InternetAddress("bitcamptestemail@gmail.com"));
 				message.addRecipient(RecipientType.TO, new InternetAddress(info.getEmail(), "USER", "UTF-8"));
@@ -168,7 +168,7 @@ public class PLoginService {
 				message.setSubject("[연차 풀카서비스]비밀번호찾기 발송 이메일 입니다", "UTF-8");
 				String text = "<h1>임시비밀번호: ";
 				text += sb.toString()+ "</h1>";
-				text += "<h2><a href=\"http://localhost:8080/passenger\">비밀번호를 변경해주세요</a></h2>";
+				text += "<h2><a href=\" http://13.125.252.85:8080/passenger\">비밀번호를 변경해주세요</a></h2>";
 				message.setText(text, "UTF-8", "html");
 				message.setFrom(new InternetAddress("bitcamptestemail@gmail.com"));
 				message.addRecipient(RecipientType.TO, new InternetAddress(info.getEmail(), "USER", "UTF-8"));

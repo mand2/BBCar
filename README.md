@@ -1,7 +1,8 @@
 # Y-Car Project
 > 직장인을 위한 안전한 카풀앱, 우리회사 붕붕카 - 결제 및 후기 페이지 <br>
 > [탑승자페이지 Link](http://13.125.252.85:8080/passenger/)<br>
-> [운전자페이지 Link](http://13.125.252.85:8080/driver/)
+> [운전자페이지 Link](http://13.125.252.85:8080/driver/) <br>
+> [기획서페이지 Link](https://github.com/mand2/y-car-project/blob/master/%EA%B8%B0%ED%9A%8D%EC%84%9C/%EA%B8%B0%ED%9A%8D%EC%84%9C%20ver.1.0.1.pdf) <br>
 
 #### 흐름도
 * 전체 : 

@@ -23,30 +23,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<beans:bean id="DriverInterceptor" class="com.ycar.driver.client.interceptor.DriverInterceptor"/>
-	
-	
-	<!-- 인터셉터: 로그인 확인 -->
-	<interceptors>
-		<interceptor>
-			<!-- <mapping path="/**"/> -->
-		
-			<mapping path="/mypage"/>
-			<!-- 
-			사용불가. 다른 사람들은 jsp로 설정하여서 filter로 처리해야 함.
-			<mapping path="/driverCarpool/**"/>
-			<mapping path="/paymentAndReview/**"/> 
-			-->
-			
- 			<exclude-mapping path="/join/**"/>
-			<exclude-mapping path="/static/**"/>
-			<exclude-mapping path="/staticD/**"/>
-			<beans:ref bean="DriverInterceptor"/>
-		</interceptor>
-	</interceptors>	
-
-	
-	
 	<context:component-scan base-package="com.ycar.driver" />
+	
+	
 	
 </beans:beans>

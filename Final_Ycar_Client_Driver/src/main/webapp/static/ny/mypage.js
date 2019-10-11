@@ -24,8 +24,8 @@ function showMyInfo() {
 	$.ajax({
 //		url : 'http://13.209.40.5:8080/dClient/mypage/' + idx,
 //		url : 'http://localhost:8080/dClient/mypage/' + idx,
-//		url : 'http://localhost:8080/driver/mypage/' + idx,
-		url : 'http://13.125.252.85:8080/driver/mypage/' + idx,
+		url : 'http://localhost:8080/driver/mypage/' + idx,
+//		url : 'http://13.125.252.85:8080/driver/mypage/' + idx,
 		type : 'GET',
 		success : function(data) {
 
@@ -208,8 +208,10 @@ function getd_option() {
 function edit_doption() {
 	var option = getd_option();
 	$.ajax({
-		url : 'http://13.125.252.85:8080/driver/mypage/' ,
-//		url : 'http://localhost:8080/driver/mypage/' ,
+//		url : 'http://13.125.252.85:8080/driver/mypage/' ,
+		url : 'http://localhost:8080/driver/mypage/' ,
+		
+		
 //		url : 'http://13.209.40.5:8080/dClient/mypage/' ,
 //		url : 'http://localhost:8080/dClient/mypage/' ,
 		type : 'PUT',
@@ -239,8 +241,10 @@ function edit_myinfo() {
 //	console.log('carnum' + carnum);
 //	console.log('cartype' + cartype);
 	$.ajax({
-		url : 'http://13.125.252.85:8080/driver/mypage/' ,
-//		url : 'http://localhost:8080/driver/mypage/' ,
+//		url : 'http://13.125.252.85:8080/driver/mypage/' ,
+		url : 'http://localhost:8080/driver/mypage/' ,
+		
+		
 //		url : 'http://13.209.40.5:8080/dClient/mypage/' ,
 //		url : 'http://localhost:8080/dClient/mypage/' ,
 		type : 'PUT',
@@ -280,8 +284,8 @@ function signout() {
 	var pw = $('#pwForSignout').val();
 	console.log('탈퇴신청 직전ㅇㅇ \n',pw);
 	$.ajax({
-//		url: 'http://localhost:8080/driver/mypage/signout',
-		url: 'http://13.125.252.85:8080/driver/mypage/signout',
+		url: 'http://localhost:8080/driver/mypage/signout',
+//		url: 'http://13.125.252.85:8080/driver/mypage/signout',
 		type: 'PUT',
 		data : JSON.stringify({
 			d_idx : idx,
@@ -294,8 +298,8 @@ function signout() {
 			
 			if(data != 0){
 				alert('정상 탈퇴되었습니다');
-//				location.href="http://localhost:8080/driver";
-				location.href="http://13.125.252.85:8080/driver";
+				location.href="http://localhost:8080/driver";
+//				location.href="http://13.125.252.85:8080/driver";
 			} else {
 				$('#signOutCheckMsg').html('비밀번호를 다시 입력해 주세요');
 			}

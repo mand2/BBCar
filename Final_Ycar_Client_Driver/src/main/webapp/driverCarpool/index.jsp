@@ -207,7 +207,7 @@
         background: #6258a4;
         color: #fff;
         margin-bottom: 10px;
-        
+    }
 </style>
 
     
@@ -242,10 +242,7 @@
         <div class="container">
             <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
                 <div class="col-md-12 heading-section ftco-animate">
-
-                    <h2 class="mb-4">카풀등록
-                    </h2>
-
+                    <h2 id="regcarpoolLetter" class="mb-4">카풀등록</h2>
                 </div>
             </div>
             <div class="row">

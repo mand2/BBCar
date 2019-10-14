@@ -1,4 +1,4 @@
-var socket = io('http://localhost:3000');
+var socket = io('http://54.180.123.46:3000/');
 $(document).ready(function(){
 
 	//url 처음부터 ?까지 삭제 
@@ -37,7 +37,7 @@ $(document).ready(function(){
 		//1. 결제 DB에 저장 
 		//2. 결제 내역 보여주기 위해 따로 매서드로 페이지 구성 처리 
 		$.ajax({
-			url : " http://localhost:8090/parboot/payment/toss",
+			url : "http://13.209.48.59:8090/parboot/payment/toss",
 			type: 'post',
 			data : JSON.stringify({
 				r_idx : r_idx,

@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>YCAR</title>
-<script src="http://localhost:3000/socket.io/socket.io.js"></script> 
+<script src="http://54.180.123.46:3000/socket.io/socket.io.js"></script> 
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <!-- datepicker -->
@@ -96,12 +96,9 @@ body {
       </div>
    </div>
 </div>
-
-
-
       <script>
       var p_idx = ${sessionScope.login.idx};
-      var socket = io('http://localhost:3000');
+      var socket = io('http://54.180.123.46:3000/');
 
       function drivingStart (r_idx) {
     		//소켓 연결 
@@ -110,6 +107,8 @@ body {
           socket.on('startroom join result', function(msg){
              console.log(msg);
           });
+          
+          alert('운전자가 운행 시작 버튼을 누르면 자동으로 운행이 시작됩니다. 조금만 기다려주세요!');
       }
       
       //운행중 page 로 redirect 

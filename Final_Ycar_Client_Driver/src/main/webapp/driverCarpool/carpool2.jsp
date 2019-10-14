@@ -34,7 +34,7 @@
 	
 	
 	<!-- chat socket -->
-   <script src="http://localhost:5000/socket.io/socket.io.js"></script> 
+   <script src="http://13.125.134.106:5000/socket.io/socket.io.js"></script> 
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
@@ -758,7 +758,7 @@ function fn_chat(r_idx){
       
       $('#roomTitle').addClass('roomactive');
   }
-  const socketChat = io('http://localhost:5000');
+  const socketChat = io('http://13.125.134.106:5000');
   
   let chatView = document.getElementById('chatView');
   let chatForm = document.getElementById('chatForm');

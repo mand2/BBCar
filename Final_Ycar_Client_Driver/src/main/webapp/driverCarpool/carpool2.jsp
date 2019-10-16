@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 
 <head>
-    <title>리스트 출력</title>
+<title>리스트 출력</title>
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
 
 
 <link rel="stylesheet"
@@ -27,18 +31,21 @@
 <link rel="stylesheet" href="<c:url value='/staticD/css/style.css'/>">
 <link rel="stylesheet"
 	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
+<!--<link rel="stylesheet" href="/resources/demos/style.css">-->
 
-    <!-- 한글 폰트 -->
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-	
-	
-	<!-- chat socket -->
-   <script src="http://13.125.134.106:5000/socket.io/socket.io.js"></script> 
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- 한글 폰트 -->
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap"
+	rel="stylesheet">
+
+
+<!-- chat socket -->
+<!-- <script src="http://13.125.134.106:5000/socket.io/socket.io.js"></script> -->
+<script src="http://localhost:5000/socket.io/socket.io.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <style>
-
 #content {
 	margin: 0 auto;
 	/*max-width: 100%;*/
@@ -140,11 +147,10 @@ body {
 	height: 40px;
 }
 
-span {
+/* span {
 	color: black;
 	font-weight: bolder;
-}
-
+} */
 .CommuteSPAN {
 	display: inline-block;
 	font-weight: 100;
@@ -227,94 +233,97 @@ span {
 	margin-top: 10px;
 }
 
-    
-    /* --------------------------------- */
-	/*             채 팅 c s s           */    
-    #container {
-        width: 400px;
-        height: 600px;
-        border: 1px solid black;
-        background: #FFFEF4;
-        margin: 50px auto;
-        font-family: 'Noto Sans KR', sans-serif;
-    }
-    #chatView {
-        height: 90%;
-        overflow-y: scroll;
-    }
-    #chatForm {
-        height: 10%;
-        border-top: 1px solid black;
-        text-align: center;
-    }
-    #msg {
-        width: 70%;
-        height: 63%;
-        line-height: 32px;
-        border-radius: 8px;
-        margin: 10px 0;
-        padding: 5px;
-        font-family: 'Noto Sans KR', sans-serif;
-    }
-    #send {
-        width: 16%;
-        height: 34px;
-        border-radius: 50px;
-        background: #413A6D;
-        color: white;
-        font-family: 'Noto Sans KR', sans-serif;
-        margin-left: 5px;
-    }
-    .msgLine {
-        margin: 15px;
-        clear: both;
-    }
-    .msgBox {
-        border: 1px solid black;
-        background: skyblue;
-        padding: 2px 5px;
-        border-radius: 10px;
-        font-size: 14px;
-    }
-    .me {
-        color: #fff;
-    }
-    
-    .btn_chat {
-        background-color:  #413A6D;
-        display: inline-block;
-        color: #fff;
-        padding: 2px 10px;
-        margin-top: 10px;
-    }
-	#roomTitle {
-	    background-color: #ccc;
-	    text-align: center;
-	    padding: 10px 0;
-	    color: #fff;
-	}
-	
-	.roomactive {
-	    background-color: #6258A4 !important;
-	}
-	
-	.infoTxt {
-		font-size: 10px;
-		text-align: left;
-		clear: both;
-	}
-	
-	.bold {
-		font-weight: bold;
-		color: #000;
-	}
-        
-	/*             채 팅 c s s           */  
-    /* --------------------------------- */
+/* --------------------------------- */
+/*             채 팅 c s s           */
+#container {
+	width: 400px;
+	height: 600px;
+	border: 1px solid black;
+	background: #FFFEF4;
+	margin: 50px auto;
+	font-family: 'Noto Sans KR', sans-serif;
+}
 
+#chatView {
+	height: 90%;
+	overflow-y: scroll;
+}
 
-    
+#chatForm {
+	height: 10%;
+	border-top: 1px solid black;
+	text-align: center;
+}
 
+#msg {
+	width: 70%;
+	height: 63%;
+	line-height: 32px;
+	border-radius: 8px;
+	margin: 10px 0;
+	padding: 5px;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#send {
+	width: 16%;
+	height: 34px;
+	border-radius: 50px;
+	background: #413A6D;
+	color: white;
+	font-family: 'Noto Sans KR', sans-serif;
+	margin-left: 5px;
+}
+
+.msgLine {
+	margin: 15px;
+	clear: both;
+}
+
+.msgBox {
+	border: 1px solid black;
+	background: skyblue;
+	padding: 2px 5px;
+	border-radius: 10px;
+	font-size: 14px;
+}
+
+.me {
+	color: #fff;
+}
+
+.btn_chat {
+	background-color: #413A6D;
+	display: inline-block;
+	color: #fff;
+	padding: 2px 10px;
+	margin-top: 10px;
+}
+
+#roomTitle {
+	background-color: #ccc;
+	text-align: center;
+	padding: 10px 0;
+	color: #fff;
+}
+
+.roomactive {
+	background-color: #6258A4 !important;
+}
+
+.infoTxt {
+	font-size: 10px;
+	text-align: left;
+	clear: both;
+}
+
+.bold {
+	font-weight: bold;
+	color: #000;
+}
+
+/*             채 팅 c s s           */
+/* --------------------------------- */
 </style>
 
 <script>
@@ -674,63 +683,66 @@ today = (d.getMonth() + 1) + "/" + d.getDate();
 
 </script>
 
-<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+<body data-spy="scroll" data-target=".site-navbar-target"
+	data-offset="300">
 
-    <!--navbar 시작-->
+	<!--navbar 시작-->
 	<%@ include file="../paymentAndReview/frame/driverNavbar.jsp"%>
 	<!--navbar 끝 -->
-	
-    <section id="home-section" class="ftco-section ftco-no-pb ftco-no-pt">
-        <div id="content">
-            <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
-                <h1 class="mb-4">카풀요청</h1>
-            </div>
-            <div id="year">
-                <button id="today" class="btn btn-primary"></button>
-                <button id="future" class="btn btn-primary"></button>
-            </div>
-            <div id="listdiv">
-                <div id="list">
-                    <br>
-                    <div id="todayList"></div>
-                    <div id="futureList"></div>
-                </div>
-            </div>
 
-            <div id="popup_mask"></div> <!-- 팝업 배경 DIV -->
+	<section id="home-section" class="ftco-section ftco-no-pb ftco-no-pt">
+		<div id="content">
+			<div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+				<h1 class="mb-4">카풀요청</h1>
+			</div>
+			<div id="year">
+				<button id="today" class="btn btn-primary"></button>
+				<button id="future" class="btn btn-primary"></button>
+			</div>
+			<div id="listdiv">
+				<div id="list">
+					<br>
+					<div id="todayList"></div>
+					<div id="futureList"></div>
+				</div>
+			</div>
 
-            <div id="popupDiv">
-                <!-- 팝업창 -->
-                <button id="popCloseBtn" class="btn btn-primary">닫기</button>
-                <div id="map_div"></div>
-            </div>
-	
-            
-            <!-- chat room -->
-            <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
-	            <input type="hidden"  value="${sessionScope.loginInfo.nickname}" id="chatNickName">
-            </div>
-            <h1 class="mb-4">채팅</h1>
+			<div id="popup_mask"></div>
+			<!-- 팝업 배경 DIV -->
 
-            <div id="container">
-        		<div id="chatView">
-        			<div id="roomTitle">채팅방준비중</div>
-        		</div>
-		        <form id="chatForm" onsubmit="return false">
-		            <input type="text" id="msg">
-		            <input type="submit" id="send" value="전송">
-		        </form>
-		    </div>
-
-        </div>
-
-    </section>
-    <div id="footer"></div>
+			<div id="popupDiv">
+				<!-- 팝업창 -->
+				<button id="popCloseBtn" class="btn btn-primary">닫기</button>
+				<div id="map_div"></div>
+			</div>
 
 
-<script src="<c:url value='/staticD/js/jquery.min.js'/>"></script>
-    <script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
-    <script src="<c:url value='/staticD/js/popper.min.js'/>"></script>
+			<!-- chat room -->
+			<div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+				<input type="hidden" value="${sessionScope.loginInfo.nickname}"
+					id="chatNickName">
+			</div>
+			<h1 class="mb-4">채팅</h1>
+
+			<div id="container">
+				<div id="chatView">
+					<div id="roomTitle">채팅방준비중</div>
+				</div>
+				<form id="chatForm" onsubmit="return false">
+					<input type="text" id="msg"> <input type="submit" id="send"
+						value="전송">
+				</form>
+			</div>
+
+		</div>
+
+	</section>
+	<div id="footer"></div>
+
+
+	<script src="<c:url value='/staticD/js/jquery.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
+	<script src="<c:url value='/staticD/js/popper.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.easing.1.3.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.waypoints.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.stellar.min.js'/>"></script>
@@ -739,31 +751,33 @@ today = (d.getMonth() + 1) + "/" + d.getDate();
 	<script src="<c:url value='/staticD/js/aos.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.animateNumber.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/scrollax.min.js'/>"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=61f9f7ec-2010-4d26-97e1-806dc10dce63"></script>
-<script>
+	<script
+		src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=61f9f7ec-2010-4d26-97e1-806dc10dce63"></script>
+	<script>
 
 /**********************
     	  채팅용
 **********************/
+/*   const socketChat = io('http://13.125.134.106:5000'); */
+	const socketChat = io('http://localhost:5000');
 	var chat_nickname = $('#chatNickName').val();
 	console.log('nickname type? \n' + typeof(chat_nickname));
 	
-function fn_chat(r_idx){
- 	
-	socketChat.emit('set room', {room: r_idx, nickname: chat_nickname});
-      //title 재정의
-      document.getElementById('roomTitle').innerHTML = r_idx + '번 방 개설!' + '<input type="hidden" id="chatIdx" value = "'+r_idx+'">';
-      
-      $('#roomTitle').addClass('roomactive');
-  }
-  const socketChat = io('http://13.125.134.106:5000');
+	function fn_chat(r_idx){
+	 	
+		socketChat.emit('set room', {room: r_idx, nickname: chat_nickname});
+	      //title 재정의
+	      document.getElementById('roomTitle').innerHTML = r_idx + '번 방 개설!' + '<input type="hidden" id="chatIdx" value = "'+r_idx+'">';
+	      
+	      $('#roomTitle').addClass('roomactive');
+	}
   
-  let chatView = document.getElementById('chatView');
-  let chatForm = document.getElementById('chatForm');
+	  let chatView = document.getElementById('chatView');
+	  let chatForm = document.getElementById('chatForm');
 
-  chatForm.addEventListener('submit', function() {
+	chatForm.addEventListener('submit', function() {
       let msg = $('#msg');
 
       if (msg.val() == '') {
@@ -793,20 +807,22 @@ function fn_chat(r_idx){
   });
   
   socketChat.on('SEND', function(nickname, msg, date) {
-      //msgData: room, nickname, parsedate, msg
-      let msgLine =  $('<div class="msgLine">');
-      let msgBox = $('<div class="msgBox">');
-      
-      msgLine.append('<p class="infoTxt bold">'+nickname+'</p>');
-      
-      msgBox.append(msg);
-      msgBox.css('display', 'inline-block');
-      msgBox.css('float', 'left');
-      msgLine.append(msgBox);
-      msgLine.append('<p class="infoTxt">'+date+'</p>');
-      
-      $('#chatView').append(msgLine);
-      chatView.scrollTop = chatView.scrollHeight;
+	  if(nickname != chat_nickname){
+		//msgData: room, nickname, parsedate, msg
+	      let msgLine =  $('<div class="msgLine">');
+	      let msgBox = $('<div class="msgBox">');
+	      
+	      msgLine.append('<p class="infoTxt bold">'+nickname+'</p>');
+	      
+	      msgBox.append(msg);
+	      msgBox.css('display', 'inline-block');
+	      msgBox.css('float', 'left');
+	      msgLine.append(msgBox);
+	      msgLine.append('<p class="infoTxt">'+date+'</p>');
+	      
+	      $('#chatView').append(msgLine);
+	      chatView.scrollTop = chatView.scrollHeight;
+	  }
       
   });
 
@@ -817,5 +833,4 @@ function fn_chat(r_idx){
 
 
 </body>
-
 </html>

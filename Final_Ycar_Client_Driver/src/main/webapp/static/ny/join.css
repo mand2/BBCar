@@ -130,7 +130,9 @@
     #idchkbox,
     #pwchkbox,
     #pw2chkbox,
-    #emailchkbox {
+    #emailchkbox,
+    #cmchkbox,
+    #comchkbox {
         display: none;
     }    
  

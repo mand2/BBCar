@@ -15,6 +15,7 @@
         <%-- <li class="nav-item"><a href="<c:url value='/driverCarpool/carpool.jsp'/>" class="nav-link"><span>카풀요청</span></a></li> --%>
         <li class="nav-item"><a href="<c:url value='/driverCarpool/carpool.jsp'/>" class="nav-link"><span>카풀요청</span></a></li>        
         <li class="nav-item"><a href="<c:url value='/driverCarpool/carpoolList.jsp'/>" class="nav-link"><span>나의카풀</span></a></li>
+        <li class="nav-item"><a href="<c:url value='/driverCarpool/carpool2.jsp'/>" class="nav-link"><span>채팅</span></a></li>
         <li class="nav-item"><a href="<c:url value='/paymentAndReview/payment/driverPayList.jsp'/>" class="nav-link"><span>결제</span></a></li>
         <li class="nav-item"><a href="<c:url value='/paymentAndReview/review/driverReviewList.jsp'/>" class="nav-link"><span>후기</span></a></li>
         <li class="nav-item"><a href="<c:url value='/mypage'/>" class="nav-link"><span>마이페이지</span></a></li>

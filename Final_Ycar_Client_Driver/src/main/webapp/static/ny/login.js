@@ -91,8 +91,6 @@ function login() {
 				if(data == '4'){
 					location.href="http://13.125.252.85:8080/driver/driverCarpool/index.jsp";
 //					location.href="http://localhost:8080/driver/driverCarpool/index.jsp";
-//					location.href="http://localhost:8080/driver/mypage";
-//					location.href="http://13.209.40.5:8080/dClient/mypage";
 				} else if (data == '3'){
 					location.href="mypage/changePW";
 				} else if( data == '2' || data == '1'){

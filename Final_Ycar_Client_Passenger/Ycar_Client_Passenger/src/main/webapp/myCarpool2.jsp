@@ -5,9 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>YCAR</title>
-<!-- <script src="http://localhost:3000/socket.io/socket.io.js"></script> -->
 
-<!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
 <!-- datepicker -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet"
@@ -18,7 +16,7 @@
 <!-- bootstrap -->
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!-- font -->
@@ -42,8 +40,8 @@
 
 
 <!-- chat socket -->
-<!-- <script src="http://13.125.134.106:5000/socket.io/socket.io.js"></script> -->
-<script src="http://localhost:5000/socket.io/socket.io.js"></script>
+<script src="http://13.125.134.106:5000/socket.io/socket.io.js"></script>
+<!-- <script src="http://localhost:5000/socket.io/socket.io.js"></script> -->
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -237,41 +235,9 @@ body {
 
 
 	<script>
-		$(document).ready(function() {
-			confirmList();
-			waitingList();
+	var p_idx = ${sessionScope.login.idx};
 
-			var p_idx = $
-			{
-				sessionScope.login.idx
-			}
-			;
-			/* 
-			//소켓 연결 
-			var socket = io('http://localhost:3000');
-			var hiddenridx = $('#hiddenR_idx').val();
-			console.log('소켓 연결을 위한 hidden r_idx '+hiddenridx);
-			socket.emit('join start room', r_idx); 
-			socket.on('startroom join result', function(msg){
-			   console.log(msg);
-			});
-			//운행중 page 로 redirect 
-			socket.on('go driving page', function(r_idx){
-			 console.log('탑승자님, 운행 중 페이지로 이동하실게요 '+r_idx);
-			 setTimeout(function(){
-			    window.location.href="http://localhost:8080/server/rsv/passenger-driving.jsp?r_idx="+r_idx;
-			 }, 3000);
-			});     
-			 */
-
-		});
-
-		function confirmRsv(p_idx) {
-			var p_idx = $
-			{
-				sessionScope.login.idx
-			}
-			;
+		function confirmRsv() {
 			$('#waitingList').css('display', 'none');
 			$('#pastList').css('display', 'none');
 			$('#confirmList').css('display', 'block');
@@ -328,12 +294,7 @@ body {
 			}
 		}
 
-		function waitingRsv(p_idx) {
-			var p_idx = $
-			{
-				sessionScope.login.idx
-			}
-			;
+		function waitingRsv() {
 			$('#confirmList').css('display', 'none');
 			$('#pastList').css('display', 'none');
 			$('#waitingList').css('display', 'block');
@@ -387,11 +348,6 @@ body {
 		}
 
 		function pastRsv() {
-			var p_idx = $
-			{
-				sessionScope.login.idx
-			}
-			;
 			$('#waitingList').css('display', 'none');
 			$('#confirmList').css('display', 'none');
 			$('#pastList').css('display', 'block');
@@ -439,8 +395,7 @@ body {
 		/**********************
 		 채팅용
 		 **********************/
-/* 		const socketChat = io('http://13.125.134.106:5000'); */
-		const socketChat = io('http://localhost:5000');
+ 		const socketChat = io('http://13.125.134.106:5000'); 
 		var chat_nickname = $('#chatNickName').val();
 		console.log('nickname type? \n' + typeof (chat_nickname));
 

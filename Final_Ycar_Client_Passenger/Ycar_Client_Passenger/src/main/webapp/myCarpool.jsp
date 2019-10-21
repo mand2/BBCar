@@ -178,6 +178,7 @@ function confirmRsv(){
 				html += '<span class="fitem">요금</span>\t'+ data[i].d_fee + '원 <br>\n';
 				html += '<span id="frdate">예약일자 ' + data[i].r_date+ '</span><br>\n';
 				html += '<button id="view" onclick="viewRoute('+ data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')" class="btn btn-primary rsvsbtn" data-toggle="modal" data-target="#viewModal">경로보기</button>\t';
+				html += '<button class="btn btn-primary rsvsbtn" onclick="drivingStart('+data[i].r_idx+')" >탑승대기</button>\t';
 				html += '<button id="delete" onclick="deleteRsv(' + p_idx + ',' + data[i].r_idx + ')" class="btn btn-primary rsvsbtn">카풀취소</button>';
 				html += '</div>'
 				}
@@ -219,6 +220,7 @@ function waitingRsv(){
 					html += '<span class="fitem">도착지 </span>\t ' + data[i].d_endpoint + '<br>\n';
 					html += '<span class="fitem">요금</span>\t' + data[i].d_fee + '원 <br>\n';
 					html += '<span id="frdate">예약요청일자 '+ data[i].r_date + '</span><br>\n';
+					html += '<button id="view" onclick="viewRoute('+ data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')" class="btn btn-primary rsvsbtn" data-toggle="modal" data-target="#viewModal">경로보기</button>\t';
 					html += '<button id="delete" onclick="deleteReq('+ p_idx + ',' + data[i].r_idx + ')" class="btn btn-primary rsvsbtn">요청취소</button>';
 					html += '</div>'
 					}

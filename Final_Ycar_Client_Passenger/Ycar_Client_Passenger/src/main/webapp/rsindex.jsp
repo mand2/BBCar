@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>YCAR</title>
+<script src="http://54.180.123.46:3000/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <!-- datepicker -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

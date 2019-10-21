@@ -22,7 +22,6 @@
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
 <style>
-<style>
 body {
    background-color: #FFFEF4;
    font-family: 'Noto Sans KR', sans-serif;

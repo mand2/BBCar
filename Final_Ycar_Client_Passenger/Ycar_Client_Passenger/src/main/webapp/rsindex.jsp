@@ -1,22 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>YCAR</title>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <!-- datepicker -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 <!-- tmap -->
 <script src="https://apis.openapi.sk.com/tmap/js?version=1&format=javascript&appKey=5beda631-7db0-4be9-b0bd-b6b5a7f41945"></script>
 <!-- bootstrap -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<link href="static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="<c:url value='/static/css/bootstrap.min.css'/>">
+<link rel="stylesheet" href="<c:url value='/static/style.css'/>">
+<link rel="stylesheet" href="<c:url value='/static/css/animate.css'/>">
 <!-- font -->
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="static/style.css">
+
 <style>
 body {
 	background-color: #FFFEF4;
@@ -54,7 +57,7 @@ body {
 }
 .rsvsbtn {
 	display: inline-block !important;
-	width: 200px !important;
+	width: 217px !important;
 	height: 40px;
 }
 .modal-body {
@@ -62,6 +65,29 @@ body {
 }
 .inputborder {
 	border: 0px;
+}
+.listed{
+	text-align: center;
+	margin-bottom:100px;
+}
+#match {
+	color:black;
+	text-align: left;
+	margin: 30px 0 0 15px;
+	background-color: #FEFFFB;
+}
+#matchimg{
+	float: left;
+	width: 130px;
+	display:inline-block;
+	margin: 0 30px 0 30px;
+}
+#fdate{
+	font-size:25px;
+	font-weight:bolder;
+}
+.fitem{
+	color: #999999;
 }
 </style>
 </head>
@@ -138,13 +164,10 @@ body {
 	<!-- ------------------카풀검색폼------------------ -->
 	<br><br>
 	<div class="listed">
-		<div id=searchCarpoolList></div>
+		<div id="searchCarpoolList"></div>
+		<div id="noresult"></div>
 	</div>
 
- 	<div class="listed" style="display: none">
-		<input type="button" onclick="carpool();" value="전체카풀보기">
-		<div id="carpoolList"></div>
-	</div>
 </div>
 
 
@@ -160,7 +183,7 @@ body {
       </div>
       <div class="modal-body">
       <form id="selectCp">
-      <input type="hidden" id="p_idx" name="p_idx" value="${login.idx}"> <!-- 벨류값 빼야함!!!!!!!!!!!!!!!!!!! -->
+      <input type="hidden" id="p_idx" name="p_idx" value="${login.idx}"> 
       <input type="hidden" id="dr_idx" name="dr_idx">
       카풀날짜 <input type="text" id="d_date" name="d_date" class="inputborder" readonly><br>
       픽업시간 <input type="text" id="d_starttime" name="d_starttime" class="inputborder" readonly> - <input type="text" id="d_endtime" name="d_endtime" class="inputborder" readonly><br>
@@ -178,65 +201,60 @@ body {
 </div>
 
 <script>
-	var p_idx = $('#p_idx').val();
-	console.log('p_idx 세션 안오냐'+p_idx);
+var p_idx = $('#p_idx').val();
 
-    //datepicker 설정
-    $(function() {
-  	  $( ".datepicker" ).datepicker({
+//datepicker 설정
+$(function() {
+	$( ".datepicker" ).datepicker({
   		  dateFormat: 'yy-mm-dd'
   		  });
-  	  });
-    
-	$(document).ready(function() {
-        initTmap(); //티맵 지도 보여주기
-        //carpoolList(); //전체 카풀 리스트
-		searchCarpoolList(); //검색 조건에 맞는 카풀 리스트
-		
-		//var p_idx = $('#p_idx').val();
-		//console.log('p_idx 세션 안오냐'+p_idx);
-		
-		
-	
-		$('#selectModal').on('hide.bs.modal', function (e) {
-		      $(this).find('.modal-body form')[0].reset(); 
-		         //폼 초기화 : 이후 다시 열어도 폼이 비워져 있도록!
-		   });
-		
-		
-/* 		$('#exampleModal').on('shown.bs.modal', function (event) {
-			  $('.modal-body').trigger('focus')
-			}) */	
 	});
+    
+$(document).ready(function() {
+	initTmap(); //티맵 지도 보여주기
 	
 	
+	$('#selectModal').on('hide.bs.modal', function (e) {
+		$(this).find('.modal-body form')[0].reset(); 
+		//폼 초기화 
+		});		
+});
 	
-	function search(p_idx){
-		
-		$.ajax({
-			url : 'http://13.125.252.85:8080/server/rsv/searchcarpool',
-			type : 'GET',
-			data : $('#searchForm').serialize(), 
-			success : function(data) {
-				var html = '';
-				for (var i = 0; i < data.length; i++) {							
-					html += '<div>\n';
+	
+function search(){
+	$.ajax({
+		url : 'http://13.125.252.85:8080/server/rsv/searchcarpool',
+		type : 'GET',
+		data : $('#searchForm').serialize(), 
+		success : function(data) {
+			var html = '';
+			var output = '';
+			for (var i = 0; i < data.length; i++) {	
+					
+				if (data == null) {
+					output += '<h3>검색하신 조건으로 등록된 카풀이 없습니다</h3>';
+				}else {
+					html += '<div id="match">';
+					html += '<img src="<c:url value='/static/images/logo_yeoncha.png'/>" id="matchimg">';
 					html += '<input type="hidden" id="'+ data[i].dr_idx + '"><input type="hidden" id="'+ data[i].d_idx + '">';
-					html +=  data[i].d_commute + '\t' + data[i].d_date + '<br>\n';
-					html += '픽업가능시간 ::: ' + data[i].d_starttime + '\t -\t ' + data[i].d_endtime + '<br>\n';
-					html += '출발 ::: ' + data[i].d_startpoint + '<br>\n';
-					html += '도착 ::: ' + data[i].d_endpoint + '<br>\n';
-					html += '요금 ::: '+ data[i].d_fee +'원 <br>\n';
+					html += '<span id="fdate">'+ data[i].d_date + '</span>\t' + data[i].d_commute + '<br>\n';
+					html += '<span class="fitem">픽업가능시간</span>\t' + data[i].d_starttime + '\t -\t ' + data[i].d_endtime + '<br>\n';
+					html += '<span class="fitem">출발</span>\t' + data[i].d_startpoint + '<br>\n';
+					html += '<span class="fitem">도착</span>\t' + data[i].d_endpoint + '<br>\n';
+					html += '<span class="fitem">요금</span>\t'+ data[i].d_fee +'원 <br>';
+					html += '<button id="view" onclick="viewRoute('+ data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')" class="btn btn-primary rsvsbtn">경로보기</button>\t';
 					html += '<button id="select" onclick="selectCarpool(' + data[i].dr_idx + ')" class="btn btn-primary rsvsbtn" data-toggle="modal" data-target="#selectModal">예약하기</button>';
-					html += '</div>'
+					html += '</div>';
 				}
-				$('#searchCarpoolList').html(html);
 			}
-		});
-	}
+			$('#noresult').html(output);
+			$('#searchCarpoolList').html(html);
+		}
+	});
+}
 	
 	
-	function selectCarpool(dr_idx){
+function selectCarpool(dr_idx){
     	  $.ajax({
     		  url : 'http://13.125.252.85:8080/server/rsv/carpool/' + dr_idx,
     		  type : 'GET',
@@ -253,44 +271,21 @@ body {
     	  });
       }
       
-      function requestReserve(){
-    	  $.ajax({
-    		  url: 'http://13.125.252.85:8080/server/rsv/reserve/'+ p_idx,
-    		  type : 'POST',
-    		  data : $('#selectCp').serialize(),
-    		  success : function(data) {
-    			  $('#selectModal').modal('hide');
-    			  alert('카풀 예약 요청이 운전자님께 전달되었습니다!\n운전자님의 예약 요청 수락/거절 여부는 이메일로 받으실 수 있습니다.');
-    			  $('#searchCarpoolList').css('display', 'none');
-				}
-			});
-      }
+function requestReserve(){
+	$.ajax({
+		url: 'http://13.125.252.85:8080/server/rsv/reserve/'+ p_idx,
+    	type : 'POST',
+    	data : $('#selectCp').serialize(),
+    	success : function(data) {
+    		alert('카풀 예약 요청이 운전자님께 전달되었습니다!\n운전자님의 예약 요청 수락/거절 여부는 이메일로 받으실 수 있습니다.');
+    		$('#selectModal').modal('hide');
+    		$('#searchCarpoolList').css('display', 'none');
+    		$('#searchForm')[0].reset();
+    		}
+	});
+}
       
-         
-      
-  	function carpool(){
-		$.ajax({
-				url : 'http://13.125.252.85:8080/server/rsv/carpool',
-				type : 'GET',
-				success : function(data) {
-					var html = '';
-					for (var i = 0; i < data.length; i++) {						
-						
- 						html += '<div>\n';
- 						html += '<input type="hidden" id="'+ data[i].dr_idx + '"><input type="hidden" id="'+ data[i].d_idx + '">';
-						html +=  data[i].d_commute + '\t' + data[i].d_date + '<br>\n';
-						html += '픽업가능시간 ::: ' + data[i].d_starttime + '\t -\t ' + data[i].d_endtime + '<br>\n';
-						html += '출발 ::: ' + data[i].d_startpoint + '<br>\n';
-						html += '도착 ::: ' + data[i].d_endpoint + '<br>\n';
-						html += '요금 ::: '+ data[i].d_fee +'원 <br>\n';
-						html += '<button id="select" onclick="selectCarpool(' + data[i].dr_idx + ')" class="btn btn-primary rsvsbtn" data-toggle="modal" data-target="#selectModal">예약하기</button>';
-						html += '</div>'
-					}
-					$('#carpoolList').html(html);
-				}
-			});
-      }
-      
+
           
           
           /* ----------------------------------------- Tmap ----------------------------------------- */
@@ -577,6 +572,40 @@ body {
                   map.destroy();
                   initTmap();
               });
+          }
+          
+          
+          /* -------------------------------검색한 경로 보여주기 tmap------------------------------- */
+          function viewRoute(d_startlon, d_startlat, d_endlon, d_endlat) {
+              var tData = new Tmap.TData(); //REST API 에서 제공되는 경로, 교통정보, POI 데이터를 쉽게 처리할 수 있는 클래스입니다.
+              var s_lonLat = new Tmap.LonLat(d_startlon, d_startlat); //시작 좌표입니다.   
+              var e_lonLat = new Tmap.LonLat(d_endlon, d_endlat); //도착 좌표입니다.
+              var optionObj = {
+                  reqCoordType: "WGS84GEO", //요청 좌표계 옵셥 설정입니다.
+                  resCoordType: "EPSG3857" //응답 좌표계 옵셥 설정입니다.
+              }
+              tData.getRoutePlan(s_lonLat, e_lonLat, optionObj); //경로 탐색 데이터를 콜백 함수를 통해 XML로 리턴합니다.
+              tData.events.register("onComplete", tData, onComplete); //데이터 로드가 성공적으로 완료되었을 때 발생하는 이벤트를 등록합니다.
+              tData.events.register("onPrnError", tData, onError); //데이터 로드가 실패했을 떄 발생하는 이벤트를 등록합니다.
+              //데이터 로드가 성공적으로 완료되었을 때 발생하는 이벤트 함수 입니다. 
+              function onComplete() {
+                  var kmlForm = new Tmap.Format.KML({
+                      extractStyles: true
+                  }).read(this.responseXML);
+                  var vectorLayer = new Tmap.Layer.Vector("vectorLayerID");
+                  vectorLayer.addFeatures(kmlForm);
+                  map.addLayer(vectorLayer);
+                  //경로 그리기 후 해당영역으로 줌  
+                  map.zoomToExtent(vectorLayer.getDataExtent());
+              }
+              //데이터 로드중 발생하는 이벤트 함수입니다.
+              function onProgress() {
+                  //alert("onComplete");
+              }
+              //데이터 로드시 에러가 발생시 발생하는 이벤트 함수입니다.
+              function onError() {
+                  alert("오류가 발생했습니다. 죄송합니다.");
+              }
           }
       </script>
 </body>

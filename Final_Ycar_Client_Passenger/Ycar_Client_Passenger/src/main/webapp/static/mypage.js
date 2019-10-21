@@ -213,8 +213,10 @@
         
         function memo(){
         	
+        	var idx = $('#sessionIdx').val();
+        	
         	$.ajax({
-                url: 'http://13.209.48.59:8090/cpList',
+                url: 'http://13.209.48.59:8090/cpList/' + idx,
                 type: 'GET',
                 success: function(data) {
                 	
@@ -224,20 +226,20 @@
                 		html += '<table id="memoTable"><tr><td colspan="2">\n';
                 		
                 		if(data[i].r_confirm == 'Y'){
-                			html += '<input type="hidden" value=\"'+data[i].dr_idx+'\" id="dr_idx"><a style="color: black; font-weight: bold">"예약 불가"</a></td></tr>\n';
+                			html += '<input type="hidden" value=\"'+data[i].dr_idx+'\" id="dr_idx'+i+'"><a style="color: black; font-weight: bold">"'+data[i].dr_idx+' 예약 불가"</a></td></tr>\n';
                 		} else if(data[i].r_confirm == 'B'){
-                			html += '<input type="hidden" value=\"'+data[i].dr_idx+'\" id="dr_idx"><a style="color: red; font-weight: bold">"예약 임박"</a></td></tr>\n';
+                			html += '<input type="hidden" value=\"'+data[i].dr_idx+'\" id="dr_idx'+i+'"><a style="color: red; font-weight: bold">"'+data[i].dr_idx+' 예약 임박"</a></td></tr>\n';
                 			html += '<a class="btn py-1 px-4 btn btn-primary" style="float:right" onclick="writeMemo('+i+')">메모하기</a>';
                 			html += '<tr><td id="'+i+'" class="memoTd"></td></tr>\n';
                 		} else {
-                			html += '<input type="hidden" value=\"'+data[i].dr_idx+'\" id="dr_idx"><a style="color: green; font-weight: bold">"예약 가능"</a></td></tr>\n';
+                			html += '<input type="hidden" value=\"'+data[i].dr_idx+'\" id="dr_idx'+i+'"><a style="color: green; font-weight: bold">"'+data[i].dr_idx+' 예약 가능"</a></td></tr>\n';
                 			html += '<a class="btn py-1 px-4 btn btn-primary" style="float:right" onclick="writeMemo('+i+')">메모하기</a>';
                 			html += '<tr><td id="'+i+'" class="memoTd"></td></tr>\n';
                 		}
                 		
                 		if(data[i].memo != null){
                 			for(var j=0; j<data[i].memo.length; j++){
-                				html += '<tr><td><a class="myMemo">내 메모 ['+(j+1)+'번]</a></td><td><a class="myMemo"><input type="hidden" value=\"'+data[i].memo[j].m_idx+'\" id="dr_idx">'
+                				html += '<tr><td><a class="myMemo">내 메모 ['+(j+1)+'번]</a></td><td><a class="myMemo"><input type="hidden" value=\"'+data[i].memo[j].m_idx+'\" id="m_idx">'
                 				+data[i].memo[j].context+'</a> <button class="mmBtn" onclick="editMemo('+data[i].memo[j].m_idx+','+i+')">수정</button> <button class="mmBtn" onclick="delMemo('+data[i].memo[j].m_idx+')">삭제</button> </td></tr>\n';
                 			}
                 		}
@@ -291,7 +293,9 @@
         function FinMemo(index){
         	var text = $('#memoContents').val();
         	var pidx = $('#sessionIdx').val();
-        	var dr_idx = $('#dr_idx').val();
+        	var dr_idx = $('#dr_idx'+index+'').val();
+        	
+        	alert(dr_idx);
         	        	
         	$.ajax({
                 url: 'http://13.209.48.59:8090/writeMemo/' + pidx + '/' + dr_idx ,

@@ -47,5 +47,4 @@ public class PJoinController {
 	public ResponseEntity<String> idcheck(@RequestParam("id") String id) {
 		return new ResponseEntity<String>(pjoinService.idCheck(id), HttpStatus.OK);
 	}
-
 }

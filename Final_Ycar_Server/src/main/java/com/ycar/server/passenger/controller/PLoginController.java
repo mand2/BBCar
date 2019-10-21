@@ -42,9 +42,10 @@ public class PLoginController {
 	// 카카오 로그인
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public Map<String, Object> kakaoLogin(@PathVariable("id") String id) {
-
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = ploginService.kakaoLogin(id);
+		
 
 		return map;
 	}

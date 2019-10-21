@@ -41,6 +41,9 @@
 		values(#{id},#{pw},#{name},#{nickname},#{type}, #{email}
 			,#{ctype},#{company},#{cemail},#{p_option}, #{gender}
 		)
-	
 	</insert>
+	
+	<update id="deleteMem">
+		update ycar.PASSENGER set verify = 'D' where p_idx = #{idx}
+	</update>
 </mapper>

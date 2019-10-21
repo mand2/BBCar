@@ -44,4 +44,14 @@ public class PMypageService {
 		return 0;
 	}
 
+	public int deleteMem(String idx) {
+		
+		dao = template.getMapper(PassengerDao.class);
+		
+		// 회원탈퇴한 회원 -> Verify = D로 변경
+		int result = dao.deleteMem(idx);
+		System.out.println("deletemem03 "+result);
+		return result;
+	}
+
 }

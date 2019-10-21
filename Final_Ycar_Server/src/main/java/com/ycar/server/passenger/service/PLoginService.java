@@ -40,11 +40,11 @@ public class PLoginService {
 		// 아이디 존재 여부 확인
 		PassengerInfo info = dao.selectById(id);
 
-		if (info.getType() == null || info == null) {// 존재하지 않는 회원
+		if (info.getVerify() == 'D' || info == null) {// 존재하지 않거나 탈퇴한 회원
 			map.put("msg", 1);
 		} else if (info.getVerify() == 'Y' && info.pwMatch(pw)) {
 			// 인증처리된 회원, 정상 로그인
-			LoginInfo loginInfo = new LoginInfo(info.getP_idx(),info.getNickname(), info.getEmail(), info.getName());
+			LoginInfo loginInfo = new LoginInfo(info.getP_idx(),info.getNickname(), info.getEmail(), info.getName(), info.getType());
 			map.put("msg", 2);
 			map.put("login", loginInfo);
 		} else if (!info.pwMatch(pw)) {
@@ -52,7 +52,7 @@ public class PLoginService {
 			map.put("msg", 3);
 		} else if (info.getVerify() == 'N' && info.pwMatch(pw)) {
 			// 임시비밀번호 발송된 회원, 비밀번호 변경 유도
-			LoginInfo loginInfo = new LoginInfo(info.getP_idx(),info.getNickname(), info.getEmail(), info.getName());
+			LoginInfo loginInfo = new LoginInfo(info.getP_idx(),info.getNickname(), info.getEmail(), info.getName(), info.getType());
 			map.put("msg", 4);
 			map.put("login", loginInfo);
 		}
@@ -70,9 +70,16 @@ public class PLoginService {
 		
 		Map<String,Object> map = new HashMap<String, Object>();
 		PassengerInfo info = dao.selectById(id);
-		LoginInfo loginInfo = new LoginInfo(info.getP_idx(), info.getNickname(), info.getEmail(), info.getName());
-		map.put("login", loginInfo);
 		
+		if (info.getVerify() == 'D' || info == null) {// 존재하지 않거나 탈퇴한 회원
+			map.put("msg", 1);
+		} else if (info.getVerify() == 'Y') {
+			// 인증처리된 회원, 정상 로그인
+			LoginInfo loginInfo = new LoginInfo(info.getP_idx(),info.getNickname(), info.getEmail(), info.getName(), info.getType());
+			map.put("msg", 2);
+			map.put("login", loginInfo);
+		} 
+				
 		return map;
 	}
 
@@ -85,7 +92,7 @@ public class PLoginService {
 		PassengerInfo info = dao.selectByName(name);
 
 		// 아이디 존재 + 일반 회원으로 회원가입 + 이름 일치 + 이메일 일치
-		if (info != null && info.getType().equals("S") && info.getName().equals(name) && info.getEmail().equals(email)) {
+		if (info != null && info.getType()=='S' && info.getName().equals(name) && info.getEmail().equals(email)) {
 			// 아이디 문자열 부분 치환 (뒷5자리는 "*"로)
 			StringBuffer buffer = new StringBuffer();
 			buffer.append(info.getId().substring(0, info.getId().length() - 5));
@@ -134,7 +141,7 @@ public class PLoginService {
 		PassengerInfo info = dao.selectByName(name);
 
 		// 아이디 존재 + 일반 회원으로 회원가입 + 이름 일치 + 이메일 일치
-		if (info != null && info.getType().equals("S") && info.getName().equals(name) && info.getEmail().equals(email)) {
+		if (info != null && info.getType()=='S' && info.getName().equals(name) && info.getEmail().equals(email)) {
 			
 			// 임시비밀번호 발송 -> verify = N으로 변경
 			Map<String,String> map = new HashMap<String, String>();

@@ -10,7 +10,7 @@ public class PassengerInfo {
 	private char gender;
 	private char verify;
 	private String code;
-	private String type;
+	private char type;
 	
 	public String getId() {
 		return id;
@@ -64,10 +64,10 @@ public class PassengerInfo {
 	public boolean pwMatch(String pw) {
 		return this.getPw().equals(pw);
 	}
-	public String getType() {
+	public char getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(char type) {
 		this.type = type;
 	}
 	public int getP_idx() {

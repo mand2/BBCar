@@ -14,4 +14,5 @@ public interface PassengerDao {
 	public int changeVer(Map<String,String>map); // 임시비밀번호 발송 -> verify = N으로 변경
 	public int insertPassengerSE(PassengerSE se); // 회원가입(이메일)
 	public int insertPassengerSP(PassengerSP sp); // 회원가입(재직증명서)
+	public int deleteMem(String idx); //회원탈퇴
 }

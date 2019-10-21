@@ -25,19 +25,19 @@ public class PJoinService {
 		// 회사인증 E
 		if (joinInfo.getCtype().equals("E")) {
 
-			// 간단가입시
-			if (joinInfo.getType().equals("S")) {
+			// kakao or 간단가입시
+			if (joinInfo.getType().equals("S") || joinInfo.getType().equals("K")) {
 				PassengerSE se = joinInfo.toPassengerSE();
-				System.out.println("joinInfo.toPassengerSE()"+se);
+				System.out.println("joinInfo.toPassengerSE()" + se);
 				result = dao.insertPassengerSE(se);
 				System.out.println("잘 들어갔니 ==========" + result);
 			}
 
-		// 회사인증 P
+			// 회사인증 P
 		} else if (joinInfo.getCtype().equals("P")) {
 
-			// 간단가입시
-			if (joinInfo.getType().equals("S")) {
+			// kakao or 간단가입시
+			if (joinInfo.getType().equals("S") || joinInfo.getType().equals("K")) {
 				PassengerSP sp = joinInfo.toPassengerSP();
 				result = dao.insertPassengerSP(sp);
 				System.out.println("잘 들어갔니 ==========" + result);

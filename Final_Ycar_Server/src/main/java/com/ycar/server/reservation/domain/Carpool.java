@@ -11,6 +11,10 @@ public class Carpool {
 	private String d_endpoint;
 	private String d_commute;
 	private int d_fee;
+	private String d_startlon;
+	private String d_startlat;
+	private String d_endlon;
+	private String d_endlat;
 	
 	
 	public int getDr_idx() {
@@ -67,10 +71,35 @@ public class Carpool {
 	public void setD_fee(int d_fee) {
 		this.d_fee = d_fee;
 	}
+	public String getD_startlon() {
+		return d_startlon;
+	}
+	public void setD_startlon(String d_startlon) {
+		this.d_startlon = d_startlon;
+	}
+	public String getD_startlat() {
+		return d_startlat;
+	}
+	public void setD_startlat(String d_startlat) {
+		this.d_startlat = d_startlat;
+	}
+	public String getD_endlon() {
+		return d_endlon;
+	}
+	public void setD_endlon(String d_endlon) {
+		this.d_endlon = d_endlon;
+	}
+	public String getD_endlat() {
+		return d_endlat;
+	}
+	public void setD_endlat(String d_endlat) {
+		this.d_endlat = d_endlat;
+	}
 	
 	
 	public Carpool(int dr_idx, int d_idx, String d_date, String d_starttime, String d_endtime, String d_startpoint,
-			String d_endpoint, String d_commute, int d_fee) {
+			String d_endpoint, String d_commute, int d_fee, String d_startlon, String d_startlat, String d_endlon,
+			String d_endlat) {
 		super();
 		this.dr_idx = dr_idx;
 		this.d_idx = d_idx;
@@ -81,8 +110,11 @@ public class Carpool {
 		this.d_endpoint = d_endpoint;
 		this.d_commute = d_commute;
 		this.d_fee = d_fee;
+		this.d_startlon = d_startlon;
+		this.d_startlat = d_startlat;
+		this.d_endlon = d_endlon;
+		this.d_endlat = d_endlat;
 	}
-	
 	
 	public Carpool() {}
 	
@@ -91,8 +123,9 @@ public class Carpool {
 	public String toString() {
 		return "Carpool [dr_idx=" + dr_idx + ", d_idx=" + d_idx + ", d_date=" + d_date + ", d_starttime=" + d_starttime
 				+ ", d_endtime=" + d_endtime + ", d_startpoint=" + d_startpoint + ", d_endpoint=" + d_endpoint
-				+ ", d_commute=" + d_commute + ", d_fee=" + d_fee + "]";
-	}
+				+ ", d_commute=" + d_commute + ", d_fee=" + d_fee + ", d_startlon=" + d_startlon + ", d_startlat="
+				+ d_startlat + ", d_endlon=" + d_endlon + ", d_endlat=" + d_endlat + "]";
+	}	
 	
 	
 }

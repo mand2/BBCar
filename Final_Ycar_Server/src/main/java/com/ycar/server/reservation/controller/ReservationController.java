@@ -87,15 +87,6 @@ public class ReservationController {
 		return result > 0 ? "success" : "fail";		
 	}
 	
-//	//회원별 예약 리스트 대기예약과 확정/거절예약으로 리스트 분리
-//	@CrossOrigin
-//	@GetMapping("/reserve/{p_idx}")
-//	public List<Reservation> selectByPidx(@PathVariable("p_idx") int idx) {
-//
-//		List<Reservation> list = rsvService.getRsvList(idx);
-//
-//		return list;
-//	}
 	
 	//나의카풀 페이지에 출력될 예약 확정 리스트
 	@CrossOrigin

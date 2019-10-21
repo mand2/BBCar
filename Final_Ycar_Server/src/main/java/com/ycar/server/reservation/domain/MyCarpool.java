@@ -18,6 +18,10 @@ public class MyCarpool {
 	private int d_fee;
 	private String r_confirm;
 	private int dr_idx;
+	private String d_startlon;
+	private String d_startlat;
+	private String d_endlon;
+	private String d_endlat;
 	
 	
 	public int getR_idx() {
@@ -86,14 +90,66 @@ public class MyCarpool {
 	public void setDr_idx(int dr_idx) {
 		this.dr_idx = dr_idx;
 	}
+	public String getD_startlon() {
+		return d_startlon;
+	}
+	public void setD_startlon(String d_startlon) {
+		this.d_startlon = d_startlon;
+	}
+	public String getD_startlat() {
+		return d_startlat;
+	}
+	public void setD_startlat(String d_startlat) {
+		this.d_startlat = d_startlat;
+	}
+	public String getD_endlon() {
+		return d_endlon;
+	}
+	public void setD_endlon(String d_endlon) {
+		this.d_endlon = d_endlon;
+	}
+	public String getD_endlat() {
+		return d_endlat;
+	}
+	public void setD_endlat(String d_endlat) {
+		this.d_endlat = d_endlat;
+	}
+
+
+
+
+	public MyCarpool() {}
+
+
+	public MyCarpool(int r_idx, Date r_date, String nickname, String d_date, String d_starttime, String d_endtime,
+			String d_startpoint, String d_endpoint, int d_fee, String r_confirm, int dr_idx, String d_startlon,
+			String d_startlat, String d_endlon, String d_endlat) {
+		super();
+		this.r_idx = r_idx;
+		this.r_date = r_date;
+		this.nickname = nickname;
+		this.d_date = d_date;
+		this.d_starttime = d_starttime;
+		this.d_endtime = d_endtime;
+		this.d_startpoint = d_startpoint;
+		this.d_endpoint = d_endpoint;
+		this.d_fee = d_fee;
+		this.r_confirm = r_confirm;
+		this.dr_idx = dr_idx;
+		this.d_startlon = d_startlon;
+		this.d_startlat = d_startlat;
+		this.d_endlon = d_endlon;
+		this.d_endlat = d_endlat;
+	}
 	
 	
 	@Override
 	public String toString() {
 		return "MyCarpool [r_idx=" + r_idx + ", r_date=" + r_date + ", nickname=" + nickname + ", d_date=" + d_date
 				+ ", d_starttime=" + d_starttime + ", d_endtime=" + d_endtime + ", d_startpoint=" + d_startpoint
-				+ ", d_endpoint=" + d_endpoint + ", d_fee=" + d_fee + ", r_confirm=" + r_confirm + ", dr_idx=" + dr_idx + "]";
+				+ ", d_endpoint=" + d_endpoint + ", d_fee=" + d_fee + ", r_confirm=" + r_confirm + ", dr_idx=" + dr_idx
+				+ ", d_startlon=" + d_startlon + ", d_startlat=" + d_startlat + ", d_endlon=" + d_endlon + ", d_endlat="
+				+ d_endlat + "]";
 	}
-
 	
 }

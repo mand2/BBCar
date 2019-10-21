@@ -26,9 +26,6 @@ public interface ReservationDao {
 	//메일 발송할 운전자 이메일 주소 가져오기
 	public String getDemail(int dr_idx);
 	
-//	//회원별 예약 리스트 출력 
-//	public List<Reservation> selectByP_idx(int p_idx);
-	
 	//확정된 예약만 p_idx 별로 보여주기
 	public List<MyCarpool> confirmListByP_idx(int p_idx);
 	

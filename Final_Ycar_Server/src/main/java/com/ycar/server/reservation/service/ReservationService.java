@@ -88,7 +88,7 @@ public class ReservationService {
 			String htmlMsg = "<h2>고객님이 등록하신 카풀에 새로운 예약 요청이 도착했습니다! </h2>";
 			
 			htmlMsg += "<h3>연차 페이지에서 확인해주세요</h3>"; // 바로 수락(update) 거절(delete)할지 연차페이지로 보내야할지
-			htmlMsg += "<h3><a href=\"http://localhost:8080/driver/index.jsp\">연차로 이동</a></h3>"; //카풀 요청 페이지 주소 넣기 메일 페이지 양식 다시 만들자 
+			htmlMsg += "<h3><a href=\"http://13.125.252.85:8080/driver/login\">연차로 이동</a></h3>"; //카풀 요청 페이지 주소 넣기 메일 페이지 양식 다시 만들자 
 
 			message.setText(htmlMsg, "UTF-8", "html");
 			message.setFrom(new InternetAddress("Ycar.official@gmail.com"));

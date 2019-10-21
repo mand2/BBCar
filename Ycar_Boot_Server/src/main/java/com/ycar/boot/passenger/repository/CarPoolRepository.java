@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.ycar.boot.passenger.entity.DCarpoolEntity;
 
+
 public interface CarPoolRepository extends JpaRepository<DCarpoolEntity, Long> {
 
 	// 등록된 카풀 리스트 출력 : 예약이 아직 되지 않은 카풀 등록 리스트 (D_CARPOOL의 모든 변수 + RESERVATION의 r_confirm변수)
@@ -19,5 +20,5 @@ public interface CarPoolRepository extends JpaRepository<DCarpoolEntity, Long> {
 	//	-- 예약 가능한 것 : B 또는 null
 	//@Query("select d from DCarpoolEntity d join RsvEntity r where r.r_confirm is null or = 'B' order by d.d_date desc")
 	//public List<DCarpoolEntity> list(); 
-	
+	public List<DCarpoolEntity> findByDIdx(int dIdx);
 }

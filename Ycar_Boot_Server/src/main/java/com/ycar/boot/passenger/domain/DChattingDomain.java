@@ -1,13 +1,12 @@
 package com.ycar.boot.passenger.domain;
 
-// 탑승자가 예약한 카풀 정보 
 import java.util.Date;
 
-public class ChattingDomain {
+public class DChattingDomain {
 
 	private int dr_idx;
 	private String r_confirm;
-	private int d_idx;
+	private int p_idx;
 	private Date date;
 	private String d_starttime;
 	private String d_endtime;
@@ -16,12 +15,12 @@ public class ChattingDomain {
 	private String d_commute;
 	private int d_fee;
 	private int d_distance;
-	private String d_nickname;
+	private String p_nickname;
 
 	/**
 	 * @param dr_idx
 	 * @param r_confirm
-	 * @param d_idx
+	 * @param p_idx
 	 * @param date
 	 * @param d_starttime
 	 * @param d_endtime
@@ -30,12 +29,13 @@ public class ChattingDomain {
 	 * @param d_commute
 	 * @param d_fee
 	 * @param d_distance
+	 * @param p_nickname
 	 */
-	public ChattingDomain(int dr_idx, String r_confirm, int d_idx, Date date, String d_starttime, String d_endtime,
-			String d_startpoint, String d_endpoint, String d_commute, int d_fee, int d_distance, String d_nickname) {
+	public DChattingDomain(int dr_idx, String r_confirm, int p_idx, Date date, String d_starttime, String d_endtime,
+			String d_startpoint, String d_endpoint, String d_commute, int d_fee, int d_distance, String p_nickname) {
 		this.dr_idx = dr_idx;
 		this.r_confirm = r_confirm;
-		this.d_idx = d_idx;
+		this.p_idx = p_idx;
 		this.date = date;
 		this.d_starttime = d_starttime;
 		this.d_endtime = d_endtime;
@@ -44,7 +44,7 @@ public class ChattingDomain {
 		this.d_commute = d_commute;
 		this.d_fee = d_fee;
 		this.d_distance = d_distance;
-		this.d_nickname = d_nickname;
+		this.p_nickname = p_nickname;
 	}
 
 	public int getDr_idx() {
@@ -63,12 +63,12 @@ public class ChattingDomain {
 		this.r_confirm = r_confirm;
 	}
 
-	public int getD_idx() {
-		return d_idx;
+	public int getP_idx() {
+		return p_idx;
 	}
 
-	public void setD_idx(int d_idx) {
-		this.d_idx = d_idx;
+	public void setP_idx(int p_idx) {
+		this.p_idx = p_idx;
 	}
 
 	public Date getDate() {
@@ -135,12 +135,12 @@ public class ChattingDomain {
 		this.d_distance = d_distance;
 	}
 
-	public String getD_nickname() {
-		return d_nickname;
+	public String getP_nickname() {
+		return p_nickname;
 	}
 
-	public void setD_nickname(String d_nickname) {
-		this.d_nickname = d_nickname;
+	public void setP_nickname(String p_nickname) {
+		this.p_nickname = p_nickname;
 	}
 
 }

@@ -32,8 +32,8 @@ public class DCarpoolEntity {
 	@Column
 	private int dr_idx;
 
-	@Column
-	private int d_idx;
+	@Column(name = "d_idx")
+	private int dIdx;
 	@Column
 	@Temporal(TemporalType.DATE)
 	private Date d_date;
@@ -76,7 +76,7 @@ public class DCarpoolEntity {
 	 * { @JoinColumn(referencedColumnName = "dr_idx") })
 	 */
 	@OneToMany(mappedBy = "dcp")
-	//@JoinColumn(name = "dr_idx")
+	// @JoinColumn(name = "dr_idx")
 	private List<RsvEntity> rsvlist = new ArrayList<RsvEntity>();
 
 	public List<RsvEntity> getRsvlist() {
@@ -91,12 +91,12 @@ public class DCarpoolEntity {
 		return dr_idx;
 	}
 
-	public int getD_idx() {
-		return d_idx;
+	public int getdIdx() {
+		return dIdx;
 	}
 
-	public void setD_idx(int d_idx) {
-		this.d_idx = d_idx;
+	public void setdIdx(int dIdx) {
+		this.dIdx = dIdx;
 	}
 
 	public void setDr_idx(int dr_idx) {

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.ycar.boot.passenger.entity.RsvEntity;
 
+
 public interface RsvRepository extends JpaRepository<RsvEntity, Integer> {
 	
 //	-- 탑승자가 예약한 카풀 리스트 

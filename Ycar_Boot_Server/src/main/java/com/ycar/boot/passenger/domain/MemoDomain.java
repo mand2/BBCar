@@ -1,4 +1,4 @@
-package com.ycar.passenger.domain;
+package com.ycar.boot.passenger.domain;
 
 import java.util.ArrayList;
 import java.util.Date;

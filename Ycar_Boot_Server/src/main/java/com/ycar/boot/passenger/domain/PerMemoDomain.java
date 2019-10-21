@@ -1,4 +1,4 @@
-package com.ycar.passenger.domain;
+package com.ycar.boot.passenger.domain;
 
 public class PerMemoDomain {
 	private int m_idx;

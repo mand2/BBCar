@@ -16,8 +16,8 @@ public class MemoEntity {
 
 	@Column
 	private int p_idx;
-	@Column
-	private int dr_idx;
+	@Column(name = "dr_idx")
+	private int drIdx;
 	@Column
 	private String context;
 
@@ -26,10 +26,14 @@ public class MemoEntity {
 	 * @param dr_idx
 	 * @param context
 	 */
-	public MemoEntity(int p_idx, int dr_idx, String context) {
+	public MemoEntity(int p_idx, int drIdx, String context) {
 		this.p_idx = p_idx;
-		this.dr_idx = dr_idx;
+		this.drIdx = drIdx;
 		this.context = context;
+	}
+	
+	public MemoEntity(){
+		
 	}
 
 	public int getM_idx() {
@@ -48,12 +52,12 @@ public class MemoEntity {
 		this.p_idx = p_idx;
 	}
 
-	public int getDr_idx() {
-		return dr_idx;
+	public int getDrIdx() {
+		return drIdx;
 	}
 
-	public void setDr_idx(int dr_idx) {
-		this.dr_idx = dr_idx;
+	public void setDrIdx(int drIdx) {
+		this.drIdx = drIdx;
 	}
 
 	public String getContext() {
@@ -63,12 +67,5 @@ public class MemoEntity {
 	public void setContext(String context) {
 		this.context = context;
 	}
-
-	@Override
-	public String toString() {
-		return "MemoEntity [m_idx=" + m_idx + ", p_idx=" + p_idx + ", dr_idx=" + dr_idx + ", context=" + context + "]";
-	}
-	
-	
 
 }

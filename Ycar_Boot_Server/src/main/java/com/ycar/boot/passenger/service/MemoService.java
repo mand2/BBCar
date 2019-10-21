@@ -1,20 +1,18 @@
-package com.ycar.passenger.service;
+package com.ycar.boot.passenger.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ycar.passenger.domain.MemoDomain;
-import com.ycar.passenger.domain.PerMemoDomain;
-import com.ycar.passenger.entity.DCarpoolEntity;
-import com.ycar.passenger.entity.MemoEntity;
-import com.ycar.passenger.entity.RsvEntity;
-import com.ycar.passenger.repository.CarPoolRepository;
-import com.ycar.passenger.repository.MemoRepository;
+import com.ycar.boot.passenger.domain.MemoDomain;
+import com.ycar.boot.passenger.domain.PerMemoDomain;
+import com.ycar.boot.passenger.entity.DCarpoolEntity;
+import com.ycar.boot.passenger.entity.MemoEntity;
+import com.ycar.boot.passenger.entity.RsvEntity;
+import com.ycar.boot.passenger.repository.CarPoolRepository;
+import com.ycar.boot.passenger.repository.MemoRepository;
 
 @Service("memoService")
 public class MemoService {

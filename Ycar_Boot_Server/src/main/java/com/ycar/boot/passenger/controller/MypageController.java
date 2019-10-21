@@ -6,99 +6,116 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ycar.boot.passenger.dao.PassengerDaoImpl;
-import com.ycar.boot.passenger.domain.ChattingDomain;
-import com.ycar.boot.passenger.entity.DCarpoolEntity;
+import com.ycar.boot.passenger.domain.DChattingDomain;
+import com.ycar.boot.passenger.domain.MemoDomain;
+import com.ycar.boot.passenger.domain.PChattingDomain;
 import com.ycar.boot.passenger.entity.MemoEntity;
 import com.ycar.boot.passenger.entity.PRouteEntity;
 import com.ycar.boot.passenger.entity.PassengerEntity;
-import com.ycar.boot.passenger.entity.RsvEntity;
-import com.ycar.boot.passenger.repository.CarPoolRepository;
 import com.ycar.boot.passenger.repository.MemoRepository;
-import com.ycar.boot.passenger.repository.RsvRepository;
 import com.ycar.boot.passenger.service.ChattingService;
+import com.ycar.boot.passenger.service.MemoService;
+
 
 @RestController
 @Controller
 @CrossOrigin
 public class MypageController {
 
-	// -- 탑승자 메모 기능 --
+	// -- 채팅 기능 --
 
-	@Autowired
-	private CarPoolRepository cpRepo;
 	@Autowired
 	private ChattingService chattingService;
 
 	// [채팅] 탑승자가 예약한 카풀 리스트 출력
-	@RequestMapping("/rsvList/{idx}")
-	public List<ChattingDomain> rsvList(@PathVariable("idx") int p_idx) {
+	@RequestMapping("/PrsvList/{idx}")
+	public List<PChattingDomain> PrsvList(@PathVariable("idx") int p_idx) {
 
 		System.out.println("예약 리스트01");
 
-		List<ChattingDomain> list = chattingService.rsvList(p_idx);
+		List<PChattingDomain> list = chattingService.PrsvList(p_idx);
 
-		for (ChattingDomain chattingDomain : list) {
+		for (PChattingDomain chattingDomain : list) {
 			System.out.println(chattingDomain);
 		}
 
 		return list;
 	}
 
-	// [메모] 등록된 카풀 리스트 출력 : 예약이 아직 되지 않은 카풀 등록 리스트
-	@RequestMapping("/cpList")
-	public List<DCarpoolEntity> cpList() {
+	// [채팅] 드라이버가 등록한 카풀을 예약한 리스트 출력
+	@RequestMapping("/DrsvList/{idx}")
+	public List<DChattingDomain> DrsvList(@PathVariable("idx") int d_idx) {
 
-		System.out.println("탑승자 메모 01");
+		System.out.println("예약 리스트02");
 
-		// List<DCarpoolEntity> list = cpRepo.list();
-		List<DCarpoolEntity> list = cpRepo.findAll();
-
-		for (DCarpoolEntity dCarpoolEntity : list) {
-			System.out.println("탑승자 메모 02" + dCarpoolEntity);
-
-			/*
-			 * List<RsvEntity> l1 = dCarpoolEntity.getRsvlist(); for (RsvEntity r : l1) {
-			 * System.out.println("02-2" + r.getR_confirm()); }
-			 */
-
-		}
+		List<DChattingDomain> list = chattingService.DrsvList(d_idx);
 
 		return list;
+	}
+
+	// -- 탑승자 메모 기능 --
+	
+	@Autowired
+	private MemoService memoService;
+	
+	// [메모] 등록된 카풀 리스트 출력 : 예약이 아직 되지 않은 카풀 등록 리스트
+	// [메모] 메모 출력
+	@RequestMapping("/cpList/{idx}")
+	public List<MemoDomain> cpList(@PathVariable("idx") int idx) {
+
+		System.out.println("탑승자 메모 01");
+		
+		// r_comfirm에 따라 카풀 예약 상태가 다름 : 
+		// rsv_list가 없거나  r_confirm = null => '지금 예약이 가능합니다!'
+		// Y => 예약 불가
+		// B => 예약 임박
+		List<MemoDomain> cpList = memoService.cpList(idx);
+
+		return cpList;
 
 	}
 
 	@Autowired
 	private MemoRepository mmRepo;
 
-	// [메모] 카풀 선택하여 메모 작성 : pIdx = 회원번호 / cIdx = 카풀등록번호
-	@PostMapping("/writeMemo/{pIdx}/{dIdx}")
-	public String writeMemo(@PathVariable("pIdx") int pIdx, @PathVariable("dIdx") int dIdx,
+	// [메모] 메모 작성 : 카풀 선택 -> pIdx = 회원번호 / dr_idx = 카풀등록번호
+	@PostMapping("/writeMemo/{pIdx}/{dr_idx}")
+	public String writeMemo(@PathVariable("pIdx") int pIdx, @PathVariable("dr_idx") int dr_idx,
 			@RequestParam("memo") String memo) {
 
-		System.out.println("메모 내용" + memo);
-		MemoEntity result = mmRepo.save(new MemoEntity(pIdx, dIdx, memo));
-		System.out.println(result);
+		MemoEntity result = mmRepo.save(new MemoEntity(pIdx, dr_idx, memo));
 
 		return result != null ? "success" : "fail";
 	}
+	
+	// [메모] 메모 수정
+	@PutMapping("/writeMemo/{idx}")
+	public String editMemo(@PathVariable("idx") int idx, @RequestParam("context") String context) {
+				
+		int result = mmRepo.updateContext(idx, context);
+				
+		return result>0?"success":"fail";	
+	}
 
-	// 작성한 메모에 대한 카풀이 예약 되었는지 확인 : Y 예약됨 / B 예약 대기
-
-	// 메모 수정
-
-	// 메모 삭제
+	// [메모] 메모 삭제
+	@DeleteMapping("/writeMemo/{idx}")
+	public String delMemo(@PathVariable("idx") int idx) {
+		
+		mmRepo.deleteById(idx);
+				
+		return "삭제완료";	
+	}
 
 	// --- 탑승자 개인 정보 ---
 

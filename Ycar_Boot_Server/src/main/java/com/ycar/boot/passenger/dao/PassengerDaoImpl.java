@@ -8,6 +8,7 @@ import javax.persistence.Query;
 import com.ycar.boot.passenger.entity.PRouteEntity;
 import com.ycar.boot.passenger.entity.PassengerEntity;
 
+
 public class PassengerDaoImpl implements PassengerDao {
 
 	private EntityManager entityManager;

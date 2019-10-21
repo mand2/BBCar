@@ -1,4 +1,4 @@
-package com.ycar.passenger.domain;
+package com.ycar.boot.passenger.domain;
 
 // 탑승자가 예약한 카풀 정보 
 import java.util.Date;

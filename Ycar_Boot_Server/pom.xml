@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>ycar-PassengerBoot</artifactId>
+	<artifactId>Ycar_Boot_Server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ycar-PassengerBoot</name>
+	<name>Ycar_Boot_Server</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

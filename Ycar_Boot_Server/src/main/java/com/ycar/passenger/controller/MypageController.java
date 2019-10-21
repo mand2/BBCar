@@ -77,8 +77,8 @@ public class MypageController {
 	
 	// [메모] 등록된 카풀 리스트 출력 : 예약이 아직 되지 않은 카풀 등록 리스트
 	// [메모] 메모 출력
-	@RequestMapping("/cpList")
-	public List<MemoDomain> cpList() {
+	@RequestMapping("/cpList/{idx}")
+	public List<MemoDomain> cpList(@PathVariable("idx") int idx) {
 
 		System.out.println("탑승자 메모 01");
 		
@@ -86,7 +86,7 @@ public class MypageController {
 		// rsv_list가 없거나  r_confirm = null => '지금 예약이 가능합니다!'
 		// Y => 예약 불가
 		// B => 예약 임박
-		List<MemoDomain> cpList = memoService.cpList();
+		List<MemoDomain> cpList = memoService.cpList(idx);
 
 		return cpList;
 

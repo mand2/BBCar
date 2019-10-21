@@ -24,7 +24,7 @@ public class MemoService {
 	@Autowired
 	private MemoRepository mmRepo;
 
-	public List<MemoDomain> cpList() {
+	public List<MemoDomain> cpList(int idx) {
 
 		List<DCarpoolEntity> list = cpRepo.findAll();
 		List<MemoDomain> cpList = new ArrayList<MemoDomain>();
@@ -42,7 +42,7 @@ public class MemoService {
 			// 우선순위 1. rsv_list가 없거나
 			if (dcp.getRsvlist().size() < 1) {
 
-				List<MemoEntity> memoList = mmRepo.findByDrIdx(dcp.getDr_idx());
+				List<MemoEntity> memoList = mmRepo.findByDrIdxPIdx(idx, dcp.getDr_idx());
 
 				// 1) 해당 카풀에 작성한 메모가 있을 때
 				if (memoList.size() > 0) {
@@ -51,12 +51,14 @@ public class MemoService {
 
 					for (int k = 0; k < memoList.size(); k++) {
 						PerMemoDomain pmd = new PerMemoDomain(memoList.get(k).getM_idx(), memoList.get(k).getContext());
-						memo.add(pmd); 
+						memo.add(pmd);
 					}
 
 					cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
 							dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
 							dcp.getD_fee(), dcp.getD_distance(), null, memo));
+					
+					continue;
 
 				}
 
@@ -64,6 +66,8 @@ public class MemoService {
 				cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(), dcp.getD_endtime(),
 						dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(), dcp.getD_fee(),
 						dcp.getD_distance(), null));
+				
+				continue;
 
 			} else {
 
@@ -79,36 +83,7 @@ public class MemoService {
 				// 우선순위 2. Y => 예약 불가
 				if (r_con.contains("Y")) {
 
-					List<MemoEntity> memoList = mmRepo.findByDrIdx(dcp.getDr_idx());
-
-					// 1) 해당 카풀에 작성한 메모가 있을 때
-					if (memoList.size() > 0) {
-
-						ArrayList<PerMemoDomain> memo = new ArrayList<PerMemoDomain>();
-
-						for (int k = 0; k < memoList.size(); k++) {
-							PerMemoDomain pmd = new PerMemoDomain(memoList.get(k).getM_idx(),
-									memoList.get(k).getContext());
-							memo.add(pmd); 
-						}
-
-						cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
-								dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
-								dcp.getD_fee(), dcp.getD_distance(), null, memo));
-
-					}
-
-					// 2) 해당 카풀에 작성한 메모가 없을 때
-					cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
-							dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
-							dcp.getD_fee(), dcp.getD_distance(), "Y"));
-
-				}
-
-				// 우선순위 3. B => 예약 임박
-				else if (r_con.contains("B")) {
-
-					List<MemoEntity> memoList = mmRepo.findByDrIdx(dcp.getDr_idx());
+					List<MemoEntity> memoList = mmRepo.findByDrIdxPIdx(idx, dcp.getDr_idx());
 
 					// 1) 해당 카풀에 작성한 메모가 있을 때
 					if (memoList.size() > 0) {
@@ -124,18 +99,24 @@ public class MemoService {
 						cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
 								dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
 								dcp.getD_fee(), dcp.getD_distance(), null, memo));
+						
+						continue;
+
 					}
 
 					// 2) 해당 카풀에 작성한 메모가 없을 때
 					cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
 							dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
-							dcp.getD_fee(), dcp.getD_distance(), "B"));
+							dcp.getD_fee(), dcp.getD_distance(), "Y"));
+					
+					continue;
+
 				}
 
-				// 우선순위 4. r_confirm = null
-				else if (r_con.contains(null)) {
+				// 우선순위 3. B => 예약 임박
+				else if (r_con.contains("B")) {
 
-					List<MemoEntity> memoList = mmRepo.findByDrIdx(dcp.getDr_idx());
+					List<MemoEntity> memoList = mmRepo.findByDrIdxPIdx(idx, dcp.getDr_idx());
 
 					// 1) 해당 카풀에 작성한 메모가 있을 때
 					if (memoList.size() > 0) {
@@ -145,18 +126,53 @@ public class MemoService {
 						for (int k = 0; k < memoList.size(); k++) {
 							PerMemoDomain pmd = new PerMemoDomain(memoList.get(k).getM_idx(),
 									memoList.get(k).getContext());
-							memo.add(pmd); 
+							memo.add(pmd);
 						}
 
 						cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
 								dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
 								dcp.getD_fee(), dcp.getD_distance(), null, memo));
+						
+						continue;
+					}
+
+					// 2) 해당 카풀에 작성한 메모가 없을 때
+					cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
+							dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
+							dcp.getD_fee(), dcp.getD_distance(), "B"));
+					
+					continue;
+				}
+
+				// 우선순위 4. r_confirm = null
+				else if (r_con.contains(null)) {
+
+					List<MemoEntity> memoList = mmRepo.findByDrIdxPIdx(idx, dcp.getDr_idx());
+
+					// 1) 해당 카풀에 작성한 메모가 있을 때
+					if (memoList.size() > 0) {
+
+						ArrayList<PerMemoDomain> memo = new ArrayList<PerMemoDomain>();
+
+						for (int k = 0; k < memoList.size(); k++) {
+							PerMemoDomain pmd = new PerMemoDomain(memoList.get(k).getM_idx(),
+									memoList.get(k).getContext());
+							memo.add(pmd);
+						}
+
+						cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
+								dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
+								dcp.getD_fee(), dcp.getD_distance(), null, memo));
+						
+						continue;
 					}
 
 					// 2) 해당 카풀에 작성한 메모가 없을 때
 					cpList.add(new MemoDomain(dcp.getDr_idx(), dcp.getD_date(), dcp.getD_starttime(),
 							dcp.getD_endtime(), dcp.getD_startpoint(), dcp.getD_endpoint(), dcp.getD_commute(),
 							dcp.getD_fee(), dcp.getD_distance(), null));
+					
+					continue;
 				}
 
 			}

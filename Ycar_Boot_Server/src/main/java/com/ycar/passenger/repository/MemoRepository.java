@@ -29,9 +29,9 @@ public interface MemoRepository extends JpaRepository<MemoEntity, Integer> {
 	@Query(value = "update MemoEntity set context = ?2 where m_idx = ?1")
 	//public int updateContext(@Param("m_idx")int m_idx, @Param("context") String context);
 	public int updateContext(int m_idx, String context);
-	
-	// 메모 삭제
-	
+		
 	// 메모 불러오기
-	public List<MemoEntity> findByDrIdx(int dr_idx);
+	//SELECT * FROM ycar.P_MEMO where p_idx = 10 and dr_idx = 26;
+	@Query(value = "select m from MemoEntity m where p_idx = ?1 and dr_idx =?2")
+	public List<MemoEntity> findByDrIdxPIdx(int p_idx, int dr_idx);
 }

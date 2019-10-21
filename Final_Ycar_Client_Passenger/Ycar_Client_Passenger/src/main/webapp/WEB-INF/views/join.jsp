@@ -60,8 +60,8 @@
                             <div class="form-group">
                                 <div><span class="btn btn-black form-control" id="jtype1" onclick="step1('S')">간편 가입하기</span></div>
                                 <div><span class="btn btn-black form-control" id="jtype2" onclick="jumpToStep2('K')">카카오톡 아이디로 가입하기</span></div>
-                                <div><span class="btn btn-black form-control" id="jtype3" onclick="jumpToStep2('N')">네이버 아이디로 가입하기</span></div>
-                                <div><span class="btn btn-black form-control" id="jtype4" onclick="jumpToStep2('G')">구글 아이디로 가입하기</span></div>
+                                <!-- <div><span class="btn btn-black form-control" id="jtype3" onclick="jumpToStep2('N')">네이버 아이디로 가입하기</span></div>
+                                <div><span class="btn btn-black form-control" id="jtype4" onclick="jumpToStep2('G')">구글 아이디로 가입하기</span></div> -->
                             </div>
                         </form>
                         
@@ -176,61 +176,7 @@
                                 <input type="button" value="prev" class="btn py-3 px-4 btn-black" id="prev3"><input type="button" value="next" class="btn py-3 px-4 btn-primary" id="next3" onclick="step4()">
                             </div>
                             </form>
-                            
-                            <!-------------------------------------------------------------------------------
-                            <div class="form-group">
-                                <label for="lsctype">면허 종류</label>
-                                <div class="form-field">
-                                    <div class="select-wrap">
-                                        <select name="lsctype" id="lsctype" class="form-control">
-                                            <option value="A">1종 보통</option>        
-                                            <option value="B">2종 보통</option>        
-                                        </select>
-                                    </div>
-                                </div>
-                                <span id="lsctypechkmsg"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="sdate">허가일자</label>
-                                <input type="text" class="form-control" id="sdate">
-                                <span id="sdatechkmsg"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="police">경찰청</label>
-                                <input type="text" class="form-control" id="police">
-                                <span id="policechkmsg"></span>
-                            </div>
-                            <div class="form-group pt-3">
-                                <input type="button" value="prev" class="btn py-3 px-4 btn-black" id="prev3"><input type="button" value="next" class="btn py-3 px-4 btn-primary" id="next3" onclick="step4()">
-                            </div>
-
-                        </form>
-                        
-                        ---------------------------------------------------------------------------
-                        <form class="p-3 bg-light search-property-1" id="signUpForm4">
-                            <div class="day-wrap"><h3 class="pl-5">Join ycar::자동차등록</h3></div>
-                            <div class="form-group">
-                                <label for="carnum">자동차번호</label>
-                                <input type="text" class="form-control" id="carnum">
-                                <span id="carnumchkmsg"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="cartype">차종류</label>
-                                <div class="form-field">
-                                    <div class="select-wrap">
-                                        <select name="cartype" id="cartype" class="form-control">
-                                            <option value="S">소형</option>
-                                            <option value="M">중형</option>
-                                            <option value="L">대형</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <span id="cartypechkmsg"></span>
-                            </div>
-                            <div class="form-group pt-3">
-                                <input type="button" value="prev" class="btn py-3 px-4 btn-black" id="prev4"><input type="button" value="next" class="btn py-3 px-4 btn-primary" id="next4" onclick="step5()">
-                            </div>
-                        </form> -->
+                         
                         
                         <form class="p-3 bg-light search-property-1" id="signUpForm5">
                             <div class="day-wrap"><h3 class="pl-5">Join ycar</h3></div>
@@ -307,6 +253,8 @@
     <script src="static/js/scrollax.min.js"></script>
 
     <script src="static/js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
     <script src="static/join.js"></script>
 
 </body></html>

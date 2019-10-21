@@ -1,4 +1,5 @@
 package com.ycar.passenger.domain;
+
 // session에 저장할 객체
 public class LoginInfo {
 	private int idx;
@@ -6,34 +7,49 @@ public class LoginInfo {
 	private String nickname;
 	private String email;
 	private String name;
-	
-	public LoginInfo(int idx, String id, String nickname, String email, String name) {
+	private char type;
+
+	public LoginInfo(int idx, String id, String nickname, String email, String name, char type) {
 		this.idx = idx;
 		this.id = id;
 		this.nickname = nickname;
 		this.email = email;
 		this.setName(name);
+		this.type = type;
 	}
-	
+
+	public char getType() {
+		return type;
+	}
+
+	public void setType(char type) {
+		this.type = type;
+	}
+
 	public int getIdx() {
 		return idx;
 	}
+
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public String getNickname() {
 		return nickname;
 	}
+
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -50,7 +66,4 @@ public class LoginInfo {
 		this.name = name;
 	}
 
-	
-	
-	
 }

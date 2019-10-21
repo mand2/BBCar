@@ -1,6 +1,8 @@
 /**
  * 
  */
+ // KAKAO :: 사용할 앱의 JavaScript 키를 설정해 주세요.
+        Kakao.init('b4d22862e49da7bced7dc7592288a369');
 
 function step1(type) {
 	sessionStorage.setItem("jointype", type);
@@ -9,9 +11,40 @@ function step1(type) {
 	$('#signUpForm').css("display", "block");
 }
 
+//카카오 회원가입
+function loginWithKakao() {
+// 로그인 창을 띄웁니다.
+Kakao.Auth.login({
+    success: function(authObj) {
+        Kakao.API.request({
+            url: '/v2/user/me',
+            success: function(res) {
+                var id = res.id;
+                var email = res.kakao_account.email;
+                
+                var step1 = {
+                		id : id,
+                		email : email
+                }
+                sessionStorage.setItem("step1", JSON.stringify(step1));
+            },
+            fail: function(error) {
+                alert(JSON.stringify(error));
+            }
+        });
+    },
+    fail: function(err) {
+        alert(JSON.stringify(err));
+        alert('[카카오]로그인 실패');
+    }
+});
+}
+
 function jumpToStep2(type) {
 	sessionStorage.setItem("jointype", type);
-
+	
+	loginWithKakao();
+	
 	$('#signUpSelect').css("display", "none");
 	$('#signUpForm2').css("display", "block");
 }
@@ -64,7 +97,6 @@ function step3() {
 		sessionStorage.setItem("step2", JSON.stringify(step2));
 		$('#signUpForm2').css("display", "none");
 		$('#signUpForm3').css("display", "block"); // 운전면허증 ---> 민증 인증
-		// $('#signUpForm5').css("display", "block"); // 선호 운전환경으로 
 	} else {
 		alert('인증 후에 다음 단계로 진행됩니다.');
 	}
@@ -73,40 +105,21 @@ function step3() {
 // ************ 운전면허증 ----> 민증양식으로 바꿔야함!!!!!!!!
 function step4() {
 	var step3 = {
-		//lscnum : $('#lscnum').val(),
 		name : $('#name').val(),
 		idnum1 : $('#idnum1').val(),
 		idnum2 : $('#idnum2').val()
-		//lsctype : $('#lsctype option:selected').val(),
-		//sdate : $('#sdate').val(),
-		//police : $('#police').val()
 	}
 	sessionStorage.setItem("step3", JSON.stringify(step3));
-	// 풀려면 var orderDetail = JSON.parse(sessionStorage.getItem("step1")) 
 
 	$('#signUpForm3').css("display", "none");
-	// $('#signUpForm4').css("display", "block");
 	$('#signUpForm5').css("display", "block"); // 선호 운전환경으로 
 }
-
-/*function step5() {
-	var step4 = {
-		carnum : $('#carnum').val(),
-		cartype : $('#cartype option:selected').val()
-	}
-	sessionStorage.setItem("step4", JSON.stringify(step4));
-
-	$('#signUpForm4').css("display", "none");
-	$('#signUpForm2').css("display", "none");
-	$('#signUpForm5').css("display", "block");
-}*/
 
 function join() {
 	var option = getType(); // 배열로 들어감.
 
 	var all2 = JSON.parse(sessionStorage.getItem("step2"));
 	var all3 = JSON.parse(sessionStorage.getItem("step3"));
-	//var all4 = JSON.parse(sessionStorage.getItem("step4"));
 
 	var ctype = all2.ctype;
 
@@ -116,18 +129,9 @@ function join() {
 		ctype : all2.ctype, // 회사인증타입
 		company : all2.company, // 회사명
 
-		//lscnum : all3.lscnum, // 운전면허증번호
-		//name : all3.name, ************** 이름 설정!!!!!!!!!!!!!!!!
 		name : all3.name, // 이름
 		idnum1 : all3.idnum1, // 주민번호앞6자리
 		idnum2 : all3.idnum2, // 주민번호뒤1자리
-		//lsctype : all3.lsctype, // 면허종류
-		//police : all3.police, // 허가경찰청장
-		//sdate : all3.sdate, // 허가일
-
-		//carnum : all4.carnum,
-		//cartype : all4.cartype,
-
 		p_option : option
 
 	};
@@ -138,7 +142,15 @@ function join() {
 
 		all.id = all1.id; // 아이디
 		all.pw = all1.pw; // 비밀번호
-		all.email = all1.email;
+		all.email = all1.email; // 이메일
+	}
+	
+	// 분기처리 가입타입type이 kakao일 경우
+	if (sessionStorage.getItem("jointype") == "K") {
+		var all1 = JSON.parse(sessionStorage.getItem("step1"));
+
+		all.id = all1.id; // 아이디
+		all.email = all1.email; // 이메일
 	}
 
 	// 분기처리 ctype에 따라
@@ -434,73 +446,6 @@ function verifyCode(code) {
 		return false;
 	}
 }
-// 사업장 있는지 확인
-// function chkCnum() {
-// var company = $('#company').val();
-// var cnum = $('#cnum').val();
-//
-// $.ajax({
-// url :
-// 'http://apis.data.go.kr/B552015/NpsBplcInfoInqireService/getBassInfoSearch?wkpl_nm='
-// + company
-// + '&bzowr_rgst_no='
-// + cnum
-// +
-// '&pageNo=1&startPage=1&numOfRows=1&pageSize=1&serviceKey=QAJekZ746A67XoW4BzNPxQQ6vEzVBNW7duHXxEKHN%2BTcMk5RN8CFMRzRdwZqz%2BTYFTcGrxW%2BgMoc4iuAuvaV2Q%3D%3D',
-// type : 'GET',
-// dataType : 'xml',
-// contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-// error : function(request, status, error) {
-// console.log("code : " + request.status + "\r\nmessage : "
-// + request.reponseText + " \r\n status : " + status);
-// },
-//
-// success : function(res) {
-// var myXML = res.responseText;
-// var JSONConvertedXML = $.xml2json(myXML);
-// var data = JSONConvertedXML;
-// var htmlSrc = new Array();
-//
-// if (data.cmmMsgHeader.returnReasonCode != '00') {
-// htmlSrc.push("<tr><td colspan='2'>");
-// htmlSrc.push(data.cmmMsgHeader.errMsg);
-// htmlSrc.push("</td></tr> ");
-//
-// } else if (data.header.resultCode == '00') {
-//
-// var size = data.items.length;
-//
-// if (size == null)
-// size = 1;
-//
-// if (size == 1) {
-//
-// var target = data.items;
-// htmlSrc.push("<tr>");
-// htmlSrc.push("<td>" + target.wkplNm + "</td>");
-// htmlSrc.push("<td>" + target.dataCrtYm + "</td>");
-// htmlSrc.push("<td>" + target.bzowrRgstNo + "</td>");
-// htmlSrc.push("</tr>");
-//
-// } else if (size > 1) {
-// for (var i = 0; i < size; i++) {
-// var target = data.items[i];
-// htmlSrc.push("<tr>");
-// htmlSrc.push("<td>" + target.wkplNm + "</td>");
-// htmlSrc.push("<td>" + target.dataCrtYm
-// + "</td>");
-// htmlSrc.push("<td>" + target.bzowrRgstNo
-// + "</td>");
-// htmlSrc.push("</tr>");
-//
-// }
-//
-// }
-// }
-// }
-//
-// });
-// }
 
 function displayValPaper() {
 	var chk = $('#pchkbox').prop('checked');

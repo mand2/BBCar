@@ -64,14 +64,14 @@
                                 <img src="static/images/kakao_account_login_btn_medium_narrow.png" />
                                 <!--<img src="images/kakaolink_btn_medium.png" />-->
                             </a>
-                            <a href="#">
+<!--                             <a href="#">
                                 <img src="static/images/btn_naver.PNG" />
-                                <!--<img src="images/naverBtn.png" />-->
+                                <img src="images/naverBtn.png" />
                             </a>
                             <a href="#">
                                 <img src="static/images/btn_google_signin_light_normal_web@2x.png" />
-                                <!--<img src="images/btn_google_light_normal_ios@2x.png" />-->
-                            </a>
+                                <img src="images/btn_google_light_normal_ios@2x.png" />
+                            </a> -->
                         </div>
                         <div style="overflow: hidden" class="form-group">
                             <a style="float: left" href="javascript:findId()" class="subBtn">아이디 찾기</a>

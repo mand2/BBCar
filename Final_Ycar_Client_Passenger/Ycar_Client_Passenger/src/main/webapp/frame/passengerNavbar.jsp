@@ -17,8 +17,24 @@
         <li class="nav-item"><a href="<c:url value='/payment/passengerPayList.jsp'/>" class="nav-link"><span>결제</span></a></li>
         <li class="nav-item"><a href="<c:url value='/review/passengerReviewList.jsp'/>" class="nav-link"><span>후기</span></a></li>
         <li class="nav-item"><a href="<c:url value='/mypage'/>" class="nav-link"><span>마이페이지</span></a></li>
-        <li class="nav-item"><a href="<c:url value='/logout'/>" class="nav-link"><span>로그아웃</span></a></li>
+        <li class="nav-item"><a href="javascript:logout();" class="nav-link"><span>로그아웃</span></a></li>
       </ul>
     </div>
   </div>
 </nav>
+
+<script>
+	function logout(){
+		var con = confirm = ("로그아웃 하시겠습니까?");
+		if(con){
+			 $.ajax({
+	                url: 'http://13.125.252.85:8080/passenger/login/logout',
+	                type: 'GET',
+	                success: function(data) {
+	                    alert(data);
+	                    location.href="http://13.125.252.85:8080/passenger";
+	                }
+	            });
+		}
+	}
+</script>

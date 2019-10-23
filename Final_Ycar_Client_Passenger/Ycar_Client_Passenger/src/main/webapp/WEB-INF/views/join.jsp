@@ -45,7 +45,7 @@
     </nav>
 
     <!--회원가입 1-->
-    <section class="hero-wrap" style="background-image: url('static/images/destination-single.jpg'); id="bgimage">
+    <section class="hero-wrap" style="background-image: url('static/images/destination-single.jpg');" id="bgimage" >
         <div class="overlay"></div>
         <div class="container">
 

@@ -132,7 +132,7 @@ body {
                     <option value="19:00" class="fromworktime">19:00</option>
                     <option value="19:15" class="fromworktime">19:15</option>
                     <option value="19:30" class="fromworktime">19:30</option>
-                    <option value="19:30" class="fromworktime">19:45</option>
+                    <option value="19:45" class="fromworktime">19:45</option>
 					<option value="20:00" class="fromworktime">20:00</option>
 				</select>
 				<span id="timeCheck" class="check">시간을 선택해주세요.</span>
@@ -166,7 +166,6 @@ body {
 	<br><br>
 	<div class="listed">
 		<div id="searchCarpoolList"></div>
-		<div id="noresult"></div>
 	</div>
 
 </div>
@@ -212,15 +211,16 @@ $(function() {
 	});
     
 $(document).ready(function() {
-	initTmap(); //티맵 지도 보여주기
+	initTmap(); 
 	
 	
 	$('#selectModal').on('hide.bs.modal', function (e) {
 		$(this).find('.modal-body form')[0].reset(); 
 		//폼 초기화 
-		});		
+	});		
 });
-	
+
+
 	
 function search(){
 	$.ajax({
@@ -229,12 +229,9 @@ function search(){
 		data : $('#searchForm').serialize(), 
 		success : function(data) {
 			var html = '';
-			var output = '';
-			for (var i = 0; i < data.length; i++) {	
+			if(data.length>0) {
+				for (var i = 0; i < data.length; i++) {
 					
-				if (data == null) {
-					output += '<h3>검색하신 조건으로 등록된 카풀이 없습니다</h3>';
-				}else {
 					html += '<div id="match">';
 					html += '<img src="<c:url value='/static/images/logo_yeoncha.png'/>" id="matchimg">';
 					html += '<input type="hidden" id="'+ data[i].dr_idx + '"><input type="hidden" id="'+ data[i].d_idx + '">';
@@ -246,14 +243,17 @@ function search(){
 					html += '<button id="view" onclick="viewRoute('+ data[i].d_startlon + ', ' + data[i].d_startlat + ', ' + data[i].d_endlon + ', ' + data[i].d_endlat + ')" class="btn btn-primary rsvsbtn">경로보기</button>\t';
 					html += '<button id="select" onclick="selectCarpool(' + data[i].dr_idx + ')" class="btn btn-primary rsvsbtn" data-toggle="modal" data-target="#selectModal">예약하기</button>';
 					html += '</div>';
-				}
+					}
+			}else{
+				html += '<h4>검색하신 조건으로 등록된 카풀이 없습니다.</h4><br>\n';
+				html += '<h4>다시 검색해주세요!</h4><br>\n';
 			}
-			$('#noresult').html(output);
 			$('#searchCarpoolList').html(html);
 		}
 	});
 }
-	
+
+
 	
 function selectCarpool(dr_idx){
     	  $.ajax({
@@ -271,7 +271,9 @@ function selectCarpool(dr_idx){
     		  }
     	  });
       }
-      
+ 
+
+
 function requestReserve(){
 	$.ajax({
 		url: 'http://13.125.252.85:8080/server/rsv/reserve/'+ p_idx,
@@ -311,10 +313,10 @@ function requestReserve(){
               markerLayer = new Tmap.Layer.Markers("marker"); //마커레이어를 생성합니다.
               map.addLayer(markerLayer); //map에 마커레이어를 추가합니다.
           };
-          // 시작
+          // 출발지 검색
           function searchPOI(countS) {
               var startPoint = $('#startPoint').val();
-              /* alert(startPoint); */
+              
               tdata = new Tmap.TData();
               tdata.getPOIDataFromSearch(encodeURIComponent(startPoint), {
                   reqCoordType: "EPSG3857",
@@ -325,7 +327,7 @@ function requestReserve(){
               if (countS > 0) {
                   console.log(countS);
                   $('#searchSP').click(function() {
-                      console.log('첫번쨰로들어옴1');
+                      
                       map.events.clearMouseCache();
                       map.destroy();
                       initTmap();
@@ -355,8 +357,8 @@ function requestReserve(){
           function addMarker(options) {
               var size = new Tmap.Size(24, 38); //아이콘 크기 설정
               var offset = new Tmap.Pixel(-(size.w / 2), -size.h); //아이콘 중심점 설정
-              var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_s.png />', size, offset); //마커 아이콘 설정
-              /*var marker_s = new Tmap.Marker(new Tmap.LonLat(centerLon, centerLat).transform("EPSG:4326", "EPSG:3857"), icon); //설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.*/
+              var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_s.png />', size, offset); //마커 아이콘 설정
+              
               marker = new Tmap.Markers(options.lonlat, icon, options.label); //위에서 설정한 값을 통해 마커를 생성합니다.
               markerLayer.addMarker(marker); //마커 레이어에 마커 추가
               marker.events.register("mouseover", marker, onOverMouse); //mouseover 이벤트, 마커에 마우스 커서를 올리면 실행하는 이벤트를 등록합니다. 
@@ -377,10 +379,10 @@ function requestReserve(){
               console.log(this.labelHtml);
               change(this.lonlat, this.labelHtml);
           }
-          // 도착
+          // 도착지 검색
           function searchPOIs(countE) {
               var endPoint = $('#endPoint').val();
-              /* alert(endPoint); */
+              
               tdata = new Tmap.TData();
               tdata.getPOIDataFromSearch(encodeURIComponent(endPoint), {
                   /*centerLon: center.lon,
@@ -391,7 +393,7 @@ function requestReserve(){
               tdata.events.register("onComplete", tdata, onCompleteTDatas);
               if (countE > 0) {
                   $('#searchEP').click(function() {
-                      console.log('첫번쨰로들어옴2');
+                      
                       map.events.clearMouseCache();
                       map.destroy();
                       initTmap();
@@ -421,8 +423,8 @@ function requestReserve(){
           function addMarkers(options) {
               var size = new Tmap.Size(24, 38); //아이콘 크기 설정
               var offset = new Tmap.Pixel(-(size.w / 2), -size.h); //아이콘 중심점 설정
-              var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_e.png />', size, offset); //마커 아이콘 설정
-              // var markers = new Tmap.Marker(new Tmap.LonLat(option.lonlat, "37.403049076341794").transform("EPSG:4326", "EPSG:3857"), icon); //설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
+              var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_b_m_e.png />', size, offset); //마커 아이콘 설정
+              
               markers = new Tmap.Markers(options.lonlat, icon, options.label); //위에서 설정한 값을 통해 마커를 생성합니다.
               markerLayer.addMarker(markers); //마커 레이어에 마커 추가*/
               markers.events.register("mouseover", markers, onOverMouses); //mouseover 이벤트, 마커에 마우스 커서를 올리면 실행하는 이벤트를 등록합니다. 
@@ -447,26 +449,26 @@ function requestReserve(){
               var pr_3857 = new Tmap.Projection("EPSG:3857");
               var pr_4326 = new Tmap.Projection("EPSG:4326");
               var lonlat = new Tmap.LonLat(lonlat.lon.toString(), lonlat.lat.toString()).transform(pr_3857, pr_4326);
-              /*var lonlats = new Tmap.LonLat(lonlats.lon.toString(), lonlats.lat.toString()).transform(pr_3857, pr_4326);*/
+             
               $('#p_startpoint').val(labelHtml.toString());
               $('#startlon').val(lonlat.lon);
               $('#startlat').val(lonlat.lat);
               map.events.clearMouseCache();
               map.destroy();
-              /*$('#start').val("");*/
+              
               initTmap();
           }
           function changes(lonlat, labelHtml) {
               var pr_3857 = new Tmap.Projection("EPSG:3857");
               var pr_4326 = new Tmap.Projection("EPSG:4326");
               var lonlat = new Tmap.LonLat(lonlat.lon.toString(), lonlat.lat.toString()).transform(pr_3857, pr_4326);
-              /*var lonlats = new Tmap.LonLat(lonlats.lon.toString(), lonlats.lat.toString()).transform(pr_3857, pr_4326);*/
+              
               $('#p_endpoint').val(labelHtml.toString());
               $('#endlon').val(lonlat.lon);
               $('#endlat').val(lonlat.lat);
               map.events.clearMouseCache();
               map.destroy();
-              /*$('#start').val("");*/
+              
               initTmap();
           }
           function route() {
@@ -507,7 +509,7 @@ function requestReserve(){
                       var tFare = " 총 요금 : " + $intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue + "원,";
                       var taxiFare = " 예상 택시 요금 : " + $intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue + "원";
                       $("#result").text(tDistance + tTime + tFare + taxiFare);
-                      /* routeLayer.removeAllFeatures(); //레이어의 모든 도형을 지웁니다.*/
+                      
                       var traffic = $intRate[0].getElementsByTagName("traffic")[0];
                       //교통정보가 포함되어 있으면 교통정보를 포함한 경로를 그려주고
                       //교통정보가 없다면  교통정보를 제외한 경로를 그려줍니다.
@@ -529,7 +531,7 @@ function requestReserve(){
                                       style.graphicWidth = 16; //외부 이미지 파일의 크기 설정을 위한 픽셀 폭입니다.
                                       break;
                                   default:
-                                      style.strokeColor = "#ff0000"; //stroke에 적용될 16진수 color
+                                      style.strokeColor = "#1A4FC2"; //stroke에 적용될 16진수 color
                                       style.strokeOpacity = "1"; //stroke의 투명도(0~1)
                                       style.strokeWidth = "5"; //stroke의 넓이(pixel 단위)
                               };
@@ -545,10 +547,10 @@ function requestReserve(){
                           var trafficColors = {
                               extractStyles: true,
                               /* 실제 교통정보가 표출되면 아래와 같은 Color로 Line이 생성됩니다. */
-                              trafficDefaultColor: "#000000", //Default
-                              trafficType1Color: "#009900", //원할
-                              trafficType2Color: "#8E8111", //지체
-                              trafficType3Color: "#FF0000" //정체
+                              trafficDefaultColor: "#1A4FC2", //Default
+                              trafficType1Color: "#1A4FC2", //원할
+                              trafficType2Color: "#113685", //지체
+                              trafficType3Color: "#010205" //정체
                           };
                           var kmlForm = new Tmap.Format.KML(trafficColors).readTraffic(prtcl);
                           routeLayer = new Tmap.Layer.Vector("vectorLayerID"); //백터 레이어 생성
@@ -562,16 +564,6 @@ function requestReserve(){
                   error: function(request, status, error) {
                       console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
                   }
-              });
-              $('#searchEP').click(function() {
-                  map.events.clearMouseCache();
-                  map.destroy();
-                  initTmap();
-              });
-              $('#searchSP').click(function() {
-                  map.events.clearMouseCache();
-                  map.destroy();
-                  initTmap();
               });
           }
           

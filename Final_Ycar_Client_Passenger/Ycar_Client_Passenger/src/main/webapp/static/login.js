@@ -11,7 +11,8 @@
                         function() {
                             $.ajax({
                                 url: 'http://13.125.252.85:8080/passenger/login',
-                                type: 'POST',
+                            	//url: 'http://localhost:8080/passenger/login',
+                            	type: 'POST',
                                 data: $('#form')
                                     .serialize(),
                                 success: function(data) {

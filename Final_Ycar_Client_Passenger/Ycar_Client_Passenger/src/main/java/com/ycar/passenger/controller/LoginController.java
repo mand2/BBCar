@@ -40,6 +40,8 @@ public class LoginController {
 	@PostMapping
 	@ResponseBody
 	public int login(@RequestParam("id") String id, @RequestParam("pw") String pw, HttpServletRequest request) {
+		
+		System.out.println("id 왜 안나와"+ id);
 
 		RestTemplate rt = new RestTemplate();
 
@@ -50,7 +52,8 @@ public class LoginController {
 		Map<String, Object> maps = new HashMap<String, Object>();
 
 		maps = rt.postForObject("http://13.125.252.85:8080/server/members/login", map, Map.class);
-
+		//maps = rt.postForObject("http://localhost:8080/server/members/login", map, Map.class);
+		
 		// VIEW에 message전달
 		int msg = (Integer) maps.get("msg");
 

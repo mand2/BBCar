@@ -739,7 +739,7 @@ today = (d.getMonth() + 1) + "/" + d.getDate();
 	</section>
 	<div id="footer"></div>
 
-
+	<script src="<c:url value='/staticD/js/bootstrap.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/jquery-migrate-3.0.1.min.js'/>"></script>
 	<script src="<c:url value='/staticD/js/popper.min.js'/>"></script>

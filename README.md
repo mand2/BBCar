@@ -1,5 +1,5 @@
 # Y-Car Project
-> 직장인을 위한 안전한 카풀앱, 우리회사 붕붕카 - 결제 및 후기 페이지 <br>
+> 직장인을 위한 안전한 카풀앱, 연차 Ycar - 결제 및 후기 페이지 <br>
 > [탑승자페이지 Link](http://13.125.252.85:8080/passenger/)<br>
 > [운전자페이지 Link](http://13.125.252.85:8080/driver/) <br>
 > [기획서페이지 Link](https://github.com/mand2/y-car-project/blob/master/%EA%B8%B0%ED%9A%8D%EC%84%9C/%EA%B8%B0%ED%9A%8D%EC%84%9C%20ver.1.0.1.pdf) <br>
@@ -49,7 +49,6 @@
 * `AWS` 배포  
     * `EC2`  
     * `RDS`
-* `Firebase` 배포 
 
 
 
@@ -68,6 +67,10 @@
    * `카카오 로그인` Api 이용 
    * `nodeJs` 서버로 실시간 일대일 채팅기능, 탑승자-운전자간 연결 구현 
    * `Spring-Boot` 및 `JPA` 이용하여 일부 기능 구현
+* v2
+   * SpringBoot로 구현한 부분 배포
+   * 운전자 로그인 세션 구현 (필터 & 인터셉터 사용)
+   * 예약한 사람과의 채팅만 가능하도록 변경함
    
 
 

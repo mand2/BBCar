@@ -7,7 +7,7 @@ function kakaoPayProcess() {
 	console.log('kakaopay 요청 01  '+r_idx);
 	
 	$.ajax({
-		url : " http://13.125.252.85:8080/sever/par/payment/kakao/r_idx/"+r_idx,
+		url : " http://13.125.252.85:8080/server/par/payment/kakao/r_idx/"+r_idx,
         type: 'POST',
 		dataType : "text",
 		success : function(data) {

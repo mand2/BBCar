@@ -481,7 +481,7 @@
         });
 
         //운전자 idx 값
-        var d_idx = 2;
+        var d_idx = ${sessionScope.loginInfo.d_idx};
 
 
         //--------지도 시작---------

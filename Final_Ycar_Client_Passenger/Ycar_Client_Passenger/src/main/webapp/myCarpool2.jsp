@@ -261,15 +261,10 @@ body {
 										+ '<br>\n';
 								html += '도착지 ' + data[i].d_endpoint + '<br>\n';
 								html += '요금 ' + data[i].d_fee + '원 <br>\n';
-								html += '<button id="delete" onclick="deleteRsv('
-										+ p_idx
-										+ ','
+								html += '<button onclick="fn_chat('
 										+ data[i].r_idx
-										+ ')" class="btn btn-primary">카풀취소</button>';
+										+ ')" class="btn btn-primary btn_chat">채팅하기</button>';
 								html += '<input id="hiddenR_idx" type="hidden" value="'+data[i].r_idx+'">';
-								html += '<span class = "btn_chat" onclick="fn_chat('
-										+ data[i].r_idx
-										+ ')">채팅하기</span><br>\n';
 								html += '</div>'
 							}
 							$('#confirmList').html(html);

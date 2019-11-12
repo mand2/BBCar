@@ -15,7 +15,9 @@ public interface ReservationDao {
 	public List<Carpool> allCarpoolList();
 
 	//카풀 검색
-	public List<Carpool> searchCarpoolList(@Param("param1")String date, @Param("param2")String time, @Param("param3")String startPoint, @Param("param4")String endPoint);
+	public List<Carpool> searchCarpoolList(@Param("param1")String date, @Param("param2")String time, 
+			@Param("param3")String startlat, @Param("param4")String startlon,
+			@Param("param5")String endlat, @Param("param6")String endlon);
 	
 	//예약할 카풀 선택
 	public Carpool selectByDr_idx(int dr_idx);

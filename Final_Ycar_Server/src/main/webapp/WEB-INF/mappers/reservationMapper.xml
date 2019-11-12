@@ -40,18 +40,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		]]>
 	</select>
 	
-	<!-- D_CARPOOL에서 카풀조건 검색 -->
+	<!-- D_CARPOOL에서 카풀조건 검색 위도 경도 정보로 반경 1km이내의 출도착지 찾기-->
 	<select id="searchCarpoolList" resultType="com.ycar.server.reservation.domain.Carpool">
 		<![CDATA[ 
-		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee , c.d_startlon, c.d_startlat, c.d_endlon, c.d_endlat, r.r_idx, r.p_idx
+		select distinct c.dr_idx, c.d_idx, c.d_date, c.d_starttime, c.d_endtime, c.d_startpoint, c.d_endpoint, c.d_commute, c.d_fee, c.d_startlon, c.d_startlat, c.d_endlon, c.d_endlat, r.r_idx, r.p_idx
 		from D_CARPOOL c left join RESERVATION r on c.dr_idx = r.dr_idx 
 		where (r.r_confirm is null or r.r_confirm != 'Y') 
 		and c.d_date >= curdate()
 		and c.d_date = #{param1} 
 		and (#{param2} between c.d_starttime and c.d_endtime)
-		and c.d_startpoint like concat('%',#{param3},'%') 
-		and c.d_endpoint like concat('%',#{param4},'%')
-		group by c.dr_idx
+		and (6371*acos(cos(radians(#{param3}))*cos(radians(c.d_startlat))*cos(radians(c.d_startlon) -radians(#{param4}))+sin(radians(#{param3}))*sin(radians(c.d_startlat)))) <= 1
+		and (6371*acos(cos(radians(#{param5}))*cos(radians(c.d_endlat))*cos(radians(c.d_endlon) -radians(#{param6}))+sin(radians(#{param5}))*sin(radians(c.d_endlat)))) <= 1
 		]]>
 	</select>
 	

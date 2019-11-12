@@ -153,10 +153,10 @@ body {
 					<br><br>
 					<input type="button" id="routesearch" onclick="route();" value="경로확인" class="btn btn-primary rsbbtn"><br><br>
 					<div id="map_div" class="bg-white"></div>
-					<input type="hidden" id="startlon" value=""> 
-					<input type="hidden" id="startlat" value=""> 
-					<input type="hidden" id="endlon" value=""> 
-					<input type="hidden" id="endlat" value=""><br>
+					<input type="hidden" id="startlon" name="startlon" > 
+					<input type="hidden" id="startlat" name="startlat" > 
+					<input type="hidden" id="endlon" name="endlon" > 
+					<input type="hidden" id="endlat" name="endlat" ><br>
 					<input type="button" id="searchcarpool" onclick="search()" value="카풀검색" class="btn btn-primary rsbbtn">
 				</div>
 			</div>

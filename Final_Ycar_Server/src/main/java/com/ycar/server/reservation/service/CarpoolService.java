@@ -29,13 +29,13 @@ public class CarpoolService {
 	}
 	
 //	//검색
-	public List<Carpool> getSearchList(String date, String time, String startPoint, String endPoint) {
+	public List<Carpool> getSearchList(String date, String time, String startlat, String startlon, String endlat, String endlon) {
 		
 		dao =template.getMapper(ReservationDao.class);
 		
-		List<Carpool> list = dao.searchCarpoolList(date, time, startPoint, endPoint);
+		List<Carpool> list = dao.searchCarpoolList(date, time, startlat, startlon, endlat, endlon);
 		
-		System.out.println("서비스"+ date + time + startPoint + endPoint);
+		System.out.println("서비스"+ date + time + "시작위도" + startlat + "시작경도" + startlon + "종료위도" + endlat + "종료경도" + endlon);
 		
 		return list;
 	}

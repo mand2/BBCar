@@ -53,14 +53,16 @@ public class ReservationController {
 	public ResponseEntity<List<Carpool>> getSearchList(
 			@RequestParam(value = "date", required = false) String date, 
 			@RequestParam(value = "time", required = false) String time, 
-			@RequestParam(value = "startPoint", required = false) String startPoint, 
-			@RequestParam(value = "endPoint", required = false) String endPoint){
+			@RequestParam(value = "startlat", required = false) String startlat, 
+			@RequestParam(value = "startlon", required = false) String startlon,
+			@RequestParam(value = "endlat", required = false) String endlat, 
+			@RequestParam(value = "endlon", required = false) String endlon){
 		
-		List<Carpool> list = carpoolService.getSearchList(date, time, startPoint, endPoint);
+		List<Carpool> list = carpoolService.getSearchList(date, time, startlat, startlon, endlat, endlon);
 		
 		ResponseEntity<List<Carpool>> entity = new ResponseEntity<List<Carpool>>(list, HttpStatus.OK);
 		
-		System.out.println("검색 컨트롤러"+ date + time + startPoint + endPoint);
+		System.out.println("컨트롤러" + date + time + "시작위도" + startlat + "시작경도" + startlon + "종료위도" + endlat + "종료경도" + endlon);
 		
 		return entity;
 	}

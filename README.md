@@ -79,23 +79,17 @@
 
 * 효율적인 프로젝트 구조 고민
 
-* API를 용이하게 사용하기 어려웠던 점들(결제,  T-map  등)
-
 * DB 테이블 관계설정 미숙으로 인한 DB 수정
 
-* Boot 및 JPA 적용   
-  간단 개념만 배운 후 바로 프로젝트에 적용해 봄.   
-  생각보다 Entity를 이용한 관계설정, DB 데이터 추출이 어려웠음
-
-* 통신 및 연동
-  프로젝트 개념 상 탑승자 운전자가 실시간으로 같은 데이터를 공유해야 하기에 socket.io를 이용
-  
-* rest 구조
-  client 컨트롤러에서 server 컨트롤러를 호출 할 때 객체를 제대로 넘길 수 없는 이슈 발생  
-  exchange 메서드로 header와 body 및 호출 메서드를 각각 설정, 해결.
-
 * 각자 기능 구현한 프로젝트를 합칠 때   
-  코드 결합 시 발생하는 세부적인 오류(예- 패키지명 혹은 클래스명 동일) 등 
+  코드 결합 시 발생하는 세부적인 오류(예- 설정파일 ignore하지 않아 결합시 conflict 발생, 데이터 속성명 불일치) 등
+  >>> .ignore file을 생성하여 해결
+  
+* session 다루는데 어려움을 느낌
+  세션의 사용 방법등을 완벽히 파악하지 못해 set, get 등 controller나 jsp 등에서 활용하는데 어려움을 겪음
+  >>> google, okky 등 다른 개발자들의 코드등을 찾아보며 활용 방법 이해
+  
+* 체계적인 설계가 되지 않아 많은 시간 소요
 
   
   
@@ -108,4 +102,4 @@
 * 각 기능 설명   
 * 구현 중 어려웠던 점   
 * 개선사항   
-* [Link](https://docs.google.com/presentation/d/1_1OVTik6grzxKbo3_WMnwzl9_Jl6KYHD/edit?dls=true)
+* PPT 보기 [Link](https://docs.google.com/presentation/d/1X_pm5qu2KIjSAaNNoROyh0tZw7PlQ_8B8T9M9vID6KE/edit?usp=sharing)

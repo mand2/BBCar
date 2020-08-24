@@ -182,7 +182,7 @@
 		<dependency>
 		    <groupId>com.fasterxml.jackson.core</groupId>
 		    <artifactId>jackson-databind</artifactId>
-		    <version>2.9.9.2</version>
+		    <version>2.9.10.4</version>
 		</dependency>		
 		
 		<!-- jackson-mapper-asl -->
@@ -239,7 +239,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>5.1.2.RELEASE</version>
+			<version>5.1.11.RELEASE</version>
 		</dependency>
 		<!--스프링시큐리티 config 라이브러리 -->
 		<dependency>
